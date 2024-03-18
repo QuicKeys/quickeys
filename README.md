@@ -1,8 +1,13 @@
-# Quiksave
-## What is Quiksave?
-Quiksave is a website made for gamers to showcase their video game libraries, it can be described as "like Letterboxd for video games." Users of the site will be able to showcase which games they have played, share their opinions on them, and provide an easy platform to keep track of their backlog of games through lists and the diary.
+# QuicKeys
+## What is QuicKeys?
+QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one-stop destination for designing, customizing, and building your perfect keyboard tailored to your preferences. Users of the platform can also purchase individual keyboard parts and prebuilt keyboards.
 
 ## How does it help?
-- Quiksave provides a platform for gamers to share which games they have accomplished and their personal experiences through ratings and reviews, allowing for users of the platform to connect with one another.
-- Gamers can explore and discover new games that they might have previously never heard of as Quiksave utilizes IGDB's massive video game database which features 273,372 unique games across several platforms.
-- When rating or reviewing games users have played on Steam, Quiksave makes use of Steam's Web API to include information such as hours played on their review, so long as they provide their Steam ID. Other users can then take into account the additional information provided when reading through reviews of a specific game they plan on playing.
+- ### Simplified Customization
+  QuicKeys provides an intuitive interface and comprehensive component library, enabling users to customize their keyboards effortlessly, regardless of their expertise level.
+- ### Cost Transparency
+  Instant pricing estimates empower users to make informed decisions, avoiding unexpected costs and ensuring affordability.
+- ### Community Engagement
+  By integrating community features, QuicKeys fosters collaboration, knowledge-sharing, and camaraderie among keyboard enthusiasts, enriching the overall experience.
+- ### Streamlined Purchasing Process
+  With order tracking and a user-friendly interface, QuicKeys simplifies the purchasing process, from customization to delivery, saving users time and effort.
