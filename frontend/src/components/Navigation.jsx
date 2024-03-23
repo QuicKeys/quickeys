@@ -4,7 +4,7 @@ import Logo from './Logo'
 const Navigation = () => {
   return (
     <>
-        <div className='flex w-100 items-center justify-between'>
+        <div className='flex w-100 items-center justify-between px-[2%]'>
             <Logo />
             <div className='flex'>
                 <h1 className='px-10'>Build</h1>
