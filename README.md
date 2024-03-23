@@ -7,7 +7,12 @@
  [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-## What is QuicKeys?
+## Table of Contents
+* [About](#about)
+* [How does it help?](#how-does-it-help)
+* [Contact](#contact)
+
+## About
 QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one-stop destination for designing, customizing, and building your perfect keyboard tailored to your preferences. Users of the platform can also purchase individual keyboard parts and prebuilt keyboards.
 
 ## How does it help?
@@ -19,3 +24,14 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
   By integrating community features, QuicKeys fosters collaboration, knowledge-sharing, and camaraderie among keyboard enthusiasts, enriching the overall experience.
 - ### Streamlined Purchasing Process
   With order tracking and a user-friendly interface, QuicKeys simplifies the purchasing process, from customization to delivery, saving users time and effort.
+
+## Contact
+### Adrianne Mykhel Bulao
+* https://twitter.com/mykh3l_
+* https://github.com/adriannebulao
+### Mark Cyryl Clarde
+* 
+* 
+### Maverick Jasper Pigao
+* 
+* 
