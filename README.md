@@ -30,7 +30,7 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 * https://twitter.com/mykh3l_
 * https://github.com/adriannebulao
 ### Mark Cyryl Clarde
-* 
+* https://github.com/mccc28
 * 
 ### Maverick Jasper Pigao
 * 
