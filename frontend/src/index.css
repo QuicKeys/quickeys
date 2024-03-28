@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply bg-gradient-to-r from-[#252525] to-[#3F4E5A]
+}
+
+.Navigation {
+    @apply flex justify-between items-center p-[15px] font-medium
+} .Navigation-Text {
+    @apply px-[35px]
+} .active {
+    @apply opacity-100
+}
+
+.Logomark {
+    @apply w-[85px]
+}
