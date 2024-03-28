@@ -6,8 +6,13 @@ const Navigation = () => {
     <>
         <div className='flex w-100 items-center justify-between px-[2%]'>
             <Logo />
+            <Logo />
+            <Logo />
+            <Logo />
+            <Logo />
+            <Logo />
             <div className='flex'>
-                <h1 className='px-10'>Build</h1>
+                <h1 className='px-10'>BUILD</h1>
                 <h1 className='px-10'>Shop</h1>
                 <h1 className='px-10'>About</h1>
                 <h1 className='px-10'>Contact Us</h1>
