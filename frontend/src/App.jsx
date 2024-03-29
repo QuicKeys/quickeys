@@ -10,16 +10,18 @@ import Navigation from './components/Navigation';
 
 import Home from './components/pages/Home';
 import Build from './components/pages/Build';
-import LogIn from './components/pages/LogIn';
 import Shop from './components/pages/Shop';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
+
+import LogIn from './components/pages/LogIn';
+import SignUp from './components/pages/SignUp';
 
 
 function App() {
   return (
     <>
-      <div className="fixed top-0 w-full">
+      <div className="fixed top-0 w-[100vw]">
         <Navigation/>
       </div>
       <Routes>
@@ -30,6 +32,8 @@ function App() {
         <Route path="/Contact-Us" element={ <Contact/> }/>
 
         <Route path="/Log-In" element={ <LogIn/> }/>
+
+        <Route path="/Sign-Up" element={ <SignUp/> }/>
       </Routes>
     </>
   )
