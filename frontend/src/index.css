@@ -9,11 +9,11 @@ body {
 .Navigation {
     @apply flex justify-between items-center p-[15px] font-medium
 } .Navigation-Text {
-    @apply px-[35px]
+    @apply px-[30px]
 } .active {
     @apply opacity-100
 }
 
 .Logomark {
-    @apply w-[85px]
+    @apply w-[75px]
 }
