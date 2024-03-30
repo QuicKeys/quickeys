@@ -14,7 +14,13 @@ function Navigation() {
               <NavLink className="Navigation-Text opacity-50 hover:opacity-100" to="/About"> About </NavLink>
               <NavLink className="Navigation-Text opacity-50 hover:opacity-100" to="/Contact-Us"> Contact Us </NavLink>
             </div>
-            <NavLink to="/Log-In"> Log In </NavLink>
+            <div className="flex gap-[20px]">
+              <NavLink to="/Log-In"> <img className="w-[30px] opacity-50  hover:opacity-100" src="./src/assets/icons/NAV - User.png"/> </NavLink>
+              <NavLink to="/Cart" className="relative group">
+                <div className="absolute top-[7.5px] text-[15px] w-full opacity-50 group-hover:opacity-100"><span className="flex justify-center items-center">0</span></div>
+                <img className="w-[30px] opacity-50 hover:opacity-100" src="./src/assets/icons/NAV - Cart.png"/>
+              </NavLink>
+            </div>
           </div>
         </div>
       </>
