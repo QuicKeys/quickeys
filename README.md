@@ -35,7 +35,7 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 
 ### Adrianne Mykhel Bulao
 
-- https://twitter.com/mykh3l_
+- [https://twitter.com/mykh3l_](https://twitter.com/mykh3l_)
 - https://github.com/adriannebulao
 
 ### Mark Cyryl Clarde
