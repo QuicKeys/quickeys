@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function LogIn() {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
   });
-
-  const navigate = useNavigate();
   
   // BOX ANIMATIONS
   // Email
@@ -17,16 +16,19 @@ function LogIn() {
   const [passwordActive, setPasswordActive] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
 
-  const handleLogIn = () => {
-    // DUMMY
-    if (credentials.email === 'QuicKeys@gmail.com' && credentials.password === '123') {
-      // JWT AUTHENTICATION
-      console.log('Email:', credentials.email);
-      console.log('Password:', credentials.password);
-      navigate('/');
-    }
-    else {
-      console.log('Invalid credentials');
+  const navigate = useNavigate();
+
+  const handleLogIn = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/authentication/login/',
+      {
+        username: credentials.email,
+        password: credentials.password
+      })
+      navigate('/')
+      console.log(response.data)
+    } catch (error) {
+      console.error(error)
     }
   }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function SignUp() {
   // First Name
@@ -26,6 +27,24 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordActive, setConfirmPasswordActive] = useState(false);
   const [confirmPasswordFocused, setConfirmPasswordFocused] = useState(false);
+
+const navigate = useNavigate()
+
+const handleSubmit = async () => {
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/authentication/signup/',
+    {
+      first_name: first,
+      last_name: last,
+      email: email,
+      password: password,
+    })
+    navigate('/Log-In')
+    console.log(response.data)
+  } catch (error) {
+    console.error(error)
+  }
+}
 
   return (
     <>
@@ -154,7 +173,7 @@ function SignUp() {
           <div className="flex justify-center pt-[20px] pb-[5px]">
             <button className="transition-all duration-100 h-[50px] w-[225px] 
               bg-[#00FF8A] hover:bg-[#00ff88d6] text-[#252525] 
-              text-[20px] font-medium rounded-full"> Sign Up 
+              text-[20px] font-medium rounded-full" onClick={handleSubmit}> Sign Up 
             </button>
           </div>
 
