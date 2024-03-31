@@ -2,47 +2,41 @@ from datetime import date, datetime
 from typing import List
 from ninja import Router, Schema
 from django.shortcuts import get_object_or_404
-from schema.models import Users
+from schema.models import UserProfile
 
 
 router = Router(tags=['User Profiling'])
 
 
 class UserIn(Schema):
-    login_account_id: int
-    first_name: str
-    middle_name: str = None
-    last_name: str
+    auth_user_id: int
     birthdate: date
     contact_no: str
 
 class UserOut(Schema):
-    login_account_id: int
-    first_name: str
-    middle_name: str = None
-    last_name: str
+    auth_user_id: int
     birthdate: date
     contact_no: str
     created_at: datetime
 
 @router.post('/create-profile/')
 def create_user(request, payload: UserIn):
-    user = Users.objects.create(**payload.dict())
+    user = UserProfile.objects.create(**payload.dict())
     return {'user_id': user.user_id}
 
 @router.get('/profile/{user_id}', response=UserOut)
 def get_user(request, user_id: int):
-    user = get_object_or_404(Users, user_id=user_id)
+    user = get_object_or_404(UserProfile, user_id=user_id)
     return user
 
 @router.get('/user-list/', response=List[UserOut])
 def list_users(request):
-    users_list = Users.objects.all().order_by('user_id')
+    users_list = UserProfile.objects.all().order_by('user_id')
     return users_list
 
 @router.put('/edit-profile/{user_id}')
 def update_user(request, user_id: int, payload: UserIn):
-    user = get_object_or_404(Users, user_id=user_id)
+    user = get_object_or_404(UserProfile, user_id=user_id)
     for attr, value in payload.dict().items():
         setattr(user, attr, value)
         user.save()
@@ -50,6 +44,6 @@ def update_user(request, user_id: int, payload: UserIn):
     
 @router.delete('/delete-profile/{user_id}')
 def delete_user(request, user_id: int):
-    user = get_object_or_404(Users, user_id=user_id)
+    user = get_object_or_404(UserProfile, user_id=user_id)
     user.delete()
     return {'success': True}
