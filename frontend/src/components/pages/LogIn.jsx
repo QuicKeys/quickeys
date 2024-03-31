@@ -1,26 +1,27 @@
-import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function LogIn() {
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
   const navigate = useNavigate();
+  
   // BOX ANIMATIONS
-  // Password
-  const [passwordActive, setPasswordActive] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
   // Email
   const [emailActive, setEmailActive] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
+  // Password
+  const [passwordActive, setPasswordActive] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
 
   const handleLogIn = () => {
     // DUMMY
-    if (credentials.username === 'user' && credentials.password === '123') {
+    if (credentials.email === 'QuicKeys@gmail.com' && credentials.password === '123') {
       // JWT AUTHENTICATION
-      console.log('Username:', credentials.username);
+      console.log('Email:', credentials.email);
       console.log('Password:', credentials.password);
       navigate('/');
     }
@@ -32,10 +33,10 @@ function LogIn() {
   return (
     
     <>
-      <div className="flex justify-center items-center h-[100vh] w-[100vw]">
+      <div className="flex justify-center items-center h-[90vh] w-screen py-[250px]">
         <div>
-
-          <div className="flex justify-center text-[50px] font-bold py-[10px]">Log In</div>
+          
+          <div className="flex justify-center text-[50px] font-bold py-[10px]">LOG IN</div>
 
           {/* EMAIL */}
           <div className="flex justify-center py-[5px]">
@@ -43,8 +44,8 @@ function LogIn() {
               {/* Email Input Box */}
               <input
                 type="text"
-                value={credentials.username}
-                onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+                value={credentials.email}
+                onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
                 onFocus={() => {setEmailActive(true); setEmailFocused(true);}} onBlur={() => {setEmailActive(false); setEmailFocused(false);}}
                 className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-[400px] 
                   ${(emailFocused) && 'border-[#00FF8A]'}`}
@@ -52,7 +53,7 @@ function LogIn() {
               {/* Text Animation */}
               <label
                 className={`absolute transition-all duration-200 top-[12px] left-[12px] z-[-1]
-                  ${(emailActive || credentials.username) && 'text-xs transform translate-y-[-30%]'} 
+                  ${(emailActive || credentials.email) && 'text-xs transform translate-y-[-30%]'} 
                   ${(emailFocused) && 'text-[#00FF8A]'}`}
               >
                 Email
@@ -83,20 +84,20 @@ function LogIn() {
             </div>
           </div>
 
-          <div className="flex justify-end text-xs">
+          <div className="flex justify-end text-xs py-[2px]">
             <span className="text-[#00FF8A] hover:underline">Forgot password?</span>
           </div>
 
-          <div className="flex justify-center pt-[20px]">
+          <div className="flex justify-center pt-[20px] pb-[5px]">
             <button onClick={handleLogIn} className="transition-all duration-100 h-[50px] w-[225px] 
               bg-[#00FF8A] hover:bg-[#00ff88d6] text-[#252525] 
               text-[20px] font-medium rounded-full"> Sign In 
             </button>
           </div>
 
-          <div className="flex justify-center text-xs py-[5px]">
+          <div className="flex justify-center text-xs py-[2px]">
             Don't have an account?
-            <span className="pl-1"><Link to="/Sign-up" className="text-[#00FF8A] hover:underline">Sign Up </Link></span>
+            <span className="pl-1"><NavLink to="/Sign-Up" className="text-[#00FF8A] hover:underline">Sign Up</NavLink></span>
           </div>
 
         </div>

@@ -6,6 +6,10 @@ body {
     @apply bg-gradient-to-r from-[#252525] to-[#3F4E5A]
 }
 
+.Icon {
+    @apply h-[18px] opacity-50
+}
+
 .Navigation {
     @apply flex justify-between items-center p-[15px] font-medium
 } .Navigation-Text {
@@ -16,4 +20,10 @@ body {
 
 .Logomark {
     @apply w-[75px]
+}
+
+.Footer {
+    @apply bg-[#232323] text-[12px] px-[50px] py-[25px] font-normal
+} .Footer-Text {
+    @apply text-[14px] px-[30px] opacity-80
 }
