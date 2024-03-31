@@ -28,9 +28,20 @@ function SignUp() {
   const [confirmPasswordActive, setConfirmPasswordActive] = useState(false);
   const [confirmPasswordFocused, setConfirmPasswordFocused] = useState(false);
 
+  // Password Validation
+  const [passwordMatchError, setPasswordMatchError] = useState(false);
+
 const navigate = useNavigate()
 
 const handleSubmit = async () => {
+  if (password !== confirmPassword) {
+    setPasswordMatchError(true);
+    return;
+  }
+  else {
+    setPasswordMatchError(false);
+  }
+
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/authentication/signup/',
     {
@@ -134,7 +145,8 @@ const handleSubmit = async () => {
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => {setPasswordActive(true); setPasswordFocused(true);}} onBlur={() => {setPasswordActive(false); setPasswordFocused(false);}}
                 className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none font-extrabold w-[510px] 
-                  ${(passwordFocused) && 'border-[#00FF8A]'}`}
+                  ${(passwordFocused) && 'border-[#00FF8A]'}
+                  ${(passwordMatchError && !passwordFocused) && 'border-[#FF0000]'}`}
               />
               {/* Text Animation */}
               <label
@@ -157,7 +169,8 @@ const handleSubmit = async () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 onFocus={() => {setConfirmPasswordActive(true); setConfirmPasswordFocused(true);}} onBlur={() => {setConfirmPasswordActive(false); setConfirmPasswordFocused(false);}}
                 className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none font-extrabold w-[510px] 
-                  ${(confirmPasswordFocused) && 'border-[#00FF8A]'}`}
+                  ${(confirmPasswordFocused) && 'border-[#00FF8A]'}
+                  ${(passwordMatchError && !confirmPasswordFocused) && 'border-[#FF0000]'}`}
               />
               {/* Text Animation */}
               <label
@@ -170,10 +183,17 @@ const handleSubmit = async () => {
             </div>
           </div>
 
+          {/* Error message for password mismatch */}
+          {passwordMatchError && (
+            <div className="flex justify-center text-red-500 f">Passwords do not match</div>
+          )}
+
           <div className="flex justify-center pt-[20px] pb-[5px]">
-            <button className="transition-all duration-100 h-[50px] w-[225px] 
-              bg-[#00FF8A] hover:bg-[#00ff88d6] text-[#252525] 
-              text-[20px] font-medium rounded-full" onClick={handleSubmit}> Sign Up 
+            <button
+              className="transition-all duration-100 h-[50px] w-[225px] bg-[#00FF8A] hover:bg-[#00ff88d6] text-[#252525] text-[20px] font-medium rounded-full"
+              onClick={handleSubmit}
+            >
+              Sign Up
             </button>
           </div>
 
