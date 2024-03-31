@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'quickeys',
     'schema',
     'items',
-    'users',
+    'user_profiling',
+    'authentication',
 ]
 
 MIDDLEWARE = [
