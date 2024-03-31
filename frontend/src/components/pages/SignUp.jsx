@@ -22,6 +22,11 @@ function SignUp() {
   const [passwordActive, setPasswordActive] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
 
+  // Confirm Password
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPasswordActive, setConfirmPasswordActive] = useState(false);
+  const [confirmPasswordFocused, setConfirmPasswordFocused] = useState(false);
+
   return (
     <>
       <div className="flex justify-center items-center h-[90vh] w-screen py-[250px]">
@@ -119,6 +124,29 @@ function SignUp() {
                   ${(passwordFocused) && 'text-[#00FF8A]'}`}
               >
                 Password
+              </label>
+            </div>
+          </div>
+
+          {/* CONFIRM PASSWORD */}
+          <div className="flex justify-center py-[5px]">
+            <div className="relative">
+              {/* Confirm Password Input Box */}
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                onFocus={() => {setConfirmPasswordActive(true); setConfirmPasswordFocused(true);}} onBlur={() => {setConfirmPasswordActive(false); setConfirmPasswordFocused(false);}}
+                className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none font-extrabold w-[510px] 
+                  ${(confirmPasswordFocused) && 'border-[#00FF8A]'}`}
+              />
+              {/* Text Animation */}
+              <label
+                className={`absolute transition-all duration-200 top-[12px] left-[12px] z-[-1]
+                  ${(confirmPasswordActive || confirmPassword) && 'text-xs transform translate-y-[-30%]'} 
+                  ${(confirmPasswordFocused) && 'text-[#00FF8A]'}`}
+              >
+                Confirm Password
               </label>
             </div>
           </div>
