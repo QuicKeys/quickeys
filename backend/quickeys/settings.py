@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ninja',
     'quickeys',
-    'schema',
+    'db_models',
     'items',
     'user_profiling',
     'authentication',

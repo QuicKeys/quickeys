@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('schema', '0002_useraddress'),
+        ('db_models', '0002_useraddress'),
     ]
 
     operations = [

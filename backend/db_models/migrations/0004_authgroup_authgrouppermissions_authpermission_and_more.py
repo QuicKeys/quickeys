@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('schema', '0003_loginaccount_delete_authgroup_and_more'),
+        ('db_models', '0003_loginaccount_delete_authgroup_and_more'),
     ]
 
     operations = [
