@@ -1,27 +1,12 @@
-from ninja import Router, Schema
+from ninja import Router
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
+from ..schemas.authentication_schemas import UserSignUp, UserSignUpResponse, UserSignIn, UserSignInResponse
 
 
 router = Router(tags=['User Authentication'])
 
-
-class UserSignUp(Schema):
-    first_name: str
-    last_name: str
-    email: str
-    password: str
-
-class UserSignIn(Schema):
-    username: str
-    password: str
-
-class UserSignUpResponse(Schema):
-    message: str
-
-class UserSignInResponse(Schema):
-    token: str
 
 @router.post('/signup/', response=UserSignUpResponse)
 def sign_up(request, data: UserSignUp):
