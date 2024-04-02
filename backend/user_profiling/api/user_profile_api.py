@@ -28,8 +28,8 @@ def update_user(request, user_id: int, payload: UserIn):
     user = get_object_or_404(UserProfile, user_id=user_id)
     for attr, value in payload.dict().items():
         setattr(user, attr, value)
-        user.save()
-        return {'success': True}
+    user.save()
+    return {'success': True}
     
 @router.delete('/delete/{user_id}')
 def delete_user(request, user_id: int):
@@ -57,8 +57,8 @@ def update_user_address(request, user_id: int, user_address_id: int, payload: Us
     user_address = get_object_or_404(UserAddress, user_id=user_id, user_address_id=user_address_id)
     for attr, value in payload.dict().items():
         setattr(user_address, attr, value)
-        user_address.save()
-        return {'success': True}
+    user_address.save()
+    return {'success': True}
     
 @router.delete('/{user_id}/address/delete/{user_address_id}')
 def delete_user_address(request, user_id: int, user_address_id: int):
