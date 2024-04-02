@@ -28,8 +28,8 @@ def update_item_type(request, item_type_id: int, payload: ItemTypeIn):
     item_type = get_object_or_404(ItemType, item_type_id=item_type_id)
     for attr, value in payload.dict().items():
         setattr(item_type, attr, value)
-        item_type.save()
-        return {'success': True}
+    item_type.save()
+    return {'success': True}
     
 @router.delete('/delete/{item_type_id}')
 def delete_item_type(request, item_type_id: int):
