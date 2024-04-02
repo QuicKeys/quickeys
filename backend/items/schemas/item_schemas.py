@@ -24,3 +24,20 @@ class ItemOut(Schema):
     restock_point: int
     is_active: bool
     created_at: datetime
+
+class ItemPropertyIn(Schema):
+    item_property_name: str
+    item_property_datatype: str
+
+class ItemPropertyOut(Schema):
+    item_property_name: str
+    item_property_datatype: str
+    created_at: datetime
+
+class ItemPropertyValueIn(Schema):
+    item_property_value: str
+
+class ItemPropertyValueOut(Schema):
+    item: ItemOut
+    item_property: ItemPropertyOut
+    created_at: datetime
