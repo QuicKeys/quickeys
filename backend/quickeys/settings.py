@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'quickeys',
+    'db_models',
+    'inventory',
 ]
 
 MIDDLEWARE = [
