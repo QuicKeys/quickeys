@@ -38,13 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ninja',
-    'quickeys',
-    'db_models',
-    'items',
-    'user_profiling',
-    'authentication',
+    'rest_framework',
     'corsheaders',
+    'quickeys',
 ]
 
 MIDDLEWARE = [
