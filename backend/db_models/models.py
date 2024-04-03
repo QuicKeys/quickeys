@@ -8,6 +8,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
