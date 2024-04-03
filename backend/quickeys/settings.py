@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'quickeys',
     'db_models',
     'inventory',
+    'accounts',
 ]
 
 MIDDLEWARE = [

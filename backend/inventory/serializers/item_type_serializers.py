@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from db_models.models import ItemType
 
+
 class ItemTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemType

@@ -43,7 +43,7 @@ const handleSubmit = async () => {
   }
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/authentication/signup/',
+    const response = await axios.post('http://127.0.0.1:8000/accounts/signup/',
     {
       first_name: first,
       last_name: last,
