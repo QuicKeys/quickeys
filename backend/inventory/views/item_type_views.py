@@ -3,10 +3,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from ..serializers.item_type_serializers import ItemTypeSerializer
-from db_models.models import ItemType
+from core.models import ItemType
+from core.mixins import IsStaffUserMixin
 
 
-class ItemTypeCreateAPIView(APIView):
+class ItemTypeCreateAPIView(IsStaffUserMixin, APIView):
     def post(self, request):
         serializer = ItemTypeSerializer(data=request.data)
         if serializer.is_valid():

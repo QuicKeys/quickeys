@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from quickeys.settings import JWT_AUTH_COOKIE
 from ..serializers.accounts_serializers import (
     UserSignUpSerializer,
     UserLogInSerializer
@@ -34,14 +35,16 @@ class LogInView(APIView):
         if serializer.is_valid():
             account = authenticate(request, username=request.data['username'], password=request.data['password'])
             if account is not None:
-                login(request, account)
+                # login(request, account)
 
                 # Generate token
                 refresh = RefreshToken.for_user(account)
-                access_token = str(refresh.access_token)
-                refresh_token = str(refresh)
 
-                return Response({'access_token': access_token, 'refresh_token': refresh_token})
+                response = Response({'message': 'Login successful'})
+                response.set_cookie(JWT_AUTH_COOKIE, refresh.access_token, httponly=True)
+                response.set_cookie('refresh_token', str(refresh), httponly=True)
+
+                return response
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         else:
