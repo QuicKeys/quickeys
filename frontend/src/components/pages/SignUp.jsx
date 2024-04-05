@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import apiClient from '../../apiClient';
 
 function SignUp() {
   // First Name
@@ -43,7 +44,7 @@ const handleSubmit = async () => {
   }
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/accounts/signup/',
+    const response = await apiClient.post('accounts/signup/',
     {
       first_name: first,
       last_name: last,
