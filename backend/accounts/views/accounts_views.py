@@ -40,7 +40,7 @@ class LogInView(APIView):
                 # Generate token
                 refresh = RefreshToken.for_user(account)
 
-                response = Response({'message': 'Login successful'})
+                response = Response({'message': 'Login successful', 'jwt-token': str(refresh.access_token)})
                 response.set_cookie(JWT_AUTH_COOKIE, refresh.access_token, httponly=True)
                 response.set_cookie('refresh_token', str(refresh), httponly=True)
 

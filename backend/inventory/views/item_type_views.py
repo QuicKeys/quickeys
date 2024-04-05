@@ -1,13 +1,18 @@
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from ..serializers.item_type_serializers import ItemTypeSerializer
 from core.models import ItemType
-from core.mixins import IsStaffUserMixin
 
 
-class ItemTypeCreateAPIView(IsStaffUserMixin, APIView):
+class BaseAPIView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminUser]
+    authentication_classes = [JWTAuthentication]
+
+class ItemTypeCreateAPIView(BaseAPIView):
     def post(self, request):
         serializer = ItemTypeSerializer(data=request.data)
         if serializer.is_valid():
@@ -15,7 +20,7 @@ class ItemTypeCreateAPIView(IsStaffUserMixin, APIView):
             return Response({'item_type_id': serializer.instance.item_type_id}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ItemTypeDetailAPIView(APIView):
+class ItemTypeDetailAPIView(BaseAPIView):
     def get(self, request, item_type_id):
         item_type = get_object_or_404(ItemType, item_type_id=item_type_id)
         serializer = ItemTypeSerializer(item_type)
@@ -34,7 +39,7 @@ class ItemTypeDetailAPIView(APIView):
         item_type.delete()
         return Response({'success': True})
 
-class ItemTypeListAPIView(APIView):
+class ItemTypeListAPIView(BaseAPIView):
     def get(self, request):
         item_types = ItemType.objects.all().order_by('item_type_id')
         serializer = ItemTypeSerializer(item_types, many=True)
