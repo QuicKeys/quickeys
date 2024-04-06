@@ -4,25 +4,25 @@ from core.mixins import (
     ListMixin
 )
 from django.shortcuts import get_object_or_404
-from ..serializers.item_profile_serializers import ItemInputSerializer, ItemOutputSerializer
+from ..serializers.item_profile_serializers import ItemInSerializer, ItemOutSerializer
 from core.models import Item
 from core.views import BaseAPIView
 
 
 class ItemCreateAPIView(CreateMixin, BaseAPIView):
     def post(self, request):
-        serializer = ItemInputSerializer(data=request.data)
+        serializer = ItemInSerializer(data=request.data)
         return super().post(serializer)
 
 class ItemDetailAPIView(GetPutDeleteMixin, BaseAPIView):
     def get(self, request, item_id):
         instance = get_object_or_404(Item, item_id=item_id)
-        serializer = ItemOutputSerializer(instance)
+        serializer = ItemOutSerializer(instance)
         return super().get(serializer)
     
     def patch(self, request, item_id):
         instance = get_object_or_404(Item, item_id=item_id)
-        serializer = ItemInputSerializer(instance, data=request.data, partial=True)
+        serializer = ItemInSerializer(instance, data=request.data, partial=True)
         return super().patch(serializer)
     
     def delete(self, request, item_id):
@@ -32,5 +32,5 @@ class ItemDetailAPIView(GetPutDeleteMixin, BaseAPIView):
 class ItemListAPIView(ListMixin, BaseAPIView):
     def get(self, request):
         queryset = Item.objects.all().order_by('item_id')
-        serializer = ItemOutputSerializer(queryset, many=True)
+        serializer = ItemOutSerializer(queryset, many=True)
         return super().list(serializer)
