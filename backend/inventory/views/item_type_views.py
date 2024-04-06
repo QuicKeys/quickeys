@@ -16,7 +16,7 @@ class BaseAPIView(IsAdminMixin, APIView):
 class ItemTypeCreateAPIView(CreateMixin, BaseAPIView):
     def post(self, request):
         serializer = ItemTypeSerializer(data=request.data)
-        return super().create(serializer)
+        return super().post(serializer)
 
 class ItemTypeDetailAPIView(GetPutDeleteMixin, BaseAPIView):
     def get(self, request, item_type_id):
@@ -24,10 +24,10 @@ class ItemTypeDetailAPIView(GetPutDeleteMixin, BaseAPIView):
         serializer = ItemTypeSerializer(instance)
         return super().get(serializer)
     
-    def put(self, request, item_type_id):
+    def patch(self, request, item_type_id):
         instance = get_object_or_404(ItemType, item_type_id=item_type_id)
         serializer = ItemTypeSerializer(instance, data=request.data)
-        return super().put(serializer)
+        return super().patch(serializer)
     
     def delete(self, request, item_type_id):
         instance = get_object_or_404(ItemType, item_type_id=item_type_id)
