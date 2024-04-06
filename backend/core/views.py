@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from .mixins import IsAdminMixin
+from rest_framework.views import APIView
 
-# Create your views here.
+
+class BaseAPIView(IsAdminMixin, APIView):
+    pass

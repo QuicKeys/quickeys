@@ -1,28 +1,14 @@
 from core.mixins import (
-    IsAdminMixin,
     CreateMixin,
     GetPutDeleteMixin,
     ListMixin
 )
-from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
-from ..serializers.item_profile_serializers import (
-    ItemInputSerializer,
-    ItemOutputSerializer,
-    ItemPropertySerializer,
-    ItemPropertyValueSerializer
-)
-from core.models import (
-    Item,
-    ItemProperty,
-    ItemPropertyValue
-)
+from ..serializers.item_profile_serializers import ItemInputSerializer, ItemOutputSerializer
+from core.models import Item
+from core.views import BaseAPIView
 
 
-class BaseAPIView(IsAdminMixin, APIView):
-    pass
-
-# Item Profiling
 class ItemCreateAPIView(CreateMixin, BaseAPIView):
     def post(self, request):
         serializer = ItemInputSerializer(data=request.data)
