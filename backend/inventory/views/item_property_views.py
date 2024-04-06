@@ -3,13 +3,13 @@ from core.mixins import (
     GetPutDeleteMixin,
     ListMixin
 )
-from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from ..serializers.item_property_serializers import (
     ItemPropertyInputSerializer,
     ItemPropertyOutputSerializer,
     ItemPropertyValueInputSerializer,
-    ItemPropertyValueOutputSerializer
+    ItemPropertyValueOutputSerializer,
+    ItemPropertyValueListOutputSerializer
 )
 from core.models import ItemProperty, ItemPropertyValue
 from core.views import BaseAPIView
@@ -66,5 +66,5 @@ class ItemPropertyValueDetailAPIView(GetPutDeleteMixin, BaseAPIView):
 class ItemPropertyValueListAPIView(ListMixin, BaseAPIView):
     def get(self, request, item_id):
         queryset = ItemPropertyValue.objects.filter(item_id=item_id).order_by('item_property_value_id')
-        serializer = ItemPropertyValueOutputSerializer(queryset, many=True)
+        serializer = ItemPropertyValueListOutputSerializer(queryset, many=True)
         return super().list(serializer)

@@ -25,3 +25,10 @@ class ItemPropertyValueOutputSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemPropertyValue
         fields = ['item_property_value_id', 'item', 'item_property', 'item_property_value', 'created_at']
+
+class ItemPropertyValueListOutputSerializer(serializers.ModelSerializer):
+    item_property = ItemPropertyOutputSerializer(read_only=True)
+
+    class Meta:
+        model = ItemPropertyValue
+        fields = ['item_property_value_id', 'item_property', 'item_property_value', 'created_at']

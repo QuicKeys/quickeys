@@ -3,7 +3,6 @@ from core.mixins import (
     GetPutDeleteMixin,
     ListMixin
     )
-from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from ..serializers.item_type_serializers import ItemTypeInputSerializer, ItemTypeOutputSerializer
 from core.models import ItemType
