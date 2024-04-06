@@ -20,10 +20,10 @@ function Footer() {
             <div className="flex h-full justify-between">
                 <div className="flex items-center opacity-50">© 2024 QuicKeys. All rights reserved.</div>
                 <div className="flex gap-[12px]">
-                    <a href="https://github.com/QuicKeys"><img className="Icon" src="./src/assets/icons/ICON - Github.png"></img></a>
-                    <a href="https://discord.gg/TW2QBe3pWR"><img className="Icon" src="./src/assets/icons/ICON - Discord.png"></img></a>
-                    <a><img className="Icon" src="./src/assets/icons/ICON - Facebook.png"></img></a>
-                    <a><img className="Icon" src="./src/assets/icons/ICON - X.png"></img></a>
+                    <a href="https://github.com/QuicKeys"><img className="Icon" src="./src/assets/icons/ICON - Github.png" alt="Github"></img></a>
+                    <a href="https://discord.gg/TW2QBe3pWR"><img className="Icon" src="./src/assets/icons/ICON - Discord.png" alt="Discord"></img></a>
+                    <a href="https://www.facebook.com/PeysBuk.qwe"><img className="Icon" src="./src/assets/icons/ICON - Facebook.png" alt="Facebook"></img></a>
+                    <a href="https://twitter.com/elonmusk"><img className="Icon" src="./src/assets/icons/ICON - X.png" alt="X"></img></a>
                 </div>
             </div>
         </div>
