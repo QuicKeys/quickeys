@@ -1,27 +1,34 @@
 from rest_framework import serializers
 from core.models import ItemProperty, ItemPropertyValue
-from ..serializers.item_profile_serializers import ItemOutputSerializer
+from ..serializers.item_profile_serializers import ItemOutSerializer
 
 
-class ItemPropertyInputSerializer(serializers.ModelSerializer):
+class ItemPropertyInSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemProperty
         fields = ['item_property_name', 'item_property_datatype']
 
-class ItemPropertyOutputSerializer(serializers.ModelSerializer):
+class ItemPropertyOutSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemProperty
         fields = ['item_property_id', 'item_property_name', 'item_property_datatype', 'created_at']
 
-class ItemPropertyValueInputSerializer(serializers.ModelSerializer):
+class ItemPropertyValueInSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemPropertyValue
         fields = ['item', 'item_property', 'item_property_value']
 
-class ItemPropertyValueOutputSerializer(serializers.ModelSerializer):
-    item = ItemOutputSerializer(read_only=True)
-    item_property = ItemPropertyOutputSerializer(read_only=True)
+class ItemPropertyValueOutSerializer(serializers.ModelSerializer):
+    item = ItemOutSerializer(read_only=True)
+    item_property = ItemPropertyOutSerializer(read_only=True)
 
     class Meta:
         model = ItemPropertyValue
         fields = ['item_property_value_id', 'item', 'item_property', 'item_property_value', 'created_at']
+
+class ItemPropertyValueListOutSerializer(serializers.ModelSerializer):
+    item_property = ItemPropertyOutSerializer(read_only=True)
+
+    class Meta:
+        model = ItemPropertyValue
+        fields = ['item_property_value_id', 'item_property', 'item_property_value', 'created_at']
