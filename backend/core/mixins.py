@@ -9,7 +9,7 @@ class IsAdminMixin:
     authentication_classes = [JWTAuthentication]
 
 class CreateMixin:
-    def create(self, serializer):
+    def post(self, serializer):
         if serializer.is_valid():
             serializer.save()
             return Response({'id': serializer.instance.pk}, status=status.HTTP_201_CREATED)
@@ -19,7 +19,7 @@ class GetPutDeleteMixin:
     def get(self, serializer):
         return Response(serializer.data)
     
-    def put(self, serializer):
+    def patch(self, serializer):
         if  serializer.is_valid():
             serializer.save()
             return Response({'success': True})
