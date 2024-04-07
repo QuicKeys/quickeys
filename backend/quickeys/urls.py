@@ -29,4 +29,5 @@ urlpatterns = [
     path('inventory/', include('inventory.urls')),
     path('accounts/', include('accounts.urls')),
     path('users/', include('user_profiling.urls')),
+    path('keyboard-builder/', include('keyboard_builder.urls')),
 ]
