@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'inventory',
     'accounts',
     'user_profiling',
+    'keyboard_builder',
+    'orders',
 ]
 
 MIDDLEWARE = [
