@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'user_profiling',
     'keyboard_builder',
+    'orders',
 ]
 
 MIDDLEWARE = [
