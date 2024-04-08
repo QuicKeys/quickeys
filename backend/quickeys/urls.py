@@ -29,6 +29,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('inventory/', include('inventory.urls')),
     path('users/', include('user_profiling.urls')),
-    # path('keyboard-builder/', include('keyboard_builder.urls')),
+    path('keyboard-builder/', include('keyboard_builder.urls')),
     # path('orders/', include('orders.urls')),
 ]

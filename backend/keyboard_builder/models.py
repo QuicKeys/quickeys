@@ -11,6 +11,8 @@ class KeyboardBuilder(models.Model):
         managed = False
         db_table = 'keyboard_builder'
 
+    def __str__(self):
+        return str(self.user) + ' Build ' + str(self.keyboard_builder_id)
 
 class KeyboardBuilderItem(models.Model):
     keyboard_builder_item_id = models.AutoField(primary_key=True)

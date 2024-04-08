@@ -1,28 +1,29 @@
-# from django.urls import path
-# from .views.keyboard_builder_views import (
-#     KeyboardBuilderCreateAPIView,
-#     KeyboardBuilderDetailAPIView,
-#     KeyboardBuilderListAPIView,
-#     UserKeyboardBuilderListAPIView,
-#     KeyboardBuilderItemCreateAPIView,
-#     KeyboardBuilderItemDetailAPIView,
-#     KeyboardBuilderItemListAPIView
-# )
+from django.urls import path
+from .views.keyboard_builder_views import (
+    KeyboardBuilderCreate,
+    KeyboardBuilderListCreate,
+    KeyboardBuilderRetrieveUpdateDestroy,
+    KeyboardBuilderRetrieve,
+    KeyboardBuilderList,
+
+    KeyboardBuilderItemCreate,
+    KeyboardBuilderItemListCreate,
+    KeyboardBuilderItemRetrieveUpdateDestroy,
+    KeyboardBuilderItemRetrieve,
+    KeyboardBuilderItemList
+)
 
 
-# urlpatterns = [
-#     # Keyboard Builder API Endpoint URLs
-#     path('create/', KeyboardBuilderCreateAPIView.as_view(), name='keyboard-builder-create'),
-#     path('view/<int:keyboard_builder_id>/', KeyboardBuilderDetailAPIView.as_view(), name='keyboard-builder-detail'),
-#     path('edit/<int:keyboard_builder_id>/', KeyboardBuilderDetailAPIView.as_view(), name='keyboard-builder-edit'),
-#     path('delete/<int:keyboard_builder_id>/', KeyboardBuilderDetailAPIView.as_view(), name='keyboard-builder-delete'),
-#     path('list/', KeyboardBuilderListAPIView.as_view(), name='keyboard-builder-list'),
-#     path('user/<int:user_id>/list/', UserKeyboardBuilderListAPIView.as_view(), name='user-keyboard-builder-list'),
+urlpatterns = [
+    path('create/', KeyboardBuilderCreate.as_view(), name='keyboard-builder-create'),
+    path('list/create/', KeyboardBuilderListCreate.as_view(), name='keyboard-builder-list-create'),
+    path('edit/<int:keyboard_builder_id>/', KeyboardBuilderRetrieveUpdateDestroy.as_view(), name='keyboard-builder-edit'),
+    path('view/<int:keyboard_builder_id>/', KeyboardBuilderRetrieve.as_view(), name='keyboard-builder-view'),
+    path('list/', KeyboardBuilderList.as_view(), name='keyboard-builder-list'),
 
-#     # Keyboard Builder Item API Endpoint URLs
-#     path('item/create/', KeyboardBuilderItemCreateAPIView.as_view(), name='keyboard-builder-item-create'),
-#     path('item/view/<int:keyboard_builder_item_id>/', KeyboardBuilderItemDetailAPIView.as_view(), name='keyboard-builder-item-detail'),
-#     path('item/edit/<int:keyboard_builder_item_id>/', KeyboardBuilderItemDetailAPIView.as_view(), name='keyboard-builder-item-edit'),
-#     path('item/delete/<int:keyboard_builder_item_id>/', KeyboardBuilderItemDetailAPIView.as_view(), name='keyboard-builder-item-delete'),
-#     path('item/list/<int:keyboard_builder_id>/', KeyboardBuilderItemListAPIView.as_view(), name='keyboard-builder-item-list'),
-# ]
+    path('item/create/', KeyboardBuilderItemCreate.as_view(), name='keyboard-builder-item-create'),
+    path('item/list/create/', KeyboardBuilderItemListCreate.as_view(), name='keyboard-builder-item-list-create'),
+    path('item/edit/<int:keyboard_builder_item_id>/', KeyboardBuilderItemRetrieveUpdateDestroy.as_view(), name='keyboard-builder-item-edit'),
+    path('item/view/<int:keyboard_builder_item_id>/', KeyboardBuilderItemRetrieve.as_view(), name='keyboard-builder-item-view'),
+    path('item/list/', KeyboardBuilderItemList.as_view(), name='keyboard-builder-item-list'),
+]

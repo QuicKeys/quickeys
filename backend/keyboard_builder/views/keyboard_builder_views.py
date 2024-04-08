@@ -1,78 +1,83 @@
-# from core.mixins import (
-#     CreateMixin,
-#     GetPutDeleteMixin,
-#     ListMixin
-# )
-# from django.shortcuts import get_object_or_404
-# from ..serializers.keyboard_builder_serializers import (
-#     KeyboardBuilderInSerializer,
-#     KeyboardBuilderOutSerializer,
-#     KeyboardBuilderListOutSerializer,
-#     KeyboardBuilderItemInSerializer,
-#     KeyboardBuilderItemOutSerializer,
-#     KeyboardBuilderItemListOutSerializer
-
-# )
-# from core.models import KeyboardBuilder, KeyboardBuilderItem
-# from core.views import BaseAPIView
+from ..models import KeyboardBuilder, KeyboardBuilderItem
+from rest_framework import generics
+from ..serializers.keyboard_builder_serializers import KeyboardBuilderSerializer, KeyboardBuilderItemSerializer
+from core.views import BaseAPIView
 
 
-# # Keyboard Builder
-# class KeyboardBuilderCreateAPIView(CreateMixin, BaseAPIView):
-#     def post(self, request):
-#         serializer = KeyboardBuilderInSerializer(data=request.data)
-#         return super().post(serializer)
+# Keyboard Builder
+class KeyboardBuilderCreate(BaseAPIView, generics.CreateAPIView):
+    queryset = KeyboardBuilder.objects.all()
+    serializer_class = KeyboardBuilderSerializer
 
-# class KeyboardBuilderDetailAPIView(GetPutDeleteMixin, BaseAPIView):
-#     def get(self, request, keyboard_builder_id):
-#         instance = get_object_or_404(KeyboardBuilder, keyboard_builder_id=keyboard_builder_id)
-#         serializer = KeyboardBuilderOutSerializer(instance)
-#         return super().get(serializer)
+class KeyboardBuilderListCreate(BaseAPIView, generics.ListCreateAPIView):
+    queryset = KeyboardBuilder.objects.all()
+    serializer_class = KeyboardBuilderSerializer
+
+class KeyboardBuilderRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+    queryset = KeyboardBuilder.objects.all()
+    serializer_class = KeyboardBuilderSerializer
+    lookup_field = 'keyboard_builder_id'
+
+class KeyboardBuilderRetrieve(BaseAPIView, generics.RetrieveAPIView):
+    queryset = KeyboardBuilder.objects.all()
+    serializer_class = KeyboardBuilderSerializer
+    lookup_field = 'keyboard_builder_id'
+
+class KeyboardBuilderList(BaseAPIView, generics.ListAPIView):
+    serializer_class = KeyboardBuilderSerializer
     
-#     def patch(self, request, keyboard_builder_id):
-#         instance = get_object_or_404(KeyboardBuilder, keyboard_builder_id=keyboard_builder_id)
-#         serializer = KeyboardBuilderInSerializer(instance, data=request.data, partial=True)
-#         return super().patch(serializer)
+    def get_queryset(self):
+        queryset = KeyboardBuilder.objects.all()
+
+        # Filter by user
+        user = self.request.query_params.get('user', None)
+        if user is not None:
+            queryset = queryset.filter(user=user)
+
+        # Sort by keyboard builder attribute
+        sort_by = self.request.query_params.get('sort_by', None)
+        if sort_by is not None:
+            descending = sort_by.startswith('-')
+            field = sort_by.lstrip('-')
+            queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
+
+        return queryset
+
+# Keyboard Builder Item
+class KeyboardBuilderItemCreate(generics.CreateAPIView):
+    queryset = KeyboardBuilderItem.objects.all()
+    serializer_class = KeyboardBuilderItemSerializer
     
-#     def delete(self, request, keyboard_builder_id):
-#         instance = get_object_or_404(KeyboardBuilder, keyboard_builder_id=keyboard_builder_id)
-#         return super().delete(instance)
+class KeyboardBuilderItemListCreate(generics.ListCreateAPIView):
+    queryset = KeyboardBuilderItem.objects.all()
+    serializer_class = KeyboardBuilderItemSerializer
 
-# class KeyboardBuilderListAPIView(ListMixin, BaseAPIView):
-#     def get(self, request):
-#         queryset = KeyboardBuilder.objects.all().order_by('keyboard_builder_id')
-#         serializer = KeyboardBuilderListOutSerializer(queryset, many=True)
-#         return super().list(serializer)    
+class KeyboardBuilderItemRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = KeyboardBuilderItem.objects.all()
+    serializer_class = KeyboardBuilderItemSerializer
+    lookup_field = 'keyboard_builder_item_id'
 
-# class UserKeyboardBuilderListAPIView(ListMixin, BaseAPIView):
-#     def get(self, request, user_id):
-#         queryset = KeyboardBuilder.objects.filter(user_id=user_id).order_by('keyboard_builder_id')
-#         serializer = KeyboardBuilderListOutSerializer(queryset, many=True)
-#         return super().list(serializer)
+class KeyboardBuilderItemRetrieve(generics.RetrieveAPIView):
+    queryset = KeyboardBuilderItem.objects.all()
+    serializer_class = KeyboardBuilderItemSerializer
+    lookup_field = 'keyboard_builder_item_id'
 
-# # Keyboard Builder Item
-# class KeyboardBuilderItemCreateAPIView(CreateMixin, BaseAPIView):
-#     def post(self, request):
-#         serializer = KeyboardBuilderItemInSerializer(data=request.data)
-#         return super().post(serializer)
+class KeyboardBuilderItemList(generics.ListAPIView):
+    serializer_class = KeyboardBuilderItemSerializer
 
-# class KeyboardBuilderItemDetailAPIView(GetPutDeleteMixin, BaseAPIView):
-#     def get(self, request, keyboard_builder_item_id):
-#         instance = get_object_or_404(KeyboardBuilderItem, keyboard_builder_item_id=keyboard_builder_item_id)
-#         serializer = KeyboardBuilderItemOutSerializer(instance)
-#         return super().get(serializer)
-    
-#     def patch(self, request, keyboard_builder_item_id):
-#         instance = get_object_or_404(KeyboardBuilderItem, keyboard_builder_item_id=keyboard_builder_item_id)
-#         serializer = KeyboardBuilderItemInSerializer(instance, data=request.data, partial=True)
-#         return super().patch(serializer)
-    
-#     def delete(self, request, keyboard_builder_item_id):
-#         instance = get_object_or_404(KeyboardBuilderItem, keyboard_builder_item_id=keyboard_builder_item_id)
-#         return super().delete(instance)
+    def get_queryset(self):
+        queryset = KeyboardBuilderItem.objects.all()
 
-# class KeyboardBuilderItemListAPIView(ListMixin, BaseAPIView):
-#     def get(self, request, keyboard_builder_id):
-#         queryset = KeyboardBuilderItem.objects.filter(keyboard_builder_id=keyboard_builder_id).order_by('keyboard_builder_item_id')
-#         serializer = KeyboardBuilderItemListOutSerializer(queryset, many=True)
-#         return super().list(serializer)
+        # Filter by keyboard builder
+        keyboard_builder = self.request.query_params.get('keyboard_builder', None)
+        if keyboard_builder is not None:
+            queryset = queryset.filter(keyboard_builder=keyboard_builder)
+
+        # Sort by keyboard builder item attribute
+        sort_by = self.request.query_params.get('sort_by', None)
+        if sort_by is not None:
+            descending = sort_by.startswith('-')
+            field = sort_by.lstrip('-')
+            queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
+
+        return queryset
