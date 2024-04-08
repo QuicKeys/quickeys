@@ -35,21 +35,21 @@ function LogIn() {
   return (
     
     <>
-      <div className="flex justify-center items-center h-[90vh] w-screen py-[250px]">
-        <div>
+      <div className="flex justify-center items-center h-full w-full py-[10%]">
+        <div className="flex flex-col items-center w-full p-[30px]">
           
-          <div className="flex justify-center text-[50px] font-bold py-[10px]">LOG IN</div>
+          <div className="flex justify-center text-[50px] font-bold py-[10px] text-center">LOG IN</div>
 
           {/* EMAIL */}
-          <div className="flex justify-center py-[5px]">
-            <div className="relative">
+          <div className="flex justify-center py-[5px] w-full">
+            <div className="relative flex justify-center w-full max-w-[400px]">
               {/* Email Input Box */}
               <input
                 type="text"
                 value={credentials.email}
                 onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
                 onFocus={() => {setEmailActive(true); setEmailFocused(true);}} onBlur={() => {setEmailActive(false); setEmailFocused(false);}}
-                className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-[400px] 
+                className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-full
                   ${(emailFocused) && 'border-[#00FF8A]'}`}
               />
               {/* Text Animation */}
@@ -64,15 +64,15 @@ function LogIn() {
           </div>
 
           {/* PASSWORD */}
-          <div className="flex justify-center py-[5px]">
-            <div className="relative">
+          <div className="flex justify-center py-[5px] w-full">
+            <div className="relative flex justify-center w-full max-w-[400px]">
               {/* Password Input Box */}
               <input
                 type="password"
                 value={credentials.password}
                 onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
                 onFocus={() => {setPasswordActive(true); setPasswordFocused(true);}} onBlur={() => {setPasswordActive(false); setPasswordFocused(false);}}
-                className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-[400px] font-extrabold
+                className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-full font-extrabold
                   ${(passwordFocused) && 'border-[#00FF8A]'}`}
               />
               {/* Text Animation */}
@@ -86,8 +86,8 @@ function LogIn() {
             </div>
           </div>
 
-          <div className="flex justify-end text-xs py-[2px]">
-            <span className="text-[#00FF8A] hover:underline">Forgot password?</span>
+          <div className="flex justify-center text-sm py-[2px] w-full">
+            <span className="text-[#00FF8A] flex justify-end w-full max-w-[400px] hover:underline">Forgot password?</span>
           </div>
 
           <div className="flex justify-center pt-[20px] pb-[5px]">
@@ -97,7 +97,7 @@ function LogIn() {
             </button>
           </div>
 
-          <div className="flex justify-center text-xs py-[2px]">
+          <div className="flex justify-center text-sm py-[2px]">
             Don't have an account?
             <span className="pl-1"><NavLink to="/Sign-Up" className="text-[#00FF8A] hover:underline">Sign Up</NavLink></span>
           </div>

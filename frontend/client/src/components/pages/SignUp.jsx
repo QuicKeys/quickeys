@@ -31,51 +31,61 @@ function SignUp() {
   // Password Validation
   const [passwordMatchError, setPasswordMatchError] = useState(false);
 
-const navigate = useNavigate()
+  // Submit Error Animation
+  const [clicked, setClicked] = useState(false);
 
-const handleSubmit = async () => {
-  if (password !== confirmPassword) {
-    setPasswordMatchError(true);
-    return;
-  }
-  else {
-    setPasswordMatchError(false);
-  }
+  const navigate = useNavigate()
 
-  try {
-    const response = await axios.post('http://127.0.0.1:8000/api/authentication/signup/',
-    {
-      first_name: first,
-      last_name: last,
-      email: email,
-      password: password,
-    })
-    navigate('/Log-In')
-    console.log(response.data)
-  } catch (error) {
-    console.error(error)
+  const handleSubmit = async () => {
+    if (password !== confirmPassword) {
+      setPasswordMatchError(true);
+
+      setClicked(true);
+
+      setTimeout(() => {
+        setClicked(false);
+      }, 500);
+
+      return;
+    }
+    else {
+      setPasswordMatchError(false);
+    }
+
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/authentication/signup/',
+      {
+        first_name: first,
+        last_name: last,
+        email: email,
+        password: password,
+      })
+      navigate('/Log-In')
+      console.log(response.data)
+    } catch (error) {
+      console.error(error)
+    }
   }
-}
 
   return (
     <>
-      <div className="flex justify-center items-center h-[90vh] w-screen py-[250px]">
-        <div>
+      <div className="flex justify-center items-center h-full w-full py-[10%]">
+        <div className="flex flex-col items-center w-full p-[30px]">
 
-          <div className="flex justify-center text-[50px] font-bold py-[10px]">CREATE ACCOUNT</div>
+          <div className="flex justify-center text-[50px] font-bold py-[10px] text-center">CREATE ACCOUNT</div>
 
           {/* FIRST & LAST NAMEs */}
-          <div className="flex justify-center gap-[10px]">
+          <div className="flex flex-col justify-center items-center py-[5px] w-full gap-[10px] sm:flex-row">
             {/* FIRST NAME */}
-            <div className="flex py-[5px]">
-              <div className="relative">
+            <div className="flex w-full max-w-[510px] sm:flex-row sm:max-w-[250px]">
+              <div className="relative flex w-full">
                 {/* First Name Input Box */}
                 <input
                   type="text"
                   value={first}
                   onChange={(e) => setFirst(e.target.value)}
                   onFocus={() => {setFirstActive(true); setFirstFocused(true);}} onBlur={() => {setFirstActive(false); setFirstFocused(false);}}
-                  className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-[250px] 
+                  className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-full 
                     ${(firstFocused) && 'border-[#00FF8A]'}`}
                 />
                 {/* Text Animation */}
@@ -89,15 +99,15 @@ const handleSubmit = async () => {
               </div>
             </div>
             {/* LAST NAME */}
-            <div className="flex py-[5px]">
-              <div className="relative">
+            <div className="flex w-full max-w-[510px] sm:flex-row sm:max-w-[250px]">
+              <div className="relative flex w-full">
                 {/* Last Name Input Box */}
                 <input
                   type="text"
                   value={last}
                   onChange={(e) => setLast(e.target.value)}
                   onFocus={() => {setLastActive(true); setLastFocused(true);}} onBlur={() => {setLastActive(false); setLastFocused(false);}}
-                  className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-[250px] 
+                  className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-full
                     ${(lastFocused) && 'border-[#00FF8A]'}`}
                 />
                 {/* Text Animation */}
@@ -113,15 +123,15 @@ const handleSubmit = async () => {
           </div>
 
           {/* EMAIL */}
-          <div className="flex justify-center py-[5px]">
-            <div className="relative">
+          <div className="flex justify-center py-[5px] w-full">
+            <div className="relative flex justify-center w-full max-w-[510px]">
               {/* Email Input Box */}
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => {setEmailActive(true); setEmailFocused(true);}} onBlur={() => {setEmailActive(false); setEmailFocused(false);}}
-                className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-[510px] 
+                className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-full 
                   ${(emailFocused) && 'border-[#00FF8A]'}`}
               />
               {/* Text Animation */}
@@ -136,23 +146,24 @@ const handleSubmit = async () => {
           </div>
 
           {/* PASSWORD */}
-          <div className="flex justify-center py-[5px]">
-            <div className="relative">
+          <div className="flex justify-center py-[5px] w-full">
+            <div className="relative flex justify-center w-full max-w-[510px]">
               {/* Password Input Box */}
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => {setPasswordActive(true); setPasswordFocused(true);}} onBlur={() => {setPasswordActive(false); setPasswordFocused(false);}}
-                className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none font-extrabold w-[510px] 
+                className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none font-extrabold w-full 
                   ${(passwordFocused) && 'border-[#00FF8A]'}
-                  ${(passwordMatchError && !passwordFocused) && 'border-[#FF0000]'}`}
+                  ${(passwordMatchError && !passwordFocused) && 'border-[#FF005E]'}`}
               />
               {/* Text Animation */}
               <label
                 className={`absolute transition-all duration-200 top-[12px] left-[12px] z-[-1]
                   ${(passwordActive || password) && 'text-xs transform translate-y-[-30%]'} 
-                  ${(passwordFocused) && 'text-[#00FF8A]'}`}
+                  ${(passwordFocused) && 'text-[#00FF8A]'}
+                  ${(passwordMatchError) && 'text-[#FF005E]'}`}
               >
                 Password
               </label>
@@ -160,23 +171,24 @@ const handleSubmit = async () => {
           </div>
 
           {/* CONFIRM PASSWORD */}
-          <div className="flex justify-center py-[5px]">
-            <div className="relative">
+          <div className="flex justify-center py-[5px] w-full">
+            <div className="relative flex justify-center w-full max-w-[510px]">
               {/* Confirm Password Input Box */}
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 onFocus={() => {setConfirmPasswordActive(true); setConfirmPasswordFocused(true);}} onBlur={() => {setConfirmPasswordActive(false); setConfirmPasswordFocused(false);}}
-                className={`transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none font-extrabold w-[510px] 
+                className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none font-extrabold w-full
                   ${(confirmPasswordFocused) && 'border-[#00FF8A]'}
-                  ${(passwordMatchError && !confirmPasswordFocused) && 'border-[#FF0000]'}`}
+                  ${(passwordMatchError && !confirmPasswordFocused) && 'border-[#FF005E]'}`}
               />
               {/* Text Animation */}
               <label
                 className={`absolute transition-all duration-200 top-[12px] left-[12px] z-[-1]
                   ${(confirmPasswordActive || confirmPassword) && 'text-xs transform translate-y-[-30%]'} 
-                  ${(confirmPasswordFocused) && 'text-[#00FF8A]'}`}
+                  ${(confirmPasswordFocused) && 'text-[#00FF8A]'}
+                  ${(passwordMatchError) && 'text-[#FF005E]'}`}
               >
                 Confirm Password
               </label>
@@ -185,7 +197,9 @@ const handleSubmit = async () => {
 
           {/* Error message for password mismatch */}
           {passwordMatchError && (
-            <div className="flex justify-center text-red-500 f">Passwords do not match</div>
+            <div className="flex justify-center py-[2px] text-[#FF005E] text-sm" style={clicked ? { animation: 'shake 0.3s ease-in-out' } : {}}>
+              Passwords do not match!
+            </div>
           )}
 
           <div className="flex justify-center pt-[20px] pb-[5px]">
@@ -197,7 +211,7 @@ const handleSubmit = async () => {
             </button>
           </div>
 
-          <div className="flex justify-center text-xs py-[2px]">
+          <div className="flex justify-center text-sm py-[2px]">
             Already have an account?
             <span className="pl-1"><NavLink to="/Log-In" className="text-[#00FF8A] hover:underline">Log In</NavLink></span>
           </div>
