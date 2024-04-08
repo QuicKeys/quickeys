@@ -26,9 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('inventory/', include('inventory.urls')),
     path('accounts/', include('accounts.urls')),
-    path('users/', include('user_profiling.urls')),
-    path('keyboard-builder/', include('keyboard_builder.urls')),
-    path('orders/', include('orders.urls')),
+    path('inventory/', include('inventory.urls')),
+    # path('users/', include('user_profiling.urls')),
+    # path('keyboard-builder/', include('keyboard_builder.urls')),
+    # path('orders/', include('orders.urls')),
 ]
