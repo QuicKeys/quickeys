@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import apiClient from '../../apiClient';
 
 function LogIn() {
   const [credentials, setCredentials] = useState({
@@ -20,15 +21,15 @@ function LogIn() {
 
   const handleLogIn = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/authentication/login/',
+      const response = await apiClient.post('accounts/login/',
       {
         username: credentials.email,
         password: credentials.password
       })
       navigate('/')
-      console.log(response.data)
+      console.log('Login successful')
     } catch (error) {
-      console.error(error)
+      console.error('Login failed', error)
     }
   }
 
