@@ -54,6 +54,9 @@ class AuthUser(models.Model):
         managed = False
         db_table = 'auth_user'
 
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
 
 class AuthUserGroups(models.Model):
     id = models.BigAutoField(primary_key=True)
