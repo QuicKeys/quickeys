@@ -1,28 +1,30 @@
 from django.urls import path
 from .views.user_profile_views import (
-    UserProfileCreateAPIView,
-    UserProfileDetailAPIView,
-    UserProfileListAPIView
+    UserProfileCreate,
+    UserProfileListCreate,
+    UserProfileRetrieveUpdateDestroy,
+    UserProfileRetrieve,
+    UserProfileList,
 )
 from .views.user_address_views import (
-    UserAddressCreateAPIView,
-    UserAddressDetailAPIView,
-    UserAddressListAPIView
+    UserAddressCreate,
+    UserAddressListCreate,
+    UserAddressRetrieveUpdateDestroy,
+    UserAddressRetrieve,
+    UserAddressList
 )
 
 
 urlpatterns = [
-    # User Profile API Endpoint URLs
-    path('profile/create/', UserProfileCreateAPIView.as_view(), name='user-profile-create'),
-    path('profile/view/<int:user_id>/', UserProfileDetailAPIView.as_view(), name='user-profile-detail'),
-    path('profile/edit/<int:user_id>/', UserProfileDetailAPIView.as_view(), name='user-profile-edit'),
-    path('profile/delete/<int:user_id>/', UserProfileDetailAPIView.as_view(), name='user-profile-delete'),
-    path('profile/list/', UserProfileListAPIView.as_view(), name='user-profile-list'),
+    path('create/', UserProfileCreate.as_view(), name='user-profile-create'),
+    path('list/create/', UserProfileListCreate.as_view(), name='user-profile-list-create'),
+    path('edit/<int:user_id>/', UserProfileRetrieveUpdateDestroy.as_view(), name='user-profile-edit'),
+    path('view/<int:user_id>/', UserProfileRetrieve.as_view(), name='user-profile-view'),
+    path('list/', UserProfileList.as_view(), name='user-profile-list'),
 
-    #User Address API Endpoint URLs
-    path('profile/address/create/', UserAddressCreateAPIView.as_view(), name='user-address-create'),
-    path('profile/<int:user_id>/address/view/<int:user_address_id>/', UserAddressDetailAPIView.as_view(), name='user-address-detail'),
-    path('profile/<int:user_id>/address/edit/<int:user_address_id>/', UserAddressDetailAPIView.as_view(), name='user-address-edit'),
-    path('profile/<int:user_id>/address/delete/<int:user_address_id>/', UserAddressDetailAPIView.as_view(), name='user-address-delete'),
-    path('profile/<int:user_id>/address/list/', UserAddressListAPIView.as_view(), name='user-address-list'),
+    path('address/create/', UserAddressCreate.as_view(), name='user-address-create'),
+    path('address/list/create/', UserAddressListCreate.as_view(), name='user-address-list-create'),
+    path('address/edit/<int:user_address_id>/', UserAddressRetrieveUpdateDestroy.as_view(), name='user-address-edit'),
+    path('address/view/<int:user_address_id>/', UserAddressRetrieve.as_view(), name='user-address-view'),
+    path('address/list/', UserAddressList.as_view(), name='user-address-list'),
 ]

@@ -1,83 +1,83 @@
-from core.mixins import (
-    CreateMixin,
-    GetPutDeleteMixin,
-    ListMixin
-)
-from django.shortcuts import get_object_or_404
-from ..serializers.order_serializers import (
-    OrderInSerializer,
-    OrderOutSerializer,
-    OrderListOutSerializer,
-    OrderLineInSerializer,
-    OrderLineOutSerializer,
-    OrderLineListOutSerializer
-)
-from core.models import Orders, OrderLine
+from ..models import Orders, OrderLine
+from rest_framework import generics
+from ..serializers.order_serializers import OrderSerializer, OrderLineSerializer
 from core.views import BaseAPIView
 
 
 # Orders
-class OrderCreateAPIView(CreateMixin, BaseAPIView):
-    def post(self, request):
-        serializer = OrderInSerializer(data=request.data)
-        return super().post(serializer)
+class OrderCreate(generics.CreateAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
 
-class OrderDetailAPIView(GetPutDeleteMixin, BaseAPIView):
-    def get(self, request, order_id):
-        instance = get_object_or_404(Orders, order_id=order_id)
-        serializer = OrderOutSerializer(instance)
-        return super().get(serializer)
+class OrderListCreate(generics.ListCreateAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
+
+class OrderRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
+    lookup_field = 'order_id'
+
+class OrderRetrieve(generics.RetrieveAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
+    lookup_field = 'order_id'
+
+class OrderList(generics.ListAPIView):
+    serializer_class = OrderSerializer
     
-    def patch(self, request, order_id):
-        instance = get_object_or_404(Orders, order_id=order_id)
-        serializer = OrderInSerializer(instance, data=request.data, partial=True)
-        return super().patch(serializer)
-    
-    def delete(self, request, order_id):
-        instance = get_object_or_404(Orders, order_id=order_id)
-        return super().delete(instance)
+    def get_queryset(self):
+        queryset = Orders.objects.all()
 
-class OrderListAPIView(ListMixin, BaseAPIView):
-    def get(self, request):
-        queryset = Orders.objects.all().order_by('order_id')
-        serializer = OrderOutSerializer(queryset, many=True)
-        return super().list(serializer)
+        # Filter by user
+        user = self.request.query_params.get('user', None)
+        if user is not None:
+            queryset = queryset.filter(user=user)
 
-class UserOrderListAPIView(ListMixin, BaseAPIView):
-    def get(self, request, user_id):
-        queryset = Orders.objects.filter(user_id=user_id).order_by('order_id')
-        serializer = OrderListOutSerializer(queryset, many=True)
-        return super().list(serializer)
+        # Sort by order attribute
+        sort_by = self.request.query_params.get('sort_by', None)
+        if sort_by is not None:
+            descending = sort_by.startswith('-')
+            field = sort_by.lstrip('-')
+            queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
+
+        return queryset
 
 # Order Line
-class OrderLineCreateAPIView(CreateMixin, BaseAPIView):
-    def post(self, request):
-        serializer = OrderLineInSerializer(data=request.data)
-        return super().post(serializer)
-
-class OrderLineDetailAPIView(GetPutDeleteMixin, BaseAPIView):
-    def get(self, request, order_line_id):
-        instance = get_object_or_404(OrderLine, order_line_id=order_line_id)
-        serializer = OrderLineOutSerializer(instance)
-        return super().get(serializer)
+class OrderLineCreate(generics.CreateAPIView):
+    queryset = OrderLine.objects.all()
+    serializer_class = OrderLineSerializer
     
-    def patch(self, request, order_line_id):
-        instance = get_object_or_404(OrderLine, order_line_id=order_line_id)
-        serializer = OrderLineInSerializer(instance, data=request.data, partial=True)
-        return super().patch(serializer)
-    
-    def delete(self, request, order_line_id):
-        instance = get_object_or_404(OrderLine, order_line_id=order_line_id)
-        return super().delete(instance)
+class OrderLineListCreate(generics.ListCreateAPIView):
+    queryset = OrderLine.objects.all()
+    serializer_class = OrderLineSerializer
 
-class OrderLineListAPIView(ListMixin, BaseAPIView):
-    def get(self, request):
-        queryset = OrderLine.objects.all().order_by('order_line_id')
-        serializer = OrderLineOutSerializer(queryset, many=True)
-        return super().list(serializer)
+class OrderLineRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = OrderLine.objects.all()
+    serializer_class = OrderLineSerializer
+    lookup_field = 'order_line_id'
 
-class OrderItemListAPIView(ListMixin, BaseAPIView):
-    def get(self, request, order_id):
-        queryset = OrderLine.objects.filter(order_id=order_id).order_by('order_line_id')
-        serializer = OrderLineListOutSerializer(queryset, many=True)
-        return super().list(serializer)
+class OrderLineRetrieve(generics.RetrieveAPIView):
+    queryset = OrderLine.objects.all()
+    serializer_class = OrderLineSerializer
+    lookup_field = 'order_line_id'
+
+class OrderLineList(generics.ListAPIView):
+    serializer_class = OrderLineSerializer
+
+    def get_queryset(self):
+        queryset = OrderLine.objects.all()
+
+        # Filter by order
+        order = self.request.query_params.get('order', None)
+        if order is not None:
+            queryset = queryset.filter(order=order)
+
+        # Sort by order line attribute
+        sort_by = self.request.query_params.get('sort_by', None)
+        if sort_by is not None:
+            descending = sort_by.startswith('-')
+            field = sort_by.lstrip('-')
+            queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
+
+        return queryset

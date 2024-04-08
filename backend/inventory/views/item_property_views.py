@@ -1,70 +1,78 @@
-from core.mixins import (
-    CreateMixin,
-    GetPutDeleteMixin,
-    ListMixin
-)
-from django.shortcuts import get_object_or_404
-from ..serializers.item_property_serializers import (
-    ItemPropertyInSerializer,
-    ItemPropertyOutSerializer,
-    ItemPropertyValueInSerializer,
-    ItemPropertyValueOutSerializer,
-    ItemPropertyValueListOutSerializer
-)
-from core.models import ItemProperty, ItemPropertyValue
+from ..models import ItemProperty, ItemPropertyValue
+from rest_framework import generics
+from ..serializers.item_property_serializers import ItemPropertySerializer, ItemPropertyValueSerializer
 from core.views import BaseAPIView
 
 
 # Item Property
-class ItemPropertyCreateAPIView(CreateMixin, BaseAPIView):
-    def post(self, request):
-        serializer = ItemPropertyInSerializer(data=request.data)
-        return super().post(serializer)
+class ItemPropertyCreate(BaseAPIView, generics.CreateAPIView):
+    queryset = ItemProperty.objects.all()
+    serializer_class = ItemPropertySerializer
 
-class ItemPropertyDetailAPIView(GetPutDeleteMixin, BaseAPIView):
-    def get(self, request, item_property_id):
-        instance = get_object_or_404(ItemProperty, item_property_id=item_property_id)
-        serializer = ItemPropertyOutSerializer(instance)
-        return super().get(serializer)
-    
-    def patch(self, request, item_property_id):
-        instance = get_object_or_404(ItemProperty, item_property_id=item_property_id)
-        serializer = ItemPropertyInSerializer(instance, data=request.data, partial=True)
-        return super().patch(serializer)
-    
-    def delete(self, request, item_property_id):
-        instance = get_object_or_404(ItemProperty, item_property_id=item_property_id)
-        return super().delete(instance)
+class ItemPropertyListCreate(BaseAPIView, generics.ListCreateAPIView):
+    queryset = ItemProperty.objects.all()
+    serializer_class = ItemPropertySerializer
 
-class ItemPropertyListAPIView(ListMixin, BaseAPIView):
-    def get(self, request):
-        queryset = ItemProperty.objects.all().order_by('item_property_id')
-        serializer = ItemPropertyOutSerializer(queryset, many=True)
-        return super().list(serializer)
+class ItemPropertyRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+    queryset = ItemProperty.objects.all()
+    serializer_class = ItemPropertySerializer
+    lookup_field = 'item_property_id'
+
+class ItemPropertyRetrieve(BaseAPIView, generics.RetrieveAPIView):
+    queryset = ItemProperty.objects.all()
+    serializer_class = ItemPropertySerializer
+    lookup_field = 'item_property_id'
+
+class ItemPropertyList(BaseAPIView, generics.ListAPIView):
+    serializer_class = ItemPropertySerializer
+
+    # Sort by item property attribute
+    def get_queryset(self):
+        queryset = ItemProperty.objects.all()
+        sort_by = self.request.query_params.get('sort_by', None)
+        if sort_by is not None:
+            descending = sort_by.startswith('-')
+            field = sort_by.lstrip('-')
+            queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
+
+        return queryset
+
 
 # Item Property Value
-class ItemPropertyValueCreateAPIView(CreateMixin, BaseAPIView):
-    def post(self, request):
-        serializer = ItemPropertyValueInSerializer(data=request.data)
-        return super().post(serializer)
-
-class ItemPropertyValueDetailAPIView(GetPutDeleteMixin, BaseAPIView):
-    def get(self, request, item_id, item_property_id):
-        instance = get_object_or_404(ItemPropertyValue, item_id=item_id, item_property_id=item_property_id)
-        serializer = ItemPropertyValueOutSerializer(instance)
-        return super().get(serializer)
+class ItemPropertyValueCreate(BaseAPIView, generics.CreateAPIView):
+    queryset = ItemPropertyValue.objects.all()
+    serializer_class = ItemPropertyValueSerializer
     
-    def patch(self, request, item_id, item_property_id):
-        instance = get_object_or_404(ItemPropertyValue, item_id=item_id, item_property_id=item_property_id)
-        serializer = ItemPropertyValueInSerializer(instance, data=request.data, partial=True)
-        return super().patch(serializer)
-    
-    def delete(self, request, item_id, item_property_id):
-        instance = get_object_or_404(ItemPropertyValue, item_id=item_id, item_property_id=item_property_id)
-        return super().delete(instance)
+class ItemPropertyValueListCreate(BaseAPIView, generics.ListCreateAPIView):
+    queryset = ItemPropertyValue.objects.all()
+    serializer_class = ItemPropertyValueSerializer
 
-class ItemPropertyValueListAPIView(ListMixin, BaseAPIView):
-    def get(self, request, item_id):
-        queryset = ItemPropertyValue.objects.filter(item_id=item_id).order_by('item_property_value_id')
-        serializer = ItemPropertyValueListOutSerializer(queryset, many=True)
-        return super().list(serializer)
+class ItemPropertyValueRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+    queryset = ItemPropertyValue.objects.all()
+    serializer_class = ItemPropertyValueSerializer
+    lookup_field = 'item_property_value_id'
+
+class ItemPropertyValueRetrieve(BaseAPIView, generics.RetrieveAPIView):
+    queryset = ItemPropertyValue.objects.all()
+    serializer_class = ItemPropertyValueSerializer
+    lookup_field = 'item_property_value_id'
+
+class ItemPropertyValueList(BaseAPIView, generics.ListAPIView):
+    serializer_class = ItemPropertyValueSerializer
+
+    def get_queryset(self):
+        queryset = ItemPropertyValue.objects.all()
+
+        # Filter by item
+        item = self.request.query_params.get('item', None)
+        if item is not None:
+            queryset = queryset.filter(item=item)
+
+        # Sort by item property value attribute
+        sort_by = self.request.query_params.get('sort_by', None)
+        if sort_by is not None:
+            descending = sort_by.startswith('-')
+            field = sort_by.lstrip('-')
+            queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
+
+        return queryset
