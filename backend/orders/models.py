@@ -23,3 +23,6 @@ class Orders(models.Model):
     class Meta:
         managed = False
         db_table = 'orders'
+
+    def __str__(self):
+        return str(self.user) + ' Order ' + str(self.order_id)

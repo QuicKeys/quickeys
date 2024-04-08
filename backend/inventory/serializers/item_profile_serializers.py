@@ -4,8 +4,6 @@ from .item_type_serializers import ItemTypeSerializer
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    item_type = ItemTypeSerializer
-
     class Meta:
         model = Item
         fields = ['item_id', 'item_type', 'item_name', 'item_description', 'item_price', 'serial_number',

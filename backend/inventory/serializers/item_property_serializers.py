@@ -9,9 +9,6 @@ class ItemPropertySerializer(serializers.ModelSerializer):
         fields = ['item_property_id', 'item_property_name', 'item_property_datatype']
 
 class ItemPropertyValueSerializer(serializers.ModelSerializer):
-    item = ItemSerializer
-    item_property = ItemPropertySerializer
-
     class Meta:
         model = ItemPropertyValue
         fields = ['item_property_value_id', 'item', 'item_property', 'item_property_value']
