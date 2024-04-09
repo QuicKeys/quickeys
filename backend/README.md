@@ -177,7 +177,7 @@ Ensure that your PostgreSQL configuration matches the settings specified in the 
 createdb -U postgres quickeys-db
 ``` 
 Should you run into issues in creating the database, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/tutorial-createdb.html).
-### Development Server Setup
+### Development Environment/Server Setup
 1. **Clone the repository**
 ```bash
 git clone https://github.com/QuicKeys/quickeys.git
