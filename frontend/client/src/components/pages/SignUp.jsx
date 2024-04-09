@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import apiClient from '../../../../src/apiClient';
+import apiClient from '../../../src/apiClient';
 
 function SignUp() {
   // First Name

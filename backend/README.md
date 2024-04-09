@@ -158,6 +158,7 @@
 ### Requirements
 1. **Python**: The project uses Django, a Python-based web framework for its backend. Python will also be required to create a virtual environment using its `venv` module. Download Python [here](https://www.python.org/downloads/).
 2. **PostgreSQL**: The project uses PostgreSQL as its relational database management system. Download PostgreSQL [here](https://www.postgresql.org/download/). 
+
     > **_NOTE:_** Only `PostgreSQL Server` and `Command Line Tools` are required to run the backend. You can exclude `pgAdmin 4` and `Stack Builder` from the components in the installation wizard. See [Database Setup](#database-setup) for further instructions.
 ### Database Setup
 1. **PostgreSQL Installation**
@@ -173,9 +174,16 @@ Ensure that your PostgreSQL configuration matches the settings specified in the 
 **Port**: `5432` 
 
 2. **Create the database**
+
+On Windows:
 ```bash
 createdb -U postgres quickeys-db
 ``` 
+On Unix:
+```bash
+sudo -u postgres createdb quickeys-db
+``` 
+
 Should you run into issues in creating the database, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/tutorial-createdb.html).
 ### Development Environment/Server Setup
 1. **Clone the repository**
@@ -208,7 +216,11 @@ source env/bin/activate
 ```bash
 python -m pip install -r requirements.txt
 ```
-5. **Run the backend development server**
+5. **Apply migrations**
+```bash
+python manage.py migrate
+```
+6. **Run the backend development server**
 ```bash
 python manage.py runserver
 ```
