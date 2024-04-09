@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import apiClient from '../../apiClient';
+import apiClient from '../../../../src/apiClient';
 
 function SignUp() {
   // First Name
