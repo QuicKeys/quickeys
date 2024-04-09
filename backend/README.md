@@ -5,6 +5,12 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 ## Table of Contents
 - [Tech Stack](#tech-stack)
+    - [Core Framework and Languages](#core-framework-and-languages)
+    - [API Framework](#api-framework)
+    - [Middleware](#middleware)
+    - [Authentication and Authorization](#authentication-and-authorization)
+    - [Database](#database)
+    - [Database Connector](#database-connector)
 - [Tools Used](#tools-used)
 - [Database Design](#database-design)
 - [Setup Guide](#setup-guide)
@@ -13,10 +19,27 @@
     - [Development Server Setup](#development-server-setup)
 
 ## Tech Stack
+### Core Framework and Languages:
+
 - [**Python**](https://www.python.org/): High-level, general-purpose programming language
-    - [**Django**](https://www.djangoproject.com/): Free and open-source Python-based backend web framework
-    - [**Django REST Framework**](https://www.django-rest-framework.org/): Python library built on top of Django used for creating REST APIs
+- [**Django**](https://www.djangoproject.com/): Free and open-source Python-based backend web framework
+
+### API Framework:
+- [**Django REST Framework**](https://www.django-rest-framework.org/): Python library built on top of Django used for creating REST APIs
+
+### Middleware:
+- [**Django CORS Headers**](https://pypi.org/project/django-cors-headers/): Django app that adds Cross-Origin Resource Sharing (CORS) headers to responses
+
+### Authentication and Authorization:
+- [**PyJWT**](https://pyjwt.readthedocs.io/en/stable/): Python library which allows you to encode and decode JSON Web Tokens (JWT)
+
+### Database:
 - [**PostgreSQL**](https://www.postgresql.org/): Free and open-source relational database management system
+
+### Database Connector:
+- [**Psycopg 3**](https://www.psycopg.org/psycopg3/): PostgreSQL adapter for Python
+
+
 ## Tools Used
 - [**DBeaver**](https://dbeaver.io): SQL client software application and database administration tool
 - [**Bruno**](https://www.usebruno.com/): Free and open-source API client
@@ -135,7 +158,7 @@
 ### Requirements
 1. **Python**: The project uses Django, a Python-based web framework for its backend. Python will also be required to create a virtual environment using its `venv` module. Download Python [here](https://www.python.org/downloads/).
 2. **PostgreSQL**: The project uses PostgreSQL as its relational database management system. Download PostgreSQL [here](https://www.postgresql.org/download/). 
-> **_NOTE:_** Only `PostgreSQL Server` and `Command Line Tools` are required to run the backend. You can exclude `pgAdmin 4` and `Stack Builder` from the components in the installation wizard. See [Database Setup](#database-setup) for further instructions.
+    > **_NOTE:_** Only `PostgreSQL Server` and `Command Line Tools` are required to run the backend. You can exclude `pgAdmin 4` and `Stack Builder` from the components in the installation wizard. See [Database Setup](#database-setup) for further instructions.
 ### Database Setup
 1. **PostgreSQL Installation**
 
@@ -154,7 +177,7 @@ Ensure that your PostgreSQL configuration matches the settings specified in the 
 createdb -U postgres quickeys-db
 ``` 
 Should you run into issues in creating the database, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/tutorial-createdb.html).
-### Development Server Setup
+### Development Environment/Server Setup
 1. **Clone the repository**
 ```bash
 git clone https://github.com/QuicKeys/quickeys.git
