@@ -96,7 +96,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'quickeys-db',
         'USER': 'postgres',
-        'PASSWORD': os.environ.get('QUICKEYS_DB_PASSWORD'),
+        # 'PASSWORD': os.environ.get('QUICKEYS_DB_PASSWORD'),
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '5432',
     }
