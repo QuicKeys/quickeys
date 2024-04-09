@@ -63,6 +63,9 @@ git clone https://github.com/QuicKeys/quickeys.git
 
 2. **Install dependencies for admin and client interfaces**
 ```bash
+cd quickeys
+```
+```bash
 cd frontend
 ```
 ```bash
