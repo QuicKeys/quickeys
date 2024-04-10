@@ -4,5 +4,11 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: ['**/*.gltf']
-})
+  assetsInclude: ['**/*.gltf'],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/tests/setup.js'],
+    testMatch: ['./src/tests/components/*.test.jsx'],
+  }
+});
