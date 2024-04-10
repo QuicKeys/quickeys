@@ -9,6 +9,6 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/tests/setup.js'],
-    testMatch: ['./src/tests/components/*.vitest.jsx'],
+    testMatch: ['./src/tests/components/*.test.jsx'],
   }
 });
