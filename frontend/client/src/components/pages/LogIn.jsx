@@ -20,13 +20,18 @@ function LogIn() {
 
   const handleLogIn = async () => {
     try {
-      const response = await apiClient.post('accounts/login/',
+      // const response = await apiClient.post('accounts/login/',
+      const response = await apiClient.post('api/token/',
       {
         username: credentials.email,
         password: credentials.password
       })
+      const accessToken = response.data.access
+      const refreshToken = response.data.refresh
+      document.cookie = `access_token=${accessToken}; path=/; Secure; HttpOnly; SameSite=Lax`
+      document.cookie = `refresh_token=${refreshToken}; path=/; Secure; HttpOnly; SameSite=Lax`
       navigate('/')
-      console.log('Login successful')
+      console.log('Login successful', response.data)
     } catch (error) {
       console.error('Login failed', error)
     }
