@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'quickeys',
     'core',
@@ -155,7 +156,6 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
 }
-
-JWT_AUTH_COOKIE = 'quickeys_jwt_token'

@@ -1,4 +1,4 @@
-import apiClient from './apiClient'
+import apiClient from './ApiClient'
 
 export async function fetchProtectedResource() {
     try {

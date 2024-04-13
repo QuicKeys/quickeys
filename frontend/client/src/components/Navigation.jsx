@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
+import LogoutButton from './LogOutButton';
+
 
 function Navigation() {
     return (
@@ -15,6 +17,7 @@ function Navigation() {
               <NavLink className="Navigation-Text opacity-50 hover:opacity-100" to="/Contact-Us"> Contact Us </NavLink>
             </div>
             <div className="flex gap-[20px]">
+              <LogoutButton></LogoutButton>
               <NavLink to="/Log-In"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="./src/assets/icons/NAV - User.png" alt="Login"/> </NavLink>
               <NavLink to="/Cart" className="relative group">
                 <div className="absolute top-[7.5px] text-[15px] w-full opacity-50 group-hover:opacity-100"><span className="flex justify-center items-center">0</span></div>
