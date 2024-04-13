@@ -11,6 +11,9 @@ class UserAddress(models.Model):
         managed = False
         db_table = 'user_address'
 
+    def __str__(self):
+        return str(self.user.auth_user.first_name) + ' ' + str(self.user.auth_user.last_name) + ' Address ' + str(self.user_address_id)
+
 
 class UserProfile(models.Model):
     user_id = models.AutoField(primary_key=True)
