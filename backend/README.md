@@ -31,7 +31,7 @@
 - [**Django CORS Headers**](https://pypi.org/project/django-cors-headers/): Django app that adds Cross-Origin Resource Sharing (CORS) headers to responses
 
 ### Authentication and Authorization:
-- [**PyJWT**](https://pyjwt.readthedocs.io/en/stable/): Python library which allows you to encode and decode JSON Web Tokens (JWT)
+- [**Simple JWT**](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/index.html): JSON Web Token (JWT) authentication plugin for Django REST Framework
 
 ### Database:
 - [**PostgreSQL**](https://www.postgresql.org/): Free and open-source relational database management system

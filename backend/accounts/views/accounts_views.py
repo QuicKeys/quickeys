@@ -1,14 +1,10 @@
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from quickeys.settings import JWT_AUTH_COOKIE
-from ..serializers.accounts_serializers import (
-    UserSignUpSerializer,
-    UserLogInSerializer
-)
 from rest_framework_simplejwt.tokens import RefreshToken
+from ..serializers.accounts_serializers import UserSignUpSerializer, UserLogInSerializer
 
 
 class SignUpView(APIView):
@@ -40,12 +36,31 @@ class LogInView(APIView):
                 # Generate token
                 refresh = RefreshToken.for_user(account)
 
-                response = Response({'message': 'Login successful', 'jwt-token': str(refresh.access_token)})
-                response.set_cookie(JWT_AUTH_COOKIE, refresh.access_token, httponly=True)
-                response.set_cookie('refresh_token', str(refresh), httponly=True)
-
+                response = Response({'message': 'Login successful'})
+                response.set_cookie('access', refresh.access_token, httponly=True, samesite='None', secure=True)
+                response.set_cookie('refresh', str(refresh), httponly=True, samesite='None', secure=True)
+                
                 return response
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class LogOutView(APIView):
+    def post(self, request):
+        refresh_token = request.COOKIES.get('refresh')
+
+        if refresh_token is None:
+            return Response({'error': 'No refresh token found',}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            token = RefreshToken(refresh_token)        
+            token.blacklist()
+        except Exception as e:
+            return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        response = Response({'message': 'Logout successful'})
+        response.delete_cookie('access')
+        response.delete_cookie('refresh')
+
+        return response

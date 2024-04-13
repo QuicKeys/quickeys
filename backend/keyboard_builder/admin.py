@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import KeyboardBuilder, KeyboardBuilderItem
 
-# Register your models here.
+admin.site.register(KeyboardBuilder)
+admin.site.register(KeyboardBuilderItem)

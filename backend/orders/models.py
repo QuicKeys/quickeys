@@ -11,6 +11,9 @@ class OrderLine(models.Model):
     class Meta:
         managed = False
         db_table = 'order_line'
+    
+    def __str__(self):
+        return str(self.order) + ' Item ' + str(self.order_line_id)
 
 
 class Orders(models.Model):

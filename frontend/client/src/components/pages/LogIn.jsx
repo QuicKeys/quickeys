@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import apiClient from '../../../src/apiClient';
+import apiClient from '../../utils/ApiClient';
 
 function LogIn() {
   const [credentials, setCredentials] = useState({
@@ -18,17 +18,20 @@ function LogIn() {
 
   const navigate = useNavigate();
 
-  const handleLogIn = async () => {
+  const handleLogIn = async (e) => {
+    e.preventDefault()
+
     try {
       const response = await apiClient.post('accounts/login/',
       {
         username: credentials.email,
         password: credentials.password
-      })
+      },)
+      
       navigate('/')
-      console.log('Login successful')
+      console.log(response.data.message)
     } catch (error) {
-      console.error('Login failed', error)
+      console.error("Login failed", error)
     }
   }
 

@@ -22,3 +22,6 @@ class KeyboardBuilderItem(models.Model):
     class Meta:
         managed = False
         db_table = 'keyboard_builder_item'
+
+    def __str__(self):
+        return str(self.keyboard_builder) + ' Item ' + str(self.keyboard_builder_item_id)

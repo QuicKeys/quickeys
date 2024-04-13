@@ -43,6 +43,9 @@ class ItemPropertyValue(models.Model):
         managed = False
         db_table = 'item_property_value'
 
+    def __str__(self):
+        return str(self.item) + ' ' + str(self.item_property)
+
 
 class ItemType(models.Model):
     item_type_id = models.AutoField(primary_key=True)
