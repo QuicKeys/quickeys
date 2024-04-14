@@ -26,6 +26,19 @@ body {
     @apply text-[14px] px-[30px] opacity-80
 }
 
+.ItemCard-Image {
+    @apply flex justify-center items-center bg-[#202020] h-[300px] w-[300px] mb-[5px]
+}
+.ItemCard-Name {
+    @apply text-[18px] font-medium py-[2px]
+}
+.ItemCard-Brand {
+    @apply text-sm text-[#00FF8A] py-[2px]
+}
+.ItemCard-Price {
+    @apply text-[20px] font-bold
+}
+
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-2.5px); }

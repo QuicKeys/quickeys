@@ -3,7 +3,6 @@ import './App.css';
 
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { motion } from "framer-motion";
 
 import { Route, Routes } from "react-router-dom";
 import Navigation from './components/Navigation';
