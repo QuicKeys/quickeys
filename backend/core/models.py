@@ -1,125 +1,141 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class AuthGroup(models.Model):
-    name = models.CharField(unique=True, max_length=150)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group'
-
-
-class AuthGroupPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group_permissions'
-        unique_together = (('group', 'permission'),)
-
-
-class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
-    codename = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_permission'
-        unique_together = (('content_type', 'codename'),)
-
-
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    email = models.CharField(max_length=254)
-    is_staff = models.BooleanField()
+class Item(models.Model):
+    item_id = models.AutoField(primary_key=True)
+    item_type = models.ForeignKey('ItemType', models.DO_NOTHING)
+    item_name = models.CharField(unique=True, max_length=255)
+    item_description = models.CharField(max_length=255, blank=True, null=True)
+    item_price = models.DecimalField(max_digits=15, decimal_places=2)
+    serial_number = models.CharField(unique=True, max_length=255)
+    item_quantity = models.IntegerField()
+    restock_point = models.IntegerField()
     is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
 
     class Meta:
-        managed = False
-        db_table = 'auth_user'
+        managed = True
+        db_table = 'item'
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.item_name
 
 
-class AuthUserGroups(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_groups'
-        unique_together = (('user', 'group'),)
-
-
-class AuthUserUserPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+class ItemProperty(models.Model):
+    item_property_id = models.AutoField(primary_key=True)
+    item_property_name = models.CharField(unique=True, max_length=255)
+    item_property_datatype = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
-        db_table = 'auth_user_user_permissions'
-        unique_together = (('user', 'permission'),)
+        managed = True
+        db_table = 'item_property'
+
+    def __str__(self):
+        return self.item_property_name
 
 
-class DjangoAdminLog(models.Model):
-    action_time = models.DateTimeField()
-    object_id = models.TextField(blank=True, null=True)
-    object_repr = models.CharField(max_length=200)
-    action_flag = models.SmallIntegerField()
-    change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'django_admin_log'
-
-
-class DjangoContentType(models.Model):
-    app_label = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
+class ItemPropertyValue(models.Model):
+    item_property_value_id = models.AutoField(primary_key=True)
+    item = models.ForeignKey(Item, models.DO_NOTHING)
+    item_property = models.ForeignKey(ItemProperty, models.DO_NOTHING)
+    item_property_value = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
-        db_table = 'django_content_type'
-        unique_together = (('app_label', 'model'),)
+        managed = True
+        db_table = 'item_property_value'
+
+    def __str__(self):
+        return str(self.item) + ' ' + str(self.item_property)
 
 
-class DjangoMigrations(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_migrations'
-
-
-class DjangoSession(models.Model):
-    session_key = models.CharField(primary_key=True, max_length=40)
-    session_data = models.TextField()
-    expire_date = models.DateTimeField()
+class ItemType(models.Model):
+    item_type_id = models.AutoField(primary_key=True)
+    item_type_name = models.CharField(unique=True, max_length=255)
 
     class Meta:
-        managed = False
-        db_table = 'django_session'
+        managed = True
+        db_table = 'item_type'
+
+    def __str__(self):
+        return self.item_type_name
+
+
+class KeyboardBuilder(models.Model):
+    keyboard_builder_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('UserProfile', models.DO_NOTHING)
+    keyboard_assembly = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'keyboard_builder'
+
+    def __str__(self):
+        return str(self.user) + ' Build ' + str(self.keyboard_builder_id)
+
+class KeyboardBuilderItem(models.Model):
+    keyboard_builder_item_id = models.AutoField(primary_key=True)
+    keyboard_builder = models.ForeignKey(KeyboardBuilder, models.DO_NOTHING)
+    item = models.ForeignKey(Item, models.DO_NOTHING)
+
+    class Meta:
+        managed = True
+        db_table = 'keyboard_builder_item'
+
+    def __str__(self):
+        return str(self.keyboard_builder) + ' Item ' + str(self.keyboard_builder_item_id)
+
+
+class OrderLine(models.Model):
+    order_line_id = models.AutoField(primary_key=True)
+    order = models.ForeignKey('Orders', models.DO_NOTHING)
+    item = models.ForeignKey(Item, models.DO_NOTHING)
+    order_quantity = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'order_line'
+    
+    def __str__(self):
+        return str(self.order) + ' Item ' + str(self.order_line_id)
+
+
+class Orders(models.Model):
+    order_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('UserProfile', models.DO_NOTHING)
+    order_status = models.IntegerField()
+    payment_status = models.IntegerField()
+    order_date = models.DateTimeField()
+
+    class Meta:
+        managed = True
+        db_table = 'orders'
+
+    def __str__(self):
+        return str(self.user) + ' Order ' + str(self.order_id)
+
+
+class UserAddress(models.Model):
+    user_address_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('UserProfile', models.DO_NOTHING)
+    user_address = models.CharField(max_length=255)
+
+    class Meta:
+        managed = True
+        db_table = 'user_address'
+
+    def __str__(self):
+        return str(self.user.auth_user.first_name) + ' ' + str(self.user.auth_user.last_name) + ' Address ' + str(self.user_address_id)
+
+
+class UserProfile(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    auth_user = models.ForeignKey(User, models.DO_NOTHING)
+    birthdate = models.DateField(blank=True, null=True)
+    contact_no = models.CharField(max_length=11, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'user_profile'
+
+    def __str__(self):
+        return self.auth_user.first_name + ' ' + self.auth_user.last_name

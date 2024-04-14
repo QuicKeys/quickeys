@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from inventory.models import ItemProperty, ItemPropertyValue
+from core.models import ItemProperty, ItemPropertyValue
 from .item_profile_serializers import ItemSerializer
 
 

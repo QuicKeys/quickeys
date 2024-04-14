@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from inventory.models import ItemType
+from core.models import ItemType
 
 
 class ItemTypeSerializer(serializers.ModelSerializer):

@@ -1,4 +1,4 @@
-from ..models import ItemProperty, ItemPropertyValue
+from core.models import ItemProperty, ItemPropertyValue
 from rest_framework import generics
 from ..serializers.item_property_serializers import ItemPropertySerializer, ItemPropertyValueSerializer
 from core.views import BaseAPIView

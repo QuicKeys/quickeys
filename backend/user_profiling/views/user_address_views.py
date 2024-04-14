@@ -1,4 +1,4 @@
-from ..models import UserAddress
+from core.models import UserAddress
 from rest_framework import generics
 from ..serializers.user_address_serializers import UserAddressSerializer
 from core.views import BaseAPIView
