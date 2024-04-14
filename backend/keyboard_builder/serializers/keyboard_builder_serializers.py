@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from keyboard_builder.models import KeyboardBuilder, KeyboardBuilderItem
+from core.models import KeyboardBuilder, KeyboardBuilderItem
 from user_profiling.serializers.user_profile_serializers import UserProfileSerializer
 from inventory.serializers.item_profile_serializers import ItemSerializer
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Orders, OrderLine
+from core.models import Orders, OrderLine
 
 
 admin.site.register(Orders)

@@ -1,4 +1,4 @@
-from ..models import ItemType
+from core.models import ItemType
 from rest_framework import generics
 from ..serializers.item_type_serializers import ItemTypeSerializer
 from core.views import BaseAPIView

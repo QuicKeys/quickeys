@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from user_profiling.models import UserAddress
+from core.models import UserAddress
 from .user_profile_serializers import UserProfileSerializer
 
 

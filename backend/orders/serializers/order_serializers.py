@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from orders.models import Orders, OrderLine
+from core.models import Orders, OrderLine
 from user_profiling.serializers.user_profile_serializers import UserProfileSerializer
 from inventory.serializers.item_profile_serializers import ItemSerializer
 
