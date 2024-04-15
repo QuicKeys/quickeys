@@ -3,6 +3,8 @@ from core.models import (
     ItemType,
     Item,
     ItemProperty,
+    ItemBrand,
+    ItemPicture,
     ItemPropertyValue
 )
 
@@ -10,4 +12,6 @@ from core.models import (
 admin.site.register(ItemType)
 admin.site.register(Item)
 admin.site.register(ItemProperty)
+admin.site.register(ItemBrand)
+admin.site.register(ItemPicture)
 admin.site.register(ItemPropertyValue)
