@@ -1,15 +1,18 @@
 from django.db import models
+from django.db.models import Q
+from django.db.models.functions import Lower
 from django.contrib.auth.models import User
+
 
 
 class Item(models.Model):
     item_id = models.AutoField(primary_key=True)
-    item_type = models.ForeignKey('ItemType', models.DO_NOTHING)
     item_name = models.CharField(unique=True, max_length=255)
+    item_type = models.ForeignKey('ItemType', models.DO_NOTHING)
     item_description = models.CharField(max_length=255, blank=True, null=True)
     item_price = models.DecimalField(max_digits=15, decimal_places=2)
+    item_brand = models.ForeignKey('ItemBrand', models.DO_NOTHING)
     item_profile_picture_link = models.TextField(blank=True, null=True)
-    serial_number = models.CharField(unique=True, max_length=255)
     item_quantity = models.IntegerField()
     restock_point = models.IntegerField()
     is_active = models.BooleanField()
@@ -21,6 +24,19 @@ class Item(models.Model):
     def __str__(self):
         return self.item_name
 
+
+class ItemBrand(models.Model):
+    item_brand_id = models.AutoField(primary_key=True)
+    item_brand_name = models.CharField(unique=True, max_length=255)
+
+    class Meta:
+        managed = True
+        db_table = 'item_brand'
+
+    def __str__(self):
+        return self.item_brand_name
+
+
 class ItemPicture(models.Model):
     item_picture_id = models.AutoField(primary_key=True)
     item = models.ForeignKey(Item, models.DO_NOTHING)
@@ -30,15 +46,24 @@ class ItemPicture(models.Model):
         managed = True
         db_table = 'item_picture'
 
+    def __str__(self):
+        return str(self.item.item_name + ' Picture ') + str(self.item_picture_id)
+
 
 class ItemProperty(models.Model):
     item_property_id = models.AutoField(primary_key=True)
     item_property_name = models.CharField(unique=True, max_length=255)
-    item_property_datatype = models.CharField(max_length=255)
+    item_property_datatype = models.CharField(max_length=255, help_text='Valid values: string, integer, decimal, boolean')
 
     class Meta:
         managed = True
         db_table = 'item_property'
+        constraints = [
+            models.CheckConstraint(
+                name='valid_item_property_datatype',
+                check=Q(item_property_datatype__in=['string', 'integer', 'decimal', 'boolean']),
+            ),
+        ]
 
     def __str__(self):
         return self.item_property_name
@@ -72,8 +97,8 @@ class ItemType(models.Model):
 
 class KeyboardBuilder(models.Model):
     keyboard_builder_id = models.AutoField(primary_key=True)
+    self_assembly = models.BooleanField()
     user = models.ForeignKey('UserProfile', models.DO_NOTHING)
-    keyboard_assembly = models.IntegerField()
 
     class Meta:
         managed = True
@@ -111,14 +136,24 @@ class OrderLine(models.Model):
 
 class Orders(models.Model):
     order_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey('UserProfile', models.DO_NOTHING)
-    order_status = models.IntegerField()
-    payment_status = models.IntegerField()
+    order_status = models.CharField(max_length=255, help_text='Valid values: pending, processing, shipped')
+    payment_status = models.CharField(max_length=255, help_text='Valid values: pending, paid, failed, refunded')
     order_date = models.DateTimeField()
+    user = models.ForeignKey('UserProfile', models.DO_NOTHING)
 
     class Meta:
         managed = True
         db_table = 'orders'
+        constraints = [
+            models.CheckConstraint(
+                name='valid_order_status',
+                check=Q(order_status__in=['pending', 'processing', 'shipped']),
+            ),
+            models.CheckConstraint(
+                name='valid_payment_status',
+                check=Q(payment_status__in=['pending', 'paid', 'failed', 'refunded']),
+            ),
+        ]
 
     def __str__(self):
         return str(self.user) + ' Order ' + str(self.order_id)
