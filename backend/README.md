@@ -167,7 +167,7 @@ Ensure that your PostgreSQL configuration matches the settings specified in the 
 
 **User**: `postgres`
 
-**Pasword**: `admin`
+**Password**: `admin`
 
 **Host**: `localhost`
 

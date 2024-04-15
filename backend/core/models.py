@@ -8,6 +8,7 @@ class Item(models.Model):
     item_name = models.CharField(unique=True, max_length=255)
     item_description = models.CharField(max_length=255, blank=True, null=True)
     item_price = models.DecimalField(max_digits=15, decimal_places=2)
+    item_profile_picture_link = models.TextField(blank=True, null=True)
     serial_number = models.CharField(unique=True, max_length=255)
     item_quantity = models.IntegerField()
     restock_point = models.IntegerField()
@@ -19,6 +20,15 @@ class Item(models.Model):
 
     def __str__(self):
         return self.item_name
+
+class ItemPicture(models.Model):
+    item_picture_id = models.AutoField(primary_key=True)
+    item = models.ForeignKey(Item, models.DO_NOTHING)
+    link = models.TextField()
+
+    class Meta:
+        managed = True
+        db_table = 'item_picture'
 
 
 class ItemProperty(models.Model):
@@ -132,6 +142,7 @@ class UserProfile(models.Model):
     auth_user = models.ForeignKey(User, models.DO_NOTHING)
     birthdate = models.DateField(blank=True, null=True)
     contact_no = models.CharField(max_length=11, blank=True, null=True)
+    profile_picture_link = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = True
