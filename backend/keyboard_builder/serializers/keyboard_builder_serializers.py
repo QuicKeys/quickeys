@@ -7,7 +7,7 @@ from inventory.serializers.item_profile_serializers import ItemSerializer
 class KeyboardBuilderSerializer(serializers.ModelSerializer):
     class Meta:
         model = KeyboardBuilder
-        fields = ['keyboard_builder_id', 'user', 'keyboard_assembly']
+        fields = ['keyboard_builder_id', 'user', 'self_assembly']
 
     def to_representation(self, instance):
         serialized_data = super().to_representation(instance)

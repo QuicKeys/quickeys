@@ -33,6 +33,11 @@ class ItemList(BaseAPIView, generics.ListAPIView):
         if item_type is not None:
             queryset = queryset.filter(item_type=item_type)
 
+        # Filter by item brand
+        item_brand = self.request.query_params.get('item_brand', None)
+        if item_brand is not None:
+            queryset = queryset.filter(item_brand=item_brand)
+
         # Sort by item attribute
         sort_by = self.request.query_params.get('sort_by', None)
         if sort_by is not None:
