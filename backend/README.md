@@ -92,8 +92,8 @@
 |------------|--------------|
 |integer     |order_id      |
 |integer     |user_id       |
-|VARCHAR(255)|order_status  |
-|VARCHAR(255)|payment_status|
+|varchar(255)|order_status  |
+|varchar(255)|payment_status|
 |timestamp   |order_date    |
 
 **keyboard_builder**

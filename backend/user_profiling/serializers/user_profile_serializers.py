@@ -11,7 +11,7 @@ class AuthUserSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['user_id', 'auth_user', 'birthdate', 'contact_no']
+        fields = ['user_id', 'auth_user', 'birthdate', 'contact_no', 'profile_picture_link']
 
     def to_representation(self, instance):
         serialized_data = super().to_representation(instance)

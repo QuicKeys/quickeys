@@ -6,8 +6,8 @@ from .item_type_serializers import ItemTypeSerializer
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['item_id', 'item_type', 'item_name', 'item_description', 'item_price', 'serial_number',
-                  'item_quantity', 'restock_point', 'is_active']
+        fields = ['item_id', 'item_type', 'item_name', 'item_description', 'item_price', 'item_brand',
+                  'item_profile_picture_link','item_quantity', 'restock_point', 'is_active']
 
     def to_representation(self, instance):
         serialized_data = super().to_representation(instance)
