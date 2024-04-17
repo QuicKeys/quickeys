@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import apiClient from '../../utils/ApiClient';
+import transition from '../Transition';
 
 function SignUp() {
   // First Name
@@ -70,7 +71,7 @@ function SignUp() {
   return (
     <>
       <div className="flex justify-center items-center h-full w-full py-[10%]">
-        <div className="flex flex-col items-center w-full p-[30px]">
+        <div className="flex flex-col items-center w-full p-[40px] min-h-[520px]">
 
           <div className="flex justify-center text-[50px] font-bold py-[10px] text-center">CREATE ACCOUNT</div>
 
@@ -222,4 +223,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default transition(SignUp);

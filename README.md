@@ -7,7 +7,6 @@
 ![Pull Requests](https://img.shields.io/github/issues-pr/QuicKeys/quickeys?style=plastic&logo=github)
 ![Pull Requests Closed](https://img.shields.io/github/issues-pr-closed/QuicKeys/quickeys?style=plastic&logo=github)
 
-
 ## Table of Contents
 
 - [About](#about)
@@ -33,7 +32,9 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
   With order tracking and a user-friendly interface, QuicKeys simplifies the purchasing process, from customization to delivery, saving users time and effort.
 
 ## Tech Stack
+
 ### [Frontend](/frontend/)
+
 [![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/en)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -43,17 +44,18 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 [![Vitest](https://img.shields.io/badge/vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
 [![Framer Motion](https://img.shields.io/badge/framer_motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 [![Three.js](https://img.shields.io/badge/three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white)](https://threejs.org/)
+
 ### [Backend](/backend/)
+
 [![Python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-
 
 ## Contact
 
 ### Adrianne Mykhel Bulao
 
-- [https://twitter.com/mykh3l_](https://twitter.com/mykh3l_)
+- [https://twitter.com/mykh3l\_](https://twitter.com/mykh3l_)
 - https://github.com/adriannebulao
 
 ### Mark Cyryl Clarde
@@ -64,4 +66,4 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 ### Maverick Jasper Pigao
 
 - https://www.facebook.com/MaburikuPH
-- https://github.com/MaburikuGraphics
+- https://github.com/Maburikugi

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Reveal } from '../Reveal'
+import transition from '../Transition'
 
 function Contact() {
     return (
@@ -16,4 +17,4 @@ function Contact() {
     )
   }
 
-export default Contact
+export default transition(Contact);
