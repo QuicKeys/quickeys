@@ -22,7 +22,7 @@ class ItemRetrieve(BaseAPIView, generics.RetrieveAPIView):
     serializer_class = ItemSerializer
     lookup_field = 'item_id'
 
-class ItemList(BaseAPIView, generics.ListAPIView):
+class ItemList(generics.ListAPIView):
     serializer_class = ItemSerializer
 
     def get_queryset(self):

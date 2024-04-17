@@ -61,7 +61,7 @@
 git clone https://github.com/QuicKeys/quickeys.git
 ```
 
-2. **Install dependencies for admin and client interfaces**
+2. **Install dependencies**
 ```bash
 cd quickeys
 ```
@@ -69,38 +69,15 @@ cd quickeys
 cd frontend
 ```
 ```bash
-cd admin
-```
-```bash
-# frontend/admin
-
-npm install
-```
-```bash
-cd ..
-```
-```bash
 cd client
 ```
 ```bash
-# frontend/client
-
 npm install
 ```
 
 3. **Run the local development server**
 
-For `admin`:
 ```bash
-# frontend/admin
-
-npm run dev
-```
-
-For `client`:
-```bash
-# frontend/client
-
 npm run dev
 ```
 
