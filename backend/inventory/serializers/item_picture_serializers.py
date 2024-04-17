@@ -5,4 +5,4 @@ from core.models import ItemPicture
 class ItemPictureSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemPicture
-        fields = ['item_picutre_id', 'item', 'link']
+        fields = ['item_picture_id', 'item', 'link']

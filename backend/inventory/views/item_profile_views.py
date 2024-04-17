@@ -17,7 +17,7 @@ class ItemRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIVi
     serializer_class = ItemSerializer
     lookup_field = 'item_id'
 
-class ItemRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class ItemRetrieve(generics.RetrieveAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     lookup_field = 'item_id'
