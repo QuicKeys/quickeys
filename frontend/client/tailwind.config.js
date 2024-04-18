@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        QKGreen: "rgba(var(--QKGreen))",
+
+        BGMain: "rgba(var(--BGMain))",
+        BGGradient: "rgba(var(--BGGradient))",
+        HeavyMain: "rgba(var(--HeavyMain))",
+
+        MainText: "rgba(var(--MainText))",
+
+      },
+    },
     screens: { 
       'xsm': '320px',
       'sm': '600px',

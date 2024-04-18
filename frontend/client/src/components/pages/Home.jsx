@@ -1,5 +1,6 @@
 import React from 'react'
 import { Reveal } from '../Reveal'
+import transition from '../Transition'
 
 function Home() {
     return (
@@ -24,4 +25,4 @@ function Home() {
     )
   }
 
-export default Home
+export default transition(Home);

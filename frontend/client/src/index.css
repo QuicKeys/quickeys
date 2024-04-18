@@ -2,14 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* QuicKeys™ Color Theme */
+:root {
+    --QKGreen: 0, 255, 138;
+
+    --BGMain: 37, 37, 37;
+    --BGGradient: 63, 78, 90;
+    --HeavyMain: 35, 35, 35;
+
+    --MainText: 212, 209, 205;
+}
+
 body {
-    @apply bg-gradient-to-r from-[#252525] to-[#3F4E5A]
+    @apply bg-gradient-to-r from-BGMain to-BGGradient text-[18px] text-MainText
 }
 
 .Icon {
     @apply h-[18px] w-auto opacity-50
 }
 
+/* Navigation Bar Styling */
 .Navigation {
     @apply flex justify-between items-center p-[15px] font-medium
 } .Navigation-Text {
@@ -20,29 +32,44 @@ body {
     @apply opacity-100
 }
 
+/* Footer Styling */
 .Footer {
-    @apply bg-[#232323] text-[12px] px-[50px] py-[25px] font-normal
+    @apply bg-HeavyMain text-[12px] px-[50px] py-[25px] font-normal
 } .Footer-Text {
-    @apply text-[14px] px-[30px] opacity-80
+    @apply text-[14px] px-[30px] opacity-80 text-center py-[5px]
 }
 
+
+/* Shop Item Card Styling */
 .ItemCard-Image {
-    @apply flex justify-center items-center bg-[#202020] h-[300px] w-[300px] mb-[5px]
+    @apply flex justify-center items-center overflow-hidden bg-HeavyMain h-[300px] w-[300px] mb-[5px]
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
 }
 .ItemCard-Brand {
-    @apply text-sm text-[#00FF8A] py-[2px]
+    @apply text-sm text-QKGreen py-[2px]
 }
 .ItemCard-Price {
     @apply text-[20px] font-bold
 }
 
+/* Password Mismatch Animation */
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-2.5px); }
     50% { transform: translateX(2.5px); }
     75% { transform: translateX(-2.5px); }
     100% { transform: translateX(0); }
+}
+
+/* Page Transition Animation & Styling */
+.slide-in {
+    transform-origin: bottom;
+    @apply fixed top-0 left-0 w-full h-full bg-HeavyMain
+}
+
+.slide-out {
+    transform-origin: top;
+    @apply fixed top-0 left-0 w-full h-full bg-HeavyMain
 }

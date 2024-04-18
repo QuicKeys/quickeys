@@ -1,5 +1,6 @@
 import React from 'react'
 import { Reveal } from '../Reveal'
+import transition from '../Transition'
 
 function Build() {
     return (
@@ -16,4 +17,4 @@ function Build() {
     )
   }
 
-export default Build
+export default transition(Build);

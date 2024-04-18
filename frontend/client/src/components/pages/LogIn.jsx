@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import apiClient from '../../utils/ApiClient';
+import transition from '../Transition';
 
 function LogIn() {
   const [credentials, setCredentials] = useState({
@@ -39,7 +40,7 @@ function LogIn() {
     
     <>
       <div className="flex justify-center items-center h-full w-full py-[10%]">
-        <div className="flex flex-col items-center w-full p-[30px]">
+        <div className="flex flex-col justify-center items-center w-full p-[40px] min-h-[520px]">
           
           <div className="flex justify-center text-[50px] font-bold py-[10px] text-center">LOG IN</div>
 
@@ -111,4 +112,4 @@ function LogIn() {
   )
 }
 
-export default LogIn
+export default transition(LogIn);

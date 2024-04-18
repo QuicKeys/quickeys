@@ -1,4 +1,5 @@
 import React from 'react'
+import transition from '../Transition'
 
 function Cart() {
     return (
@@ -11,4 +12,4 @@ function Cart() {
     )
   }
 
-export default Cart
+export default transition(Cart);
