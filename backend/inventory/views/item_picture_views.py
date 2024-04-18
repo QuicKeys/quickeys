@@ -22,7 +22,7 @@ class ItemPictureRetrieve(BaseAPIView, generics.RetrieveAPIView):
     serializer_class = ItemPictureSerializer
     lookup_field = 'item_picture_id'
 
-class ItemPictureList(BaseAPIView, generics.ListAPIView):
+class ItemPictureList(generics.ListAPIView):
     serializer_class = ItemPictureSerializer
 
     # Sort by item picture attribute
