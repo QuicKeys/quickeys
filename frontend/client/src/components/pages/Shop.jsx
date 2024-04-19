@@ -42,11 +42,11 @@ function Shop() {
             <div className="flex justify-center">[ work in progress ]</div>
           </Reveal> */}
 
-          {/* <Reveal>
+          <Reveal>
             <section className="flex justify-center w-full">
-              <img className="max-w-[1700px]" src="./src/assets/QuicKeys WORDMARK.svg"/>
+              <img className="max-w-[90%]" src="./src/assets/QuicKeys WORDMARK.svg"/>
             </section>
-          </Reveal> */}
+          </Reveal>
 
           <div className="flex flex-col items-center">
             <div className="grid grid-cols-1 nm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[45px] relative">
