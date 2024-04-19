@@ -45,19 +45,19 @@ function Shop() {
           <div className="flex justify-center w-full">
             <div className="grid grid-cols-3 gap-[25px]">
               {items.map(item => (
-               <Reveal key={item.item_id}>
-                  <div className="flex flex-col h-[400px] w-[300px] border border-gray-200 m-4 p-4">
-                    <div className="ItemCard-Image" alt={`${item.item_name} image`}>
-                      <img
-                        className="transition-all duration-500 group-hover:scale-110"
-                        src={item.item_profile_picture_link}>
-                      </img>
-                    </div>
-                    <p className="ItemCard-Name group-hover:underline" alt={`${item.item_name}`}>{item.item_name}</p>
-                    <p className="ItemCard-Brand" alt={`${item.item_brand.item_brand_name}`}>{item.item_brand.item_brand_name}</p>
-                    <p className="ItemCard-Price" alt={`${item.item_price}`}>Php {item.item_price}</p>
+              <Reveal key={item.item_id}>
+                <div className="group flex flex-col h-[400px] w-[300px]">
+                  <div className="ItemCard-Image" alt={`${item.item_name} image`}>
+                    <img
+                      className="transition-all duration-500 group-hover:scale-110"
+                      src={item.item_profile_picture_link}>
+                    </img>
                   </div>
-                </Reveal>
+                  <p className="ItemCard-Name group-hover:underline" alt={`${item.item_name}`}>{item.item_name}</p>
+                  <p className="ItemCard-Brand" alt={`${item.item_brand.item_brand_name}`}>{item.item_brand.item_brand_name}</p>
+                  <p className="ItemCard-Price" alt={`${item.item_price}`}>₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                </div>
+            </Reveal>
               ))}
             </div>
           </div>
