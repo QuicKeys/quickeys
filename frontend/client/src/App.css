@@ -2,6 +2,11 @@
 
 body {
     font-family: "Jost", sans-serif;
+} body ::selection {
+    background-color: #00FF8A;
+    color: #252525;
+} img {
+    user-select: none;
 }
 
 ::-webkit-scrollbar {
