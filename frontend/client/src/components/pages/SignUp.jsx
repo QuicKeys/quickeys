@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import apiClient from '../../utils/ApiClient';
+import { apiClient } from '../../utils/ApiClient';
 import transition from '../Transition';
 
 function SignUp() {
@@ -62,7 +62,7 @@ function SignUp() {
         password: password,
       })
       navigate('/Log-In')
-      console.log(response.data)
+      console.log(response.data.message)
     } catch (error) {
       console.error(error)
     }
