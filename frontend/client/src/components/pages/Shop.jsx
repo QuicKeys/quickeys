@@ -34,7 +34,7 @@ function Shop() {
 
     return (
       <>
-        <div className="px-[50px] py-[100px]">
+        <div className="py-[100px] px-[25px] nm:px-[50px]">
           {/* <Reveal>
             <div className="flex justify-center text-[75px] font-medium"> <span className="text-[#00FF8A] pr-[20px]">SHOP</span> PAGE </div>
           </Reveal>
@@ -44,15 +44,15 @@ function Shop() {
 
           <Reveal>
             <section className="flex justify-center w-full">
-              <img className="max-w-[90%]" src="./src/assets/QuicKeys WORDMARK.svg"/>
+              <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg"/>
             </section>
           </Reveal>
 
           <div className="flex flex-col items-center">
-            <div className="grid grid-cols-1 nm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[45px] relative">
+            <div className="ItemCard-Responsiveness grid gap-[30px] relative">
               {items.map(item => (
                 <Reveal key={item.item_id}>
-                  <div className="group flex flex-col h-[400px] w-[300px]">
+                  <div className="group flex flex-col max-h-[400px] max-w-[300px]">
                     <div className="ItemCard-Image" alt={`${item.item_name} image`}>
                       <img
                         className="transition-all duration-500 p-[25px] group-hover:scale-105"

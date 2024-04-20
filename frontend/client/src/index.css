@@ -34,7 +34,7 @@ body {
 
 /* Footer Styling */
 .Footer {
-    @apply bg-HeavyMain text-[12px] px-[50px] py-[25px] font-normal
+    @apply bg-HeavyMain font-normal text-[12px] py-[25px] px-[25px] nm:px-[50px]
 } .Footer-Text {
     @apply text-[14px] px-[30px] opacity-80 text-center py-[5px]
 }
@@ -42,7 +42,7 @@ body {
 
 /* Shop Item Card Styling */
 .ItemCard-Image {
-    @apply flex justify-center items-center overflow-hidden bg-HeavyMain min-h-[300px] min-w-[300px] mb-[5px]
+    @apply flex justify-center items-center overflow-hidden bg-HeavyMain max-h-[300px] max-w-[300px] mb-[5px]
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
@@ -52,6 +52,9 @@ body {
 }
 .ItemCard-Price {
     @apply text-[20px] font-bold
+}
+.ItemCard-Responsiveness {
+    @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
 }
 
 /* Password Mismatch Animation */

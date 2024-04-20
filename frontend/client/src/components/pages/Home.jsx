@@ -5,22 +5,13 @@ import transition from '../Transition'
 function Home() {
     return (
       <>
-
-        <div className="px-[50px] py-[100px]">
+        <section className="py-[100px] px-[25px] nm:px-[50px]">
           <Reveal>
-            <div className="flex justify-center text-[75px] font-medium"> <span className="text-[#00FF8A] pr-[20px]">HOME</span> PAGE </div>
+            <section className="flex justify-center w-full">
+              <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg"/>
+            </section>
           </Reveal>
-          <Reveal>
-            <div className="flex justify-center">[ work in progress ]</div>
-          </Reveal>
-        </div>
-
-        <Reveal>
-          <section className="flex justify-center w-full">
-            <img className="max-w-[1500px]" src="./src/assets/QuicKeys WORDMARK.svg"/>
-          </section>
-        </Reveal>
-
+        </section>
       </>
     )
   }

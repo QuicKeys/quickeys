@@ -66,4 +66,4 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 ### Maverick Jasper Pigao
 
 - https://www.facebook.com/MaburikuPH
-- https://github.com/Maburikugi
+- https://github.com/Maburiku
