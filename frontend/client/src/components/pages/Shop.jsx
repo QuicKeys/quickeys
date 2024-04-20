@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import { Reveal } from '../Reveal'
 import transition from '../Transition'
-import apiClient from '../../utils/ApiClient'
-import axios from 'axios'
+import { apiClient } from '../../utils/ApiClient'
+
 
 function Shop() {
   const [items, setItems] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
   const [nextPage, setNextPage] = useState(null)
+  const [previousPage, setPreviousPage] = useState(null)
 
   useEffect(() => {
-    apiClient.get('inventory/item/list/')
-      .then(response => {
+    const fetchItems = async () => {
+      try {
+        const response = await apiClient.get(`inventory/item/list/?page=${currentPage}`)
         setItems(response.data.results)
         setNextPage(response.data.next)
-      })
-      .catch(error => {
+        setPreviousPage(response.data.previous)
+      } catch (error) {
         console.error('Error fetching data:', error)
-      })
-  }, [])
+      }
+    }
 
-  const fetchNextPage = () => {
+    fetchItems()
+  }, [currentPage])
+
+  const goToNextPage = () => {
     if (nextPage) {
-      axios.get(nextPage)
-        .then(response => {
-          setItems([...items, ...response.data.results])
-          setNextPage(response.data.next)
-        })
-        .catch(error => {
-          console.error('Error fetching next page:', error)
-        })
+      setCurrentPage(currentPage + 1)
+    }
+  }
+
+  const goToPreviousPage = () => {
+    if (previousPage) {
+      setCurrentPage(currentPage - 1)
     }
   }
 
@@ -71,7 +76,10 @@ function Shop() {
             </div>
           </div>
           <Reveal>
-            {nextPage && (<button onClick={fetchNextPage}>Load More</button>)}
+            <div className='flex justify-center'>
+              {previousPage && <button onClick={goToPreviousPage}>Previous Page</button>}
+              {nextPage && <button onClick={goToNextPage}>Next Page</button>}
+            </div>
           </Reveal>
         </div>
       </>

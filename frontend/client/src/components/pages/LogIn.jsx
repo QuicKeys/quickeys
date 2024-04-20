@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import apiClient from '../../utils/ApiClient';
+import { apiClient } from '../../utils/ApiClient';
 import transition from '../Transition';
 
 function LogIn() {
