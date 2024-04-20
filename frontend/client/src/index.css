@@ -42,7 +42,7 @@ body {
 
 /* Shop Item Card Styling */
 .ItemCard-Image {
-    @apply flex justify-center items-center overflow-hidden bg-HeavyMain h-[300px] w-[300px] mb-[5px]
+    @apply flex justify-center items-center overflow-hidden bg-HeavyMain min-h-[300px] min-w-[300px] mb-[5px]
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
