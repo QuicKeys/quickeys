@@ -107,22 +107,26 @@ function Home() {
         <>
             <section className="py-[100px] px-[25px] nm:px-[50px]">
                 <Reveal>
-                    <div className="flex justify-center w-full">
+                    <div className="flex justify-center w-full pt-[25px]">
                         <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg" alt="QuicKeys WORDMARK" />
                     </div>
                 </Reveal>
-                <div className="flex justify-center w-full">
-                    <div className="flex w-[100%] max-w-[1600px] lg:px-[110px]">
-                        <p className="Hero-Mobile lg:pt-[30px] lg:text-left lg:max-w-[625px] lg:text-[30px]">
-                          Explore our vast selection of premium keyboard components and accessories. Elevate your typing experience with QuicKeys today!
-                        </p>
-                    </div>
-                </div>
-                <div className="flex justify-center w-full">
-                  <div className="flex w-[100%] max-w-[1400px] justify-end">
-                    <div ref={containerRef} className="h-[700px] w-[700px] mt-[-340px] hidden lg:block"></div>
+                <Reveal>
+                  <div className="flex justify-center w-full">
+                      <div className="flex w-[100%] max-w-[1600px] lg:px-[110px]">
+                          <p className="Hero-Mobile lg:pt-[30px] lg:text-left lg:max-w-[625px] lg:text-[30px]">
+                            Explore our vast selection of premium keyboard components and accessories. Elevate your typing experience with QuicKeys today!
+                          </p>
+                      </div>
                   </div>
-                </div>
+                </Reveal>
+                <Reveal>
+                  <div className="flex justify-center w-full">
+                    <div className="flex w-[100%] max-w-[1400px] justify-end">
+                      <div ref={containerRef} className="h-[700px] w-[700px] mt-[-340px] hidden lg:block"></div>
+                    </div>
+                  </div>
+                </Reveal>
 
             </section>
         </>
