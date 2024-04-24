@@ -27,7 +27,7 @@ body {
 } .Navigation-Text {
     @apply px-[30px] text-center
 } .Nav-Icon {
-    @apply h-[30px] w-[30px] min-h-[30px] min-w-[30px]
+    @apply transition-all h-[25px] w-[25px] nm:h-[30px] nm:w-[30px]
 } .active {
     @apply opacity-100
 }
