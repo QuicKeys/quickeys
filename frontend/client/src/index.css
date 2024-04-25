@@ -27,14 +27,14 @@ body {
 } .Navigation-Text {
     @apply px-[30px] text-center
 } .Nav-Icon {
-    @apply h-[30px] w-[30px] min-h-[30px] min-w-[30px]
+    @apply transition-all h-[25px] w-[25px] nm:h-[30px] nm:w-[30px]
 } .active {
     @apply opacity-100
 }
 
 /* Footer Styling */
 .Footer {
-    @apply bg-HeavyMain text-[12px] px-[50px] py-[25px] font-normal
+    @apply bg-HeavyMain font-normal text-[12px] py-[25px] px-[25px] nm:px-[50px]
 } .Footer-Text {
     @apply text-[14px] px-[30px] opacity-80 text-center py-[5px]
 }
@@ -42,7 +42,7 @@ body {
 
 /* Shop Item Card Styling */
 .ItemCard-Image {
-    @apply flex justify-center items-center overflow-hidden bg-HeavyMain min-h-[300px] min-w-[300px] mb-[5px]
+    @apply flex justify-center items-center overflow-hidden bg-HeavyMain max-h-[300px] max-w-[300px] mb-[5px]
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
@@ -52,6 +52,13 @@ body {
 }
 .ItemCard-Price {
     @apply text-[20px] font-bold
+}
+.ItemCard-Responsiveness {
+    @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
+}
+
+.Hero-Mobile{
+    @apply w-full pt-[15px] text-[20px] max-w-[1600px] text-center
 }
 
 /* Password Mismatch Animation */
