@@ -112,20 +112,22 @@ function Home() {
                     </div>
                 </Reveal>
                 <Reveal>
-                  <div className="flex justify-center w-full">
-                      <div className="flex w-[100%] max-w-[1600px] lg:px-[110px]">
-                          <p className="Hero-Mobile lg:pt-[30px] lg:text-left lg:max-w-[625px] lg:text-[30px]">
-                            Explore our vast selection of premium keyboard components and accessories. Elevate your typing experience with QuicKeys today!
-                          </p>
-                      </div>
-                  </div>
+                    <div className="flex justify-center w-full">
+                        <div className="flex w-[100%] max-w-[1600px] lg:px-[100px]">
+                            <div className="Hero-Mobile lg:pt-[30px] lg:text-left lg:max-w-[660px] lg:text-[30px]">
+                                <p>
+                                    Ready to build the ultimate typing experience? Explore diverse range of keyboard components and accessories with QuicKeys today!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </Reveal>
                 <Reveal>
-                  <div className="flex justify-center w-full">
-                    <div className="flex w-[100%] max-w-[1400px] justify-end">
-                      <div ref={containerRef} className="h-[700px] w-[700px] mt-[-340px] hidden lg:block"></div>
+                    <div className="flex justify-center w-full">
+                        <div className="flex w-[100%] max-w-[1450px] justify-end">
+                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-345px] hidden lg:block"></div>
+                        </div>
                     </div>
-                  </div>
                 </Reveal>
 
             </section>
