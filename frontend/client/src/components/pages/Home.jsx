@@ -3,6 +3,7 @@ import { Reveal } from '../Reveal';
 import transition from '../Transition';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import BuildButton from '../BuildButton';
 
 function Home() {
     const containerRef = useRef(null);
@@ -16,6 +17,9 @@ function Home() {
             const width = containerRef.current.offsetWidth;
             const height = containerRef.current.offsetHeight;
             renderer.setSize(width, height);
+
+            renderer.antialias = false; // Disable antialiasing
+
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
             containerRef.current.appendChild(renderer.domElement);
@@ -77,6 +81,8 @@ function Home() {
             directionalLight.shadow.camera.left = -10;
             directionalLight.shadow.camera.right = 10;
 
+            containerRef.current.appendChild(renderer.domElement);
+
             const loader = new GLTFLoader();
             loader.load(
                 './src/components/3D Models/QuicKeys - Switch.gltf',
@@ -95,7 +101,7 @@ function Home() {
     function animate() {
         requestAnimationFrame(animate);
 
-        model.rotation.y += 0.0025;
+        model.rotation.y += 0.0015;
         if (model.rotation.y >= Math.PI * 2) {
           model.rotation.y = 0;
         }
@@ -114,7 +120,7 @@ function Home() {
                 <Reveal>
                     <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1600px] lg:px-[100px]">
-                            <div className="Hero-Mobile lg:pt-[30px] lg:text-left lg:max-w-[660px] lg:text-[30px]">
+                            <div className="Hero-Mobile lg:pt-[40px] lg:text-left lg:max-w-[660px] lg:text-[30px]">
                                 <p>
                                     Ready to build the ultimate typing experience? Explore diverse range of keyboard components and accessories with QuicKeys today!
                                 </p>
@@ -124,8 +130,15 @@ function Home() {
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
+                        <div className="flex w-[100%] pt-[25px] max-w-[1600px] justify-center lg:justify-start lg:px-[100px] lg:pt-[40px]">
+                            <BuildButton/>
+                        </div>
+                    </div>
+                </Reveal>
+                <Reveal>
+                    <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1450px] justify-end">
-                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-345px] hidden lg:block"></div>
+                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-445px] hidden lg:block"></div>
                         </div>
                     </div>
                 </Reveal>

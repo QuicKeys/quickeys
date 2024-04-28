@@ -58,7 +58,7 @@ body {
 }
 
 .Hero-Mobile{
-    @apply w-full pt-[15px] text-[20px] max-w-[1600px] text-center
+    @apply w-full pt-[25px] text-[20px] max-w-[1600px] text-center
 }
 
 /* Password Mismatch Animation */
