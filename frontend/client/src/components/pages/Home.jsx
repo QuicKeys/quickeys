@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+
 import { Reveal } from '../Reveal';
 import transition from '../Transition';
+
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+
 import BuildButton from '../BuildButton';
 
 function Home() {
@@ -18,7 +21,7 @@ function Home() {
             const height = containerRef.current.offsetHeight;
             renderer.setSize(width, height);
 
-            renderer.antialias = false; // Disable antialiasing
+            renderer.antialias = false;
 
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
@@ -68,8 +71,6 @@ function Home() {
             baseLight5.position.set(-1, -1, 0).normalize();
             scene.add(baseLight5);
 
-
-            // SHADOWS
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -114,7 +115,7 @@ function Home() {
             <section className="w-[100%] py-[100px] px-[25px] nm:px-[50px] min-h-[1000px] overflow-hidden">
 
                 <Reveal>
-                    <div className="relative flex justify-center w-full z-[-1]">
+                    <div className="relative flex justify-center w-full z-[-10]">
                         <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg" alt="QuicKeys WORDMARK" />
                         <div className="absolute top-0 left-0 right-0 lg:right-[-550px] flex justify-center z-[-2] opacity-20 transition-all duration-500">
                             <img className="w-[100%] max-w-[1200px] scale-[110%]" src="./src/assets/QuicKeys LOGOMARK [BG].svg" alt="QuicKeys LOGOMARK" />
@@ -134,7 +135,7 @@ function Home() {
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
-                        <div className="flex w-[100%] pt-[25px] max-w-[1600px] justify-center lg:justify-start lg:px-[100px]">
+                        <div className="flex w-[100%] pt-[25px] max-w-[1600px] justify-center lg:justify-start lg:px-[100px] z-2">
                             <BuildButton/>
                         </div>
                     </div>
@@ -151,11 +152,15 @@ function Home() {
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
-                        <div className="flex w-[100%] max-w-[1450px] justify-end">
-                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-550px] hidden lg:block"></div>
+                        <div className="flex w-[100%] max-w-[1450px] justify-end z-[-5]">
+                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-550px] opacity-0 lg:opacity-100"></div>
                         </div>
                     </div>
                 </Reveal>
+
+            </section>
+
+            <section>
 
             </section>
         </>
