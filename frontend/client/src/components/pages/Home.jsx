@@ -153,7 +153,7 @@ function Home() {
                 <Reveal>
                     <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1450px] justify-end z-[-5]">
-                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-550px] opacity-0 lg:opacity-100"></div>
+                            <div ref={containerRef} className="float h-[700px] w-[700px] mt-[-550px] opacity-0 lg:opacity-100"></div>
                         </div>
                     </div>
                 </Reveal>
