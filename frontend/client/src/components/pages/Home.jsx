@@ -103,7 +103,7 @@ function Home() {
 
         model.rotation.y += 0.0015;
         if (model.rotation.y >= Math.PI * 2) {
-          model.rotation.y = 0;
+            model.rotation.y = 0;
         }
 
         renderer.render(scene, camera);
@@ -111,16 +111,20 @@ function Home() {
 
     return (
         <>
-            <section className="py-[100px] px-[25px] nm:px-[50px]">
+            <section className="w-[100%] py-[100px] px-[25px] nm:px-[50px] min-h-[1000px] overflow-hidden">
+
                 <Reveal>
-                    <div className="flex justify-center w-full pt-[25px]">
+                    <div className="relative flex justify-center w-full z-[-1]">
                         <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg" alt="QuicKeys WORDMARK" />
+                        <div className="absolute top-0 left-0 right-0 lg:right-[-550px] flex justify-center z-[-2] opacity-20 transition-all duration-500">
+                            <img className="w-[100%] max-w-[1200px] scale-[110%]" src="./src/assets/QuicKeys LOGOMARK [BG].svg" alt="QuicKeys LOGOMARK" />
+                        </div>
                     </div>
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1600px] lg:px-[100px]">
-                            <div className="Hero-Mobile lg:pt-[40px] lg:text-left lg:max-w-[660px] lg:text-[30px]">
+                            <div className="Hero-Mobile lg:text-left lg:max-w-[660px] lg:text-[30px]">
                                 <p>
                                     Ready to build the ultimate typing experience? Explore diverse range of keyboard components and accessories with QuicKeys today!
                                 </p>
@@ -130,15 +134,25 @@ function Home() {
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
-                        <div className="flex w-[100%] pt-[25px] max-w-[1600px] justify-center lg:justify-start lg:px-[100px] lg:pt-[40px]">
+                        <div className="flex w-[100%] pt-[25px] max-w-[1600px] justify-center lg:justify-start lg:px-[100px]">
                             <BuildButton/>
                         </div>
                     </div>
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
+                        <div className="flex w-[100%] pt-[50px] lg:pt-[100px] max-w-[1600px] gap-[12px] justify-center lg:justify-start lg:px-[100px]">
+                            <a href="https://github.com/QuicKeys" target="-"><img className="Icon" src="./src/assets/icons/ICON - Github.png" alt="Github"></img></a>
+                            <a href="https://discord.gg/TW2QBe3pWR" target="-"><img className="Icon" src="./src/assets/icons/ICON - Discord.png" alt="Discord"></img></a>
+                            <a href="https://www.facebook.com/QuicKeysPH" target="-"><img className="Icon" src="./src/assets/icons/ICON - Facebook.png" alt="Facebook"></img></a>
+                            <a href="https://X.com" target="-"><img className="Icon" src="./src/assets/icons/ICON - X.png" alt="X"></img></a>
+                        </div>
+                    </div>
+                </Reveal>
+                <Reveal>
+                    <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1450px] justify-end">
-                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-445px] hidden lg:block"></div>
+                            <div ref={containerRef} className="h-[700px] w-[700px] mt-[-550px] hidden lg:block"></div>
                         </div>
                     </div>
                 </Reveal>

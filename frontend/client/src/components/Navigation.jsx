@@ -8,7 +8,7 @@ function Navigation() {
       <>
         <div className="bg-gradient-to-b from-BGMain to-transparent h-[100px]">
           <div className="Navigation">
-            <NavLink to="/"> <img className="transition-all w-[75px]" src="./src/assets/QuicKeys LOGOMARK [Trademark].svg"/> </NavLink>
+            <NavLink to="/"> <img className="transition-all w-[75px]" src="./src/assets/QuicKeys LOGOMARK [MAIN].svg"/> </NavLink>
             <div className="hidden nm:block">
               <NavLink className="Navigation-Text opacity-50 hover:opacity-100" to="/"> Home </NavLink>
               <NavLink className="Navigation-Text opacity-50 hover:opacity-100" to="/Build"> Build </NavLink>
