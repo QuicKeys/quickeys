@@ -160,7 +160,7 @@ function Home() {
 
                 <Reveal>
                     <div className="flex w-full justify-center mt-[-25px]">
-                        <div className="gap-[30px] max-w-[1600px] grid grid-cols-1 md:grid-cols-3">
+                        <div className="gap-[35px] max-w-[1600px] grid grid-cols-1 md:grid-cols-3">
                             <div className="Benefits text-QKGreen">
                                 <div className="Hero-Icon-Hollow">
                                     <img className="flex" src="./src/assets/icons/ICON - 1.png"/>
