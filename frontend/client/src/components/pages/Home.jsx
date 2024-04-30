@@ -125,7 +125,7 @@ function Home() {
                 <Reveal>
                     <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1600px] lg:px-[100px]">
-                            <div className="Hero-Mobile lg:text-left lg:max-w-[660px] lg:text-[30px]">
+                            <div className="Hero-Mobile lg:text-left lg:max-w-[660px] lg:text-[30px] z-[-10]">
                                 <p>
                                     Ready to build the ultimate typing experience? Explore diverse range of keyboard components and accessories with QuicKeys today!
                                 </p>
@@ -159,7 +159,7 @@ function Home() {
                 </Reveal>
 
                 <Reveal>
-                    <div className="flex w-full justify-center mt-[-25px]">
+                    <div className="flex w-full justify-center mb-[100px]">
                         <div className="gap-[35px] max-w-[1600px] grid grid-cols-1 md:grid-cols-3">
                             <div className="Benefits text-QKGreen">
                                 <div className="Hero-Icon-Hollow">
@@ -204,6 +204,9 @@ function Home() {
                     </div>
                 </Reveal>
 
+            </section>
+            <section>
+                <p className="flex w-full justify-center text-center text-[50px] font-medium mb-[100px]">[ WORK IN PROGRESS ]</p>
             </section>
         </>
     );
