@@ -61,7 +61,7 @@ body {
     @apply w-full pt-[25px] text-[20px] max-w-[1600px] text-center
 }
 
-/* Password Mismatch Animation */
+/* Password Mismatch Animation Keyframes*/
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-2.5px); }
@@ -79,4 +79,18 @@ body {
 .slide-out {
     transform-origin: top;
     @apply fixed top-0 left-0 w-full h-full bg-HeavyMain
+}
+
+/* QuicKeys Keycap Floating Animation Keyframes */
+@keyframes float {
+    0% { transform: translateY(-25px); }
+    50% { transform: translateY(25px); }
+    100% { transform: translateY(-25px); }
+}
+
+.float {
+    height: 700px;
+    width: 700px;
+    opacity: 0;
+    animation: float 5s ease-in-out infinite;
 }
