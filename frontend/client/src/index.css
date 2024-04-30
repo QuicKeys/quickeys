@@ -39,10 +39,14 @@ body {
     @apply text-[14px] px-[30px] opacity-80 text-center py-[5px]
 }
 
+.Benefits {
+    @apply flex p-[25px] rounded-lg border-QKGreen border-4 md:flex-col gap-[20px]
+}
+
 
 /* Shop Item Card Styling */
 .ItemCard-Image {
-    @apply flex justify-center items-center overflow-hidden bg-HeavyMain max-h-[300px] max-w-[300px] mb-[5px]
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain max-h-[300px] max-w-[300px] mb-[5px]
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
@@ -57,8 +61,14 @@ body {
     @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
 }
 
-.Hero-Mobile{
+.Hero-Mobile {
     @apply w-full pt-[25px] text-[20px] max-w-[1600px] text-center
+}
+.Hero-Icon-Hollow {
+    @apply flex flex-col justify-center min-h-[80px] min-w-[80px] max-h-[80px] max-w-[80px]
+}
+.Hero-Icon-Fill {
+    @apply flex flex-col justify-start min-h-[80px] min-w-[80px] max-h-[80px] max-w-[80px] md:max-w-[110px] md:justify-center
 }
 
 /* Password Mismatch Animation Keyframes*/
