@@ -112,6 +112,7 @@ function Home() {
                 </Reveal>
 
             </section>
+
             <section className="flex justify-center w-full mb-[100px]">
                 <div className="bg-[#252525] bg-opacity-50 flex flex-col justify-center items-center w-full py-[50px] px-[25px] nm:px-[50px]">
                     <p className="flex justify-center lg:justify-start w-full max-w-[1600px] text-QKGreen text-[50px] font-medium">
@@ -125,6 +126,21 @@ function Home() {
                         </p>
                     </div>
                 </div>
+            </section>
+
+            <section className="mb-[100px] px-[25px] nm:px-[50px]">
+                <div className="flex flex-col items-center w-full">
+                    <div className="flex w-full max-w-[1600px] justify-between">
+                        <div className="flex items-center gap-1.5">
+                            <img className="Filter-Icon" src="./src/assets/icons/ICON - Filter.png"/>
+                            <p className="font-medium text-QKGreen hover:underline">Filter</p>
+                        </div>
+                        <div>25 Items</div>
+                    </div>
+                </div>
+
+                    
+                <div className="Filter-Text">Availability: In Stock</div>
             </section>
         </>
     );

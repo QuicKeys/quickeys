@@ -61,6 +61,14 @@ body {
     @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
 }
 
+/* Filter Styling */
+.Filter-Text {
+    @apply text-[15px]
+}
+.Filter-Icon {
+    @apply h-[12px] w-[20px]
+}
+
 .Hero-Mobile {
     @apply w-full pt-[35px] text-[20px] max-w-[1600px] text-center
 }
