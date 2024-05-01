@@ -16,7 +16,7 @@ const transition = (Current) => {
                 initial={{ scaleY: 1 }}
                 animate={{ scaleY: 0 }}
                 exit={{ scaleY: 0 }}
-                transition={{ duration: 0.75, ease: [0.25, 1, 0.35, 1] }}
+                transition={{ duration: 0.75, delay: 0.8, ease: [0.25, 1, 0.35, 1] }}
             ></motion.div>
         </>
     );

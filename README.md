@@ -16,7 +16,7 @@
 
 ## About
 
-<img src='https://scontent.fdvo4-1.fna.fbcdn.net/v/t1.15752-9/432430914_1143375830418332_5792993436199481033_n.png?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHSEnnsSF5bQkf3VxJBt84gXLJ-Bi3y0fBcsn4GLfLR8AbwRUqsQsiWYZQYw3cqYccMEq06MZnUMFyQg6iGX6Jj&_nc_ohc=jg7jNaDQMvkAX89W6kc&_nc_ht=scontent.fdvo4-1.fna&oh=03_AdTJ26_Ff2D_KWCeMcLeTuvCJbBftHAx8nrOUsj5vj2aAA&oe=6625280B' width='150' align='right'></img>
+<img src='./frontend/client/src/assets/QuicKeys LOGOMARK [Trademark].svg' width='150' align='right'></img>
 
 QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one-stop destination for designing, customizing, and building your perfect keyboard tailored to your preferences. Users of the platform can also purchase individual keyboard parts and prebuilt keyboards.
 
@@ -66,4 +66,4 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 ### Maverick Jasper Pigao
 
 - https://www.facebook.com/MaburikuPH
-- https://github.com/Maburiku
+- https://github.com/MABURIKU
