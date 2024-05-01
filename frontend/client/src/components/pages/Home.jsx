@@ -125,7 +125,7 @@ function Home() {
                 <Reveal>
                     <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1600px] lg:px-[100px]">
-                            <div className="Hero-Mobile lg:text-left lg:max-w-[660px] lg:text-[30px] z-[-10]">
+                            <div className="Hero-Mobile lg:text-left lg:max-w-[550px] lg:text-[25px] z-[-10]">
                                 <p>
                                     Ready to build the ultimate typing experience? Explore diverse range of keyboard components and accessories with QuicKeys today!
                                 </p>
@@ -135,7 +135,7 @@ function Home() {
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
-                        <div className="flex w-[100%] pt-[25px] max-w-[1600px] justify-center lg:justify-start lg:px-[100px] z-2">
+                        <div className="flex w-[100%] pt-[35px] max-w-[1600px] justify-center lg:justify-start lg:px-[100px] z-2">
                             <BuildButton/>
                         </div>
                     </div>
@@ -196,7 +196,7 @@ function Home() {
                                     <p>
                                         Discover unbeatable value with our competitively priced products. 
                                         We strive to offer the best deals to ensure your satisfaction. 
-                                        Enjoy top-quality items at affordable rates with QuicKeys!.
+                                        Enjoy top-quality items at affordable rates with QuicKeys!
                                     </p>
                                 </div>
                             </div>
@@ -205,8 +205,19 @@ function Home() {
                 </Reveal>
 
             </section>
-            <section>
-                <p className="flex w-full justify-center text-center text-[50px] font-medium mb-[100px]">[ WORK IN PROGRESS ]</p>
+            <section className="flex justify-center w-full mb-[100px]">
+                <div className="bg-[#252525] bg-opacity-50 flex flex-col justify-center items-center w-full py-[50px] px-[25px] nm:px-[50px]">
+                    <p className="flex justify-center lg:justify-start w-full max-w-[1600px] text-QKGreen text-[50px] font-medium">
+                        SHOP
+                    </p>
+                    <div className="flex justify-center lg:justify-start w-full max-w-[1600px] opacity-50">
+                        <p className="max-w-[600px]">
+                            <span className="font-medium">DISCLAIMER:</span> QuicKeys™ is an independent reseller and is not affiliated 
+                            with the brands or their authorized distributors. 
+                            Products listed in our catalog are sourced independently.
+                        </p>
+                    </div>
+                </div>
             </section>
         </>
     );

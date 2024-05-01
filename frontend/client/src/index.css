@@ -62,7 +62,7 @@ body {
 }
 
 .Hero-Mobile {
-    @apply w-full pt-[25px] text-[20px] max-w-[1600px] text-center
+    @apply w-full pt-[35px] text-[20px] max-w-[1600px] text-center
 }
 .Hero-Icon-Hollow {
     @apply flex flex-col justify-center min-h-[80px] min-w-[80px] max-h-[80px] max-w-[80px]
