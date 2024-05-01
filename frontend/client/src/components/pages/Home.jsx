@@ -112,7 +112,7 @@ function Home() {
 
     return (
         <>
-            <section className="w-[100%] py-[100px] px-[25px] nm:px-[50px] min-h-[1000px] overflow-hidden">
+            <section className="w-[100%] pt-[100px] px-[25px] nm:px-[50px] min-h-[1000px] overflow-hidden">
 
                 <Reveal>
                     <div className="relative flex justify-center w-full z-[-10]">
@@ -125,7 +125,7 @@ function Home() {
                 <Reveal>
                     <div className="flex justify-center w-full">
                         <div className="flex w-[100%] max-w-[1600px] lg:px-[100px]">
-                            <div className="Hero-Mobile lg:text-left lg:max-w-[660px] lg:text-[30px]">
+                            <div className="Hero-Mobile lg:text-left lg:max-w-[660px] lg:text-[30px] z-[-10]">
                                 <p>
                                     Ready to build the ultimate typing experience? Explore diverse range of keyboard components and accessories with QuicKeys today!
                                 </p>
@@ -158,10 +158,55 @@ function Home() {
                     </div>
                 </Reveal>
 
+                <Reveal>
+                    <div className="flex w-full justify-center mb-[100px]">
+                        <div className="gap-[35px] max-w-[1600px] grid grid-cols-1 md:grid-cols-3">
+                            <div className="Benefits text-QKGreen">
+                                <div className="Hero-Icon-Hollow">
+                                    <img className="flex" src="./src/assets/icons/ICON - 1.png"/>
+                                </div>
+                                <div>
+                                    <p className="text-[30px] font-semibold mb-[5px] md:mb-[10px]">Hassle-Free</p>
+                                    <p>
+                                        Experience hassle-free transactions, ensuring seamless shopping from start to finish. 
+                                        Enjoy streamlined processes for confident and convenient shopping, 
+                                        free from unnecessary complications.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="Benefits text-QKGreen">
+                                <div className="Hero-Icon-Hollow">
+                                    <img className="flex" src="./src/assets/icons/ICON - 2.png"/>
+                                </div>
+                                <div>
+                                    <p className="text-[30px] font-semibold mb-[5px] md:mb-[10px]">Easy Return</p>
+                                    <p>
+                                        Simplified returns for stress-free shopping. 
+                                        Enjoy a hassle-free process that ensures convenience, making exchanges and refunds easy. 
+                                        Experience seamless transactions with us.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="Benefits bg-QKGreen text-BGMain font-medium">
+                                <div className="Hero-Icon-Fill">
+                                    <img className="flex" src="./src/assets/icons/ICON - 3.png"/>
+                                </div>
+                                <div>
+                                    <p className="text-[30px] font-semibold mb-[5px] md:mb-[10px]">Best Prices</p>
+                                    <p>
+                                        Discover unbeatable value with our competitively priced products. 
+                                        We strive to offer the best deals to ensure your satisfaction. 
+                                        Enjoy top-quality items at affordable rates with QuicKeys!.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Reveal>
+
             </section>
-
             <section>
-
+                <p className="flex w-full justify-center text-center text-[50px] font-medium mb-[100px]">[ WORK IN PROGRESS ]</p>
             </section>
         </>
     );
