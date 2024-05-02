@@ -25,10 +25,10 @@ function QKSwitch() {
             camera.position.set(0.5, 0.5, 0.9);
             camera.lookAt(0, 0.2, 0);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            const ambientLight = new THREE.AmbientLight(0x35acff, 0.5);
             scene.add(ambientLight);
 
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            const directionalLight = new THREE.DirectionalLight(0x6d7278, 15);
             directionalLight.position.set(0, 2, 1).normalize();
             scene.add(directionalLight);
 
@@ -37,45 +37,34 @@ function QKSwitch() {
             scene.add(warmLight);
 
             // Quickeys Color Light
-            const rightLight = new THREE.DirectionalLight(0xffffff, 1);
+            const rightLight = new THREE.DirectionalLight(0x555555, 0.75);
             rightLight.position.set(2, 0, 0).normalize();
             scene.add(rightLight);
 
-            const rightGreen = new THREE.DirectionalLight(0x95ffe2, 0.5);
+            const rightGreen = new THREE.DirectionalLight(0xb5deef, 0.1);
             rightGreen.position.set(-2, 0, 0).normalize();
             scene.add(rightGreen);
 
             // SECONDARY SET OF LIGHTS
-            const baseLight1 = new THREE.DirectionalLight(0x334050, 1);
-            baseLight1.position.set(0, -1, 0).normalize();
+            const bottomBaseLight = new THREE.DirectionalLight(0x334050, 2.5);
+            bottomBaseLight.position.set(0, -1, 0).normalize();
+            scene.add(bottomBaseLight);
+
+            const baseLight1 = new THREE.DirectionalLight(0x334050, 0.75);
+            baseLight1.position.set(0, 2, 1).normalize();
             scene.add(baseLight1);
 
-            const baseLight2 = new THREE.DirectionalLight(0x334050, 1);
-            baseLight2.position.set(0, 2, 1).normalize();
+            const baseLight2 = new THREE.DirectionalLight(0x334050, 0.75);
+            baseLight2.position.set(1, 1, 0).normalize();
             scene.add(baseLight2);
 
-            const baseLight3 = new THREE.DirectionalLight(0x334050, 1);
-            baseLight3.position.set(1, 1, 0).normalize();
+            const baseLight3 = new THREE.DirectionalLight(0x334050, 0.75);
+            baseLight3.position.set(0, -1, -1).normalize();
             scene.add(baseLight3);
 
-            const baseLight4 = new THREE.DirectionalLight(0x334050, 1);
-            baseLight4.position.set(0, -1, -1).normalize();
-            scene.add(baseLight4);
-
-            const baseLight5 = new THREE.DirectionalLight(0x334050, 1);
-            baseLight5.position.set(-1, -1, 0).normalize();
-            scene.add(baseLight5);
-
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-            directionalLight.castShadow = true;
-            directionalLight.shadow.mapSize.width = 1024;
-            directionalLight.shadow.mapSize.height = 1024;
-            directionalLight.shadow.camera.top = 10;
-            directionalLight.shadow.camera.bottom = -10;
-            directionalLight.shadow.camera.left = -10;
-            directionalLight.shadow.camera.right = 10;
+            const leftBaseLight = new THREE.DirectionalLight(0x334050, 0.75);
+            leftBaseLight.position.set(-1, -1, 0).normalize();
+            scene.add(leftBaseLight);
 
             containerRef.current.appendChild(renderer.domElement);
 
