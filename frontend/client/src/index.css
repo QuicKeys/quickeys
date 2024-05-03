@@ -43,7 +43,6 @@ body {
     @apply flex p-[25px] rounded-lg border-QKGreen border-4 md:flex-col gap-[20px]
 }
 
-
 /* Shop Item Card Styling */
 .ItemCard-Image {
     @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain max-h-[300px] max-w-[300px] mb-[5px]
