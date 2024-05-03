@@ -6,6 +6,7 @@ import transition from '../Transition';
 import BuildButton from '../BuildButton';
 
 import QKSwitch from '../QKSwitch';
+import AccordionFilter from '../AccordionFilter';
 
 function Home() {
 
@@ -115,7 +116,7 @@ function Home() {
 
             <section className="flex justify-center w-full mb-[100px]">
                 <div className="bg-[#252525] bg-opacity-50 flex flex-col justify-center items-center w-full py-[50px] px-[25px] nm:px-[50px]">
-                    <p className="flex justify-center lg:justify-start w-full max-w-[1600px] text-QKGreen text-[50px] font-medium">
+                    <p className="flex justify-center lg:justify-start w-full max-w-[1600px] text-QKGreen text-[60px] font-semibold">
                         SHOP
                     </p>
                     <div className="flex justify-center lg:justify-start w-full max-w-[1600px] opacity-50">
@@ -141,6 +142,15 @@ function Home() {
 
                     
                 <div className="Filter-Text">Availability: In Stock</div>
+                
+                <div className="flex flex-col items-center w-full">
+                    <div className="flex w-full max-w-[1600px] justify-center">
+                        <AccordionFilter/>
+                    </div>
+                </div>
+
+                TEST TEXT
+                
             </section>
         </>
     );
