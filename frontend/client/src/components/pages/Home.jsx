@@ -132,9 +132,9 @@ function Home() {
             <section className="mb-[100px] px-[25px] nm:px-[50px]">
                 <div className="flex flex-col items-center w-full">
                     <div className="flex w-full max-w-[1600px] justify-between">
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-2">
                             <img className="Filter-Icon" src="./src/assets/icons/ICON - Filter.png"/>
-                            <p className="font-medium text-QKGreen hover:underline">Filter</p>
+                            <p className="font-medium text-QKGreen hover:underline">Filter & Sort</p>
                         </div>
                         <div>25 Items</div>
                     </div>
