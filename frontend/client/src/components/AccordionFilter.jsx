@@ -18,15 +18,15 @@ function AccordionFilter() {
                     <div className="overflow-hidden px-[50px]">
                         <div className="flex gap-[5px]">
                             <input type="checkbox" id="QuicKeys"/>
-                            <label for="QuicKeys"> QuicKeys </label>
+                            <label htmlFor="QuicKeys"> QuicKeys </label>
                         </div>
                         <div className="flex gap-[5px]">
                             <input type="checkbox" id="Mark"/>
-                            <label for="Mark"> Mark </label>
+                            <label htmlFor="Mark"> Mark </label>
                         </div>
                         <div className="flex gap-[5px]">
                             <input type="checkbox" id="Adrianne"/>
-                            <label for="Adrianne"> Adrianne </label>
+                            <label htmlFor="Adrianne"> Adrianne </label>
                         </div>
                     </div>
                 </div>
@@ -41,11 +41,11 @@ function AccordionFilter() {
                     <div className="overflow-hidden px-[50px]">
                         <div className="flex gap-[5px]">
                             <input type="checkbox" id="Keycaps"/>
-                            <label for="Keycaps"> Keycaps </label>
+                            <label htmlFor="Keycaps"> Keycaps </label>
                         </div>
                         <div className="flex items-center gap-[3px]">
                             <input type="checkbox" id="Switches" className="appearance-none h-[15px] w-[15px] rounded-sm border-[1.5px] border-red-400 hover:border-red-500 checked:bg-QKGreen checked:border-none" />
-                            <label for="Switches"> Switches </label>
+                            <label htmlFor="Switches"> Switches </label>
                         </div>
                     </div>
                 </div>

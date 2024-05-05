@@ -17,7 +17,12 @@ class UserProfileRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestr
     serializer_class = UserProfileSerializer
     lookup_field = 'user_id'
 
-class UserProfileRetrieve(BaseAPIView, generics.RetrieveAPIView):
+# class UserProfileRetrieve(BaseAPIView, generics.RetrieveAPIView):
+#     queryset = UserProfile.objects.all()
+#     serializer_class = UserProfileSerializer
+#     lookup_field = 'user_id'
+    
+class UserProfileRetrieve(generics.RetrieveAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     lookup_field = 'user_id'

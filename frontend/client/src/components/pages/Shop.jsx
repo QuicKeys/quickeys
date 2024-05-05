@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Reveal } from '../Reveal'
 import transition from '../Transition'
 import { apiClient } from '../../utils/ApiClient'
-
+import { Link } from 'react-router-dom';
 
 function Shop() {
   const [items, setItems] = useState([])
@@ -40,13 +40,6 @@ function Shop() {
     return (
       <>
         <div className="py-[100px] px-[25px] nm:px-[50px]">
-          {/* <Reveal>
-            <div className="flex justify-center text-[75px] font-medium"> <span className="text-[#00FF8A] pr-[20px]">SHOP</span> PAGE </div>
-          </Reveal>
-          <Reveal>
-            <div className="flex justify-center">[ work in progress ]</div>
-          </Reveal> */}
-
           <Reveal>
             <section className="flex justify-center w-full">
               <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg"/>
@@ -64,7 +57,10 @@ function Shop() {
                         src={item.item_profile_picture_link}>
                       </img>
                     </div>
-                    <p className="ItemCard-Name group-hover:underline" alt={`${item.item_name}`}>{item.item_name}</p>
+                    {/* <p className="ItemCard-Name group-hover:underline" alt={`${item.item_name}`}>{item.item_name}</p> */}
+                    <Link to={`/Item/${item.item_id}`} className="ItemCard-Name group-hover:underline" alt={`${item.item_name}`}>
+                      {item.item_name}
+                    </Link>
                     <p className="ItemCard-Brand" alt={`${item.item_brand.item_brand_name}`}>{item.item_brand.item_brand_name}</p>
                     <p className="ItemCard-Price" alt={`${item.item_price}`}>₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                   </div>
