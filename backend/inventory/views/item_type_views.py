@@ -1,6 +1,6 @@
 from core.models import ItemType
 from rest_framework import generics
-from ..serializers.item_type_serializers import ItemTypeSerializer
+from ..serializers import ItemTypeSerializer
 from core.views import BaseAPIView
 
 
@@ -22,7 +22,7 @@ class ItemTypeRetrieve(BaseAPIView, generics.RetrieveAPIView):
     serializer_class = ItemTypeSerializer
     lookup_field = 'item_type_id'
 
-class ItemTypeList(BaseAPIView, generics.ListAPIView):
+class ItemTypeList(generics.ListAPIView):
     serializer_class = ItemTypeSerializer
 
     # Sort by item type attribute

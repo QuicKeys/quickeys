@@ -1,6 +1,6 @@
 from core.models import KeyboardBuilder, KeyboardBuilderItem
 from rest_framework import generics
-from ..serializers.keyboard_builder_serializers import KeyboardBuilderSerializer, KeyboardBuilderItemSerializer
+from ..serializers import KeyboardBuilderSerializer, KeyboardBuilderItemSerializer
 from core.views import BaseAPIView
 
 
