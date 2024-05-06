@@ -22,7 +22,7 @@ class ItemBrandRetrieve(BaseAPIView, generics.RetrieveAPIView):
     serializer_class = ItemBrandSerializer
     lookup_field = 'item_brand_id'
 
-class ItemBrandList(BaseAPIView, generics.ListAPIView):
+class ItemBrandList(generics.ListAPIView):
     serializer_class = ItemBrandSerializer
 
     # Sort by item brand attribute

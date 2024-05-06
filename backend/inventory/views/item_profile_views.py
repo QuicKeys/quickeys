@@ -2,6 +2,7 @@ from core.models import Item
 from rest_framework import generics
 from ..serializers import ItemSerializer, ShopItemSerializer
 from core.views import BaseAPIView
+from core.pagination import ShopPagination
 
 
 class ItemCreate(BaseAPIView, generics.CreateAPIView):
@@ -49,3 +50,4 @@ class ItemList(generics.ListAPIView):
 
 class ShopItemList(ItemList):
     serializer_class = ShopItemSerializer
+    pagination_class = ShopPagination
