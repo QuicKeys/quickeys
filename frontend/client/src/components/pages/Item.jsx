@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { Reveal } from '../Reveal';
 import transition from '../Transition';
 import { apiClient } from '../../utils/ApiClient';
@@ -31,32 +31,45 @@ function Item() {
     return (
         <>
             <div className="px-[15px] py-[100px]">
-
                 {item ? (
-                    <div className="flex flex-col items-center">
-                        <div className="flex gap-[25px] justify-center flex-col nm:flex-row">
+                    <div className="flex flex-col items-center nm:pt-[40px]">
+                        <div className="flex justify-center flex-col nm:flex-row">
 
-                            <div className="ItemCard-Image-View" alt={`${item.item_name} image`}>
-                                <Reveal>
-                                    <img
-                                        className="transition-all duration-500 p-[5%] hover:scale-105"
-                                        src={item.item_profile_picture_link}>
-                                    </img>
-                                </Reveal>
+                            <div className="ItemCard-Image-View">
+                                <div className="absolute left-0 top-[-40px] text-sm opacity-0 nm:opacity-100">
+                                    <div className="flex items-center gap-[10px]">
+                                        <NavLink to="/" className="opacity-50 hover:opacity-75 cursor-pointer">Home</NavLink>
+                                        <img className="max-h-[6.5px] opacity-50" src="/src/assets/icons/ICON - Arrow.png"/>
+                                        <NavLink to="/Shop" className="opacity-50 hover:opacity-75 cursor-pointer">Shop</NavLink>
+                                        <img className="max-h-[6.5px] opacity-50" src="/src/assets/icons/ICON - Arrow.png"/>
+                                        <p className="opacity-100 cursor-pointer">{item.item_type.item_type_name}</p>
+                                    </div>
+                                </div>
+                                <div alt={`${item.item_name} image`}>
+                                    <Reveal>
+                                        <img
+                                            className="transition-all duration-500 p-[5%] hover:scale-105"
+                                            src={item.item_profile_picture_link}>
+                                        </img>
+                                    </Reveal>
+                                </div>
                             </div>
-                            <div>
+                            <div className="pt-[25px] nm:pl-[40px] nm:pt-[0px] nm:max-w-[40%]">
                                 <Reveal>
-                                    <p className="text-[30px] font-semibold nm:max-w-[500px]">{item.item_name}</p>
+                                    <p className="text-[45px] font-semibold">{item.item_name}</p>
                                 </Reveal>
                                 <Reveal>
-                                    <p className="text-QKGreen">{item.item_brand.item_brand_name}</p>
+                                    <p className="text-QKGreen py-[5px]">{item.item_brand.item_brand_name}</p>
                                 </Reveal>
                                 <Reveal>
-                                    <p className="text-[40px] font-semibold py-[20px]">₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                                    <p className="text-[50px] font-semibold py-[20px]">₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                                 </Reveal>
                                 <Reveal>
                                     <p className="text-MainText/50">Qty.</p>
                                 </Reveal>
+                                <button className="flex justify-center w-full max-w-[400px] bg-QKGreen text-HeavyMain font-medium p-[15px] rounded-md">
+                                    Add to cart
+                                </button>
                             </div>
                                 
                         </div>

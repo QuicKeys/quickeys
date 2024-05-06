@@ -50,7 +50,7 @@ function Shop() {
             <div className="ItemCard-Responsiveness grid gap-[30px] relative">
               {items.map(item => (
                 <Reveal key={item.item_id}>
-                  <div className="group flex flex-col max-h-[400px] max-w-[300px]">
+                  <div className="group flex flex-col max-h-[450px] max-w-[300px]">
                     <Link to={`/Item/${item.item_id}`} alt={`${item.item_name}`}>
                       <div className="ItemCard-Image-Shop" alt={`${item.item_name} image`}>
                         <img
