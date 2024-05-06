@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import './App.css';
 
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
 import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from 'framer-motion';
+
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
@@ -13,15 +11,11 @@ import Build from './components/pages/Build';
 import Shop from './components/pages/Shop';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
-import Item from './components/pages/Item';
-import Profile from './components/pages/Profile';
-
 import LogIn from './components/pages/LogIn';
 import SignUp from './components/pages/SignUp';
-
+import Item from './components/pages/Item';
 import Cart from './components/pages/Cart';
-
-import { AnimatePresence } from 'framer-motion';
+import Profile from './components/pages/Profile';
 
 function App() {
 

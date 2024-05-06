@@ -21,7 +21,7 @@ function Home() {
 
     return (
         <>
-            <section className="w-[100%] pt-[100px] px-[25px] nm:px-[50px] min-h-[1000px] overflow-hidden">
+            <section className="w-[100%] pt-[100px] px-[15px] nm:px-[50px] min-h-[1000px] overflow-hidden">
 
                 <Reveal>
                     <div className="relative flex justify-center w-full z-[-10]">
@@ -148,8 +148,6 @@ function Home() {
                         <AccordionFilter/>
                     </div>
                 </div>
-
-                TEST TEXT
                 
             </section>
         </>
