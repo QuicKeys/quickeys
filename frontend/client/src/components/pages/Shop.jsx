@@ -13,7 +13,7 @@ function Shop() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await apiClient.get(`inventory/item/list/?page=${currentPage}`)
+        const response = await apiClient.get(`inventory/item/shop-list/?page=${currentPage}`)
         setItems(response.data.results)
         setNextPage(response.data.next)
         setPreviousPage(response.data.previous)

@@ -1,6 +1,6 @@
 from core.models import ItemPicture
 from rest_framework import generics
-from ..serializers.item_picture_serializers import ItemPictureSerializer
+from ..serializers import ItemPictureSerializer
 from core.views import BaseAPIView
 
 
