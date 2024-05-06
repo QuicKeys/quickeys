@@ -1,6 +1,6 @@
 from core.models import ItemBrand
 from rest_framework import generics
-from ..serializers.item_brand_serializers import ItemBrandSerializer
+from ..serializers import ItemBrandSerializer
 from core.views import BaseAPIView
 
 

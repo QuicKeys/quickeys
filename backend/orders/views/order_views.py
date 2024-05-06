@@ -1,6 +1,6 @@
 from core.models import Orders, OrderLine
 from rest_framework import generics
-from ..serializers.order_serializers import OrderSerializer, OrderLineSerializer
+from ..serializers import OrderSerializer, OrderLineSerializer
 from core.views import BaseAPIView
 
 

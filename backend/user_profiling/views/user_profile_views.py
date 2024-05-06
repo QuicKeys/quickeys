@@ -1,6 +1,6 @@
 from core.models import UserProfile
 from rest_framework import generics
-from ..serializers.user_profile_serializers import UserProfileSerializer
+from ..serializers import UserProfileSerializer
 from core.views import BaseAPIView
 
 
