@@ -8,6 +8,19 @@ function Item() {
     const [item, setItem] = useState(null);
     const { itemId } = useParams();
 
+    const [quantity, setQuantity] = useState(30);
+
+    const quantityADD = () => {
+        if(quantity != 25 && quantity < 25) {
+            setQuantity(quantity + 1);
+        }
+    }
+    const quantitySUBTRACT = () => {
+        if(quantity != 0 && quantity > 0) {
+            setQuantity(quantity - 1);
+        }
+    }
+
     useEffect(() => {
         const fetchItem = async () => {
             try {
@@ -59,17 +72,30 @@ function Item() {
                                     <p className="text-[30px] font-semibold">{item.item_name}</p>
                                 </Reveal>
                                 <Reveal>
-                                    <p className="text-QKGreen py-[5px]">{item.item_brand.item_brand_name}</p>
+                                    <p className="text-QKGreen my-[5px]">{item.item_brand.item_brand_name}</p>
                                 </Reveal>
                                 <Reveal>
-                                    <p className="text-[35px] font-semibold py-[20px]">₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                                    <p className="text-[35px] font-semibold my-[10px]">₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                                 </Reveal>
                                 <Reveal>
                                     <p className="text-MainText/50">Qty.</p>
                                 </Reveal>
-                                <button className="flex justify-center w-full max-w-[350px] bg-QKGreen text-HeavyMain font-medium p-[10px] rounded-md">
-                                    Add to cart
-                                </button>
+                                <Reveal>
+                                    <div className="Quantity-Box rounded-sm my-[5px]">
+                                        <button onClick={quantitySUBTRACT}>
+                                            <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - SUBTRACT.png"/>
+                                        </button>
+                                        <p className="absolute top-[2px]">{quantity}</p>
+                                        <button onClick={quantityADD}>
+                                            <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - ADD.png"/>
+                                        </button>
+                                    </div>
+                                </Reveal>
+                                <Reveal>
+                                    <button className="Add-To-Cart-BTN rounded-sm my-[20px]">
+                                        Add to cart
+                                    </button>
+                                </Reveal>
                             </div>
                                 
                         </div>

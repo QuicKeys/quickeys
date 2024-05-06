@@ -63,6 +63,13 @@ body {
     @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
 }
 
+.Quantity-Box {
+    @apply relative flex justify-center gap-[50px] border-MainText/50 border-2 px-[10px] py-[10px] w-[90px]
+}
+.Add-To-Cart-BTN {
+    @apply flex justify-center w-full max-w-[350px] bg-QKGreen text-HeavyMain font-medium p-[15px] nm:p-[10px] 
+}
+
 /* Filter Styling */
 .Filter-Text {
     @apply text-[15px]
