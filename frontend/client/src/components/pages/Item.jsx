@@ -54,20 +54,20 @@ function Item() {
                                     </Reveal>
                                 </div>
                             </div>
-                            <div className="pt-[25px] nm:pl-[40px] nm:pt-[0px] nm:max-w-[40%]">
+                            <div className="pt-[25px] nm:pl-[25px] nm:pt-[0px] nm:max-w-[50%]">
                                 <Reveal>
-                                    <p className="text-[45px] font-semibold">{item.item_name}</p>
+                                    <p className="text-[30px] font-semibold">{item.item_name}</p>
                                 </Reveal>
                                 <Reveal>
                                     <p className="text-QKGreen py-[5px]">{item.item_brand.item_brand_name}</p>
                                 </Reveal>
                                 <Reveal>
-                                    <p className="text-[50px] font-semibold py-[20px]">₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                                    <p className="text-[35px] font-semibold py-[20px]">₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                                 </Reveal>
                                 <Reveal>
                                     <p className="text-MainText/50">Qty.</p>
                                 </Reveal>
-                                <button className="flex justify-center w-full max-w-[400px] bg-QKGreen text-HeavyMain font-medium p-[15px] rounded-md">
+                                <button className="flex justify-center w-full max-w-[350px] bg-QKGreen text-HeavyMain font-medium p-[10px] rounded-md">
                                     Add to cart
                                 </button>
                             </div>
