@@ -31,6 +31,17 @@ class ItemSerializer(serializers.ModelSerializer):
         serialized_data['item_brand'] = ItemBrandSerializer(instance.item_brand).data
         return serialized_data
 
+class ShopItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = ['item_id', 'item_name', 'item_price', 'item_brand', 'item_profile_picture_link',
+                  'item_quantity']
+    
+    def to_representation(self, instance):
+        serialized_data = super().to_representation(instance)
+        serialized_data['item_brand'] = ItemBrandSerializer(instance.item_brand).data
+        return serialized_data
+
 class ItemPropertySerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemProperty

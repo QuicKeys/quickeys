@@ -11,7 +11,8 @@ from .views.item_profile_views import (
     ItemListCreate,
     ItemRetrieveUpdateDestroy,
     ItemRetrieve,
-    ItemList
+    ItemList,
+    ShopItemList
 )
 from .views.item_property_views import (
     ItemPropertyCreate,
@@ -54,6 +55,7 @@ urlpatterns = [
     path('item/edit/<int:item_id>/', ItemRetrieveUpdateDestroy.as_view(), name='item-edit'),
     path('item/view/<int:item_id>/', ItemRetrieve.as_view(), name='item-view'),
     path('item/list/', ItemList.as_view(), name='item-list'),
+    path('item/shop-list/', ShopItemList.as_view(), name='shop-item-list'),
 
     path('item-property/create/', ItemPropertyCreate.as_view(), name='item-property-create'),
     path('item-property/list/create/', ItemPropertyListCreate.as_view(), name='item-property-list-create'),

@@ -1,6 +1,6 @@
 from core.models import Item
 from rest_framework import generics
-from ..serializers import ItemSerializer
+from ..serializers import ItemSerializer, ShopItemSerializer
 from core.views import BaseAPIView
 
 
@@ -46,3 +46,6 @@ class ItemList(generics.ListAPIView):
             queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
 
         return queryset
+
+class ShopItemList(ItemList):
+    serializer_class = ShopItemSerializer

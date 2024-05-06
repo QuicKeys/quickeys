@@ -3,16 +3,6 @@ from django.contrib.auth.models import User
 from core.models import UserAddress, UserProfile
 
 
-class UserAddressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserAddress
-        fields = ['user_address_id', 'user', 'user_address']
-
-    def to_representation(self, instance):
-        serialized_data = super().to_representation(instance)
-        serialized_data['user'] = UserProfileSerializer(instance.user).data
-        return serialized_data
-
 class AuthUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -26,4 +16,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         serialized_data = super().to_representation(instance)
         serialized_data['auth_user'] = AuthUserSerializer(instance.auth_user).data
+        return serialized_data
+
+class UserAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserAddress
+        fields = ['user_address_id', 'user', 'user_address']
+
+    def to_representation(self, instance):
+        serialized_data = super().to_representation(instance)
+        serialized_data['user'] = UserProfileSerializer(instance.user).data
         return serialized_data
