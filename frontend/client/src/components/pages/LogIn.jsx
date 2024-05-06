@@ -40,7 +40,7 @@ function LogIn() {
     
     <>
       <div className="flex justify-center items-center h-full w-full py-[10%]">
-        <div className="flex flex-col justify-center items-center w-full p-[40px] min-h-[520px]">
+        <div className="flex flex-col justify-center items-center w-full p-[15px] min-h-[520px]">
           
           <div className="flex justify-center text-[50px] font-bold py-[10px] text-center">LOG IN</div>
 

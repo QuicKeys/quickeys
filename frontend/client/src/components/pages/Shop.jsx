@@ -39,7 +39,7 @@ function Shop() {
 
     return (
       <>
-        <div className="py-[100px] px-[25px] nm:px-[50px]">
+        <div className="py-[100px] px-[15px] nm:px-[50px]">
           <Reveal>
             <section className="flex justify-center w-full">
               <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg"/>
@@ -50,25 +50,22 @@ function Shop() {
             <div className="ItemCard-Responsiveness grid gap-[30px] relative">
               {items.map(item => (
                 <Reveal key={item.item_id}>
-                  <div className="group flex flex-col max-h-[400px] max-w-[300px]">
-                    <div className="ItemCard-Image" alt={`${item.item_name} image`}>
-                      <img
-                        className="transition-all duration-500 p-[25px] group-hover:scale-105"
-                        src={item.item_profile_picture_link}>
-                      </img>
-                    </div>
-                    {/* <p className="ItemCard-Name group-hover:underline" alt={`${item.item_name}`}>{item.item_name}</p> */}
-                    <Link to={`/Item/${item.item_id}`} className="ItemCard-Name group-hover:underline" alt={`${item.item_name}`}>
-                      {item.item_name}
+                  <div className="group flex flex-col max-h-[450px] max-w-[300px]">
+                    <Link to={`/Item/${item.item_id}`} alt={`${item.item_name}`}>
+                      <div className="ItemCard-Image-Shop" alt={`${item.item_name} image`}>
+                        <img
+                          className="transition-all duration-500 p-[5%] group-hover:scale-105"
+                          src={item.item_profile_picture_link}>
+                        </img>
+                      </div>
+                      
+                      <p className="ItemCard-Name group-hover:underline" >{item.item_name}</p>
                     </Link>
                     <p className="ItemCard-Brand" alt={`${item.item_brand.item_brand_name}`}>{item.item_brand.item_brand_name}</p>
                     <p className="ItemCard-Price" alt={`${item.item_price}`}>₱{parseFloat(item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                   </div>
                 </Reveal>
               ))}
-              <div className="absolute top-0 left-0 transform">
-                <p>test</p>
-              </div>
             </div>
           </div>
           <Reveal>

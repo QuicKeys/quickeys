@@ -44,8 +44,11 @@ body {
 }
 
 /* Shop Item Card Styling */
-.ItemCard-Image {
-    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain max-h-[300px] max-w-[300px] mb-[5px]
+.ItemCard-Image-Shop {
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain mb-[5px]
+}
+.ItemCard-Image-View {
+    @apply relative flex nm:min-w-[400px] nm:min-h-[400px] nm:w-[35%] nm:h-[35%] nm:max-w-[850px] nm:max-h-[850px] bg-HeavyMain
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
