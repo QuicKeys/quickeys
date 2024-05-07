@@ -48,7 +48,7 @@ body {
     @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain mb-[5px]
 }
 .ItemCard-Image-View {
-    @apply relative flex nm:min-w-[400px] nm:min-h-[400px] nm:w-[35%] nm:h-[35%] nm:max-w-[850px] nm:max-h-[850px] bg-HeavyMain
+    @apply relative flex nm:min-w-[400px] nm:min-h-[400px] nm:w-[40%] nm:h-[40%] nm:max-w-[850px] nm:max-h-[850px] bg-HeavyMain
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
@@ -67,7 +67,7 @@ body {
     @apply relative flex justify-center gap-[50px] border-MainText/50 border-2 px-[10px] py-[10px] w-[90px]
 }
 .Add-To-Cart-BTN {
-    @apply flex justify-center w-full max-w-[350px] bg-QKGreen text-HeavyMain font-medium p-[15px] nm:p-[10px] 
+    @apply flex justify-center w-full max-w-[350px] bg-QKGreen text-HeavyMain font-medium p-[15px] nm:p-[10px] hover:bg-[#00EA7F] transition-all duration-100
 }
 
 /* Filter Styling */

@@ -100,7 +100,7 @@ function Item() {
                                     </button>
                                 </Reveal>
                                 <Reveal>
-                                    <p className="text-MainText/75 max-w-[800px]">
+                                    <p className="text-MainText/75 max-w-[700px] my-[50px]">
                                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus doloremque assumenda maiores accusantium quisquam, 
                                         magnam ad quibusdam mollitia perferendis pariatur rerum! Commodi alias facilis accusamus. 
                                         Voluptate enim perspiciatis excepturi dolorem est. Ducimus doloremque itaque iure asperiores incidunt sint voluptatum aliquam, 
