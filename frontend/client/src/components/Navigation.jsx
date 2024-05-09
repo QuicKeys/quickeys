@@ -13,7 +13,7 @@ function Navigation() {
   return (
     <>
       <div className="bg-gradient-to-b from-BGMain to-transparent h-[100px]">
-        <div className={`Navigation ${toggle ? 'bg-BGMain' : ''}`}>
+        <div className={`Navigation ${toggle ? 'bg-BGMain nm:bg-transparent' : ''}`}>
           <button className="w-[80px] nm:hidden">
             <img className="h-[25px]" onClick={toggleNav} src="/src/assets/icons/ICON - Hamburger.png" alt="Hamburger Collapse"/>
           </button>
