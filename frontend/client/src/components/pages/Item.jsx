@@ -99,18 +99,20 @@ function Item() {
                                         Add to cart
                                     </button>
                                 </Reveal>
-                                <Reveal>
-                                    <p className="text-MainText/75 max-w-[700px] my-[50px]">
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus doloremque assumenda maiores accusantium quisquam, 
-                                        magnam ad quibusdam mollitia perferendis pariatur rerum! Commodi alias facilis accusamus. 
-                                        Voluptate enim perspiciatis excepturi dolorem est. Ducimus doloremque itaque iure asperiores incidunt sint voluptatum aliquam, 
-                                        excepturi temporibus. Excepturi modi doloribus perspiciatis totam tempora? 
-                                        Aperiam quasi eligendi at numquam minus alias non omnis ducimus excepturi sed ab atque dolorum fuga sit totam, 
-                                        optio est repellat perferendis, beatae quo? Laudantium soluta quo aliquid, aut, adipisci dolor molestiae, 
-                                        aperiam nesciunt consequatur ex harum accusamus. Facere, ut culpa. 
-                                        Amet obcaecati impedit culpa omnis numquam unde reiciendis corrupti cumque repellendus!
-                                    </p>
-                                </Reveal>
+                                <div className="max-w-[700px]">
+                                    <Reveal>
+                                        <p className="text-MainText/75 mt-[50px]">
+                                            [ DESCRIPTION HERE ]
+                                        </p>
+                                    </Reveal>
+                                    <Reveal>
+                                        <p className="text-MainText/75 mt-[20px]">
+                                            <span className="font-medium">DISCLAIMER:</span> QuicKeys™ is an independent reseller and is not affiliated 
+                                            with the brands or their authorized distributors. 
+                                            Products listed in our catalog are sourced independently.
+                                        </p>
+                                    </Reveal>
+                                </div>
                             </div>
                                 
                         </div>

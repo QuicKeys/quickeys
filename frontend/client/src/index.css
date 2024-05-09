@@ -40,7 +40,7 @@ body {
 }
 
 .Benefits {
-    @apply flex p-[25px] rounded-lg border-QKGreen border-4 md:flex-col gap-[20px]
+    @apply flex p-[25px] rounded-lg border-QKGreen border-4 md:flex-col gap-[20px] hover:scale-105 transition-all duration-300
 }
 
 /* Shop Item Card Styling */
