@@ -25,9 +25,11 @@ body {
 .Navigation {
     @apply flex justify-between items-center p-[15px] font-medium
 } .Navigation-Text {
-    @apply px-[30px] text-center
+    @apply px-[30px] text-center opacity-50 hover:opacity-100
+} .Navigation-Overlay {
+    @apply absolute top-0 z-[-5] bg-MainText/10 w-screen h-screen nm:hidden
 } .Nav-Icon {
-    @apply transition-all h-[25px] w-[25px] nm:h-[30px] nm:w-[30px]
+    @apply transition-all h-[30px] nm:w-[30px]
 } .active {
     @apply opacity-100
 }
@@ -40,7 +42,7 @@ body {
 }
 
 .Benefits {
-    @apply flex p-[25px] rounded-lg border-QKGreen border-4 md:flex-col gap-[20px]
+    @apply flex p-[25px] rounded-lg border-QKGreen border-4 md:flex-col gap-[20px] hover:scale-105 transition-all duration-300
 }
 
 /* Shop Item Card Styling */
