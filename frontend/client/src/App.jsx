@@ -1,6 +1,6 @@
 import './App.css';
-
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from 'react';
+import { Route, Routes, useLocation} from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
 
 import Navigation from './components/Navigation';
@@ -20,6 +20,24 @@ import Profile from './components/pages/Profile';
 function App() {
 
   const location = useLocation();
+
+  useEffect(() => {
+    const pageTitles = {
+      '/' : 'Home',
+      '/Build' : 'Keyboard Builder',
+      '/Shop' : 'Shop',
+      '/About' : 'About Us',
+      '/Contact-Us' : 'Contact Us',
+
+      '/Log-In' : 'Log In',
+      '/Sign-Up' : 'Create Account',
+
+      '/Cart' : 'My Cart',
+      '/Profile' : 'My Profile',
+    }
+
+    document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 QuicKeys™';
+  })
 
   return (
     <div className="flex flex-col min-h-screen">
