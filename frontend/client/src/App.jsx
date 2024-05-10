@@ -16,6 +16,7 @@ import SignUp from './components/pages/SignUp';
 import Item from './components/pages/Item';
 import Cart from './components/pages/Cart';
 import Profile from './components/pages/Profile';
+import Error from './components/pages/Error';
 
 function App() {
 
@@ -34,9 +35,10 @@ function App() {
 
       '/Cart' : 'My Cart',
       '/Profile' : 'My Profile',
+      '/*' : '404 ERROR'
     }
 
-    document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 QuicKeys™';
+    document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 Not Found – QuicKeys™';
   })
 
   return (
@@ -59,6 +61,8 @@ function App() {
             <Route path="/Item/:itemId" element={<Item />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Profile" element={<Profile />} />
+
+            <Route path="*" element={<Error />} />
           </Routes>
         </AnimatePresence>
       </div>
