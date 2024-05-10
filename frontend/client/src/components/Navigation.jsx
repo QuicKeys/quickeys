@@ -27,23 +27,21 @@ function Navigation() {
           </div>
           <div className="flex gap-[20px]">
             <NavLink to="/Cart"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - Cart.png" alt="Cart"/> </NavLink>
-            <NavLink to="/Log-In"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - User.png" alt="Login"/> </NavLink>
+            {/* <NavLink to="/Log-In"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - User.png" alt="Login"/> </NavLink> */}
             <NavLink to="/Profile"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - User.png" alt="Profile"/> </NavLink>
-            <NavLink to="/Log-In" onClick={LogoutButton}>LOGOUT</NavLink>
+            {/* <NavLink to="/Log-In" onClick={LogoutButton}>LOGOUT</NavLink> */}
           </div>
         </div>
         {toggle && (
-          <div className="transition-all duration-1000">
-            <div className="flex flex-col nm:hidden bg-BGMain pb-[20px]">
-              <NavLink className="Navigation-Text py-[7px]" to="/"> Home </NavLink>
-              <NavLink className="Navigation-Text py-[7px]" to="/Build"> Build </NavLink>
-              <NavLink className="Navigation-Text py-[7px]" to="/Shop"> Shop </NavLink>
-              <NavLink className="Navigation-Text py-[7px]" to="/About"> About </NavLink>
-              <NavLink className="Navigation-Text py-[7px]" to="/Contact-Us"> Contact Us </NavLink>
-            </div>
+          <div className="flex flex-col nm:hidden bg-BGMain pb-[20px]">
+            <NavLink className="Navigation-Text py-[7px]" to="/"> Home </NavLink>
+            <NavLink className="Navigation-Text py-[7px]" to="/Build"> Build </NavLink>
+            <NavLink className="Navigation-Text py-[7px]" to="/Shop"> Shop </NavLink>
+            <NavLink className="Navigation-Text py-[7px]" to="/About"> About </NavLink>
+            <NavLink className="Navigation-Text py-[7px]" to="/Contact-Us"> Contact Us </NavLink>
           </div>
         )}
-        <div className={`Navigation-Overlay transition-all duration-[500ms] ${toggle ? 'opacity-1 backdrop-blur-sm' : 'opacity-0 pointer-events-none'}`} onClick={toggleNav}/>
+        <div className={`Navigation-Overlay transition-all duration-500 ${toggle ? 'opacity-1 backdrop-blur-sm' : 'opacity-0 pointer-events-none'}`} onClick={toggleNav}/>
       </div>
     </>
   )
