@@ -7,7 +7,7 @@ function Error() {
       <>
         <div className="px-[50px] py-[100px]">
           <Reveal>
-            <div className="flex justify-center text-[75px] font-medium text-[#00FF8A]"> ERROR </div>
+            <div className="flex justify-center text-[75px] font-medium text-[#00FF8A]"> PAGE NOT FOUND </div>
           </Reveal>
           <Reveal>
             <div className="flex justify-center">[ work in progress ]</div>

@@ -77,6 +77,6 @@ function Shop() {
         </div>
       </>
     )
-  }
+}
 
 export default transition(Shop);

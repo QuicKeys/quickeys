@@ -7,20 +7,7 @@ import { apiClient } from '../../utils/ApiClient';
 function Item() {
     const [item, setItem] = useState(null);
     const { itemId } = useParams();
-
-    const [quantity, setQuantity] = useState(1);
-
-    const quantityADD = () => {
-        if(quantity != 25 && quantity < 25) {
-            setQuantity(quantity + 1);
-        }
-    }
-    const quantitySUBTRACT = () => {
-        if(quantity != 1 && quantity > 1) {
-            setQuantity(quantity - 1);
-        }
-    }
-
+    
     useEffect(() => {
         const fetchItem = async () => {
             try {
@@ -40,6 +27,19 @@ function Item() {
     
         fetchItem();
     }, [itemId]);
+    
+    const [quantity, setQuantity] = useState(1);
+
+    const quantityADD = () => {
+        if(quantity != item.item_quantity && quantity < item.item_quantity) {
+            setQuantity(quantity + 1);
+        }
+    }
+    const quantitySUBTRACT = () => {
+        if(quantity != 1 && quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    }
 
     return (
         <>
@@ -86,12 +86,21 @@ function Item() {
                                             <button onClick={quantitySUBTRACT}>
                                                 <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - SUBTRACT.png"/>
                                             </button>
-                                            <p className="absolute top-[2px]">{quantity}</p>
+                                            {item.item_quantity === 0 ? (
+                                                <p className="absolute top-[2px] opacity-50">0</p>
+                                            ) : (
+                                                <p className="absolute top-[2px]">{quantity}</p>
+                                            )}
                                             <button onClick={quantityADD}>
                                                 <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - ADD.png"/>
                                             </button>
                                         </div>
-                                        <p className="text-MainText/50 ml-[10px]">25 items left</p>
+                                        {item.item_quantity <= 15 && item.item_quantity > 0 && (
+                                            <p className="text-MainText/50 ml-[10px]">{item.item_quantity} items left</p>
+                                        )}
+                                        {item.item_quantity === 0 && (
+                                            <p className="text-MainText/50 ml-[10px]">Out of stock</p>
+                                        )}
                                     </div>
                                 </Reveal>
                                 <Reveal>
@@ -116,6 +125,9 @@ function Item() {
                             </div>
                                 
                         </div>
+                        <script>
+                            ${document.title = `${item.item_name} - QuicKeys™`}
+                        </script>
                     </div>
                 ) : (
                     <p>Loading...</p>

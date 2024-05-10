@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect } from 'react';
-import { Route, Routes, useLocation} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
 
 import Navigation from './components/Navigation';
@@ -38,8 +38,10 @@ function App() {
       '/*' : '404 ERROR'
     }
 
-    document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 Not Found – QuicKeys™';
-  })
+    if (!location.pathname.startsWith('/Item/')) {
+      document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 Not Found – QuicKeys™';
+    }
+  });
 
   return (
     <div className="flex flex-col min-h-screen">
