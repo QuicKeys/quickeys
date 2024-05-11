@@ -30,40 +30,48 @@ function AccordionFilter() {
 
     return (
         <>
-            <div className="w-full p-[20px]">
+            <div className="w-full py-[30px]">
 
-                <button onClick={() => setBrandOpen(!brandOpen)} className="flex justify-between w-full">
-                    <span>BRAND</span>
-                    {brandOpen ? <span>x</span> : <span>+</span>}
-                </button>
-                <div className={`grid overflow-hidden transition-all duration-200 text-sm ${
-                    brandOpen ? 'grid-rows-[3fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}>
-                    {brands.map(brand => (
-                        <div className="overflow-hidden px-[50px]" key={brand.item_brand_id}>
-                            <div className="flex gap-[5px]">
-                                <input type="checkbox" id={brand.item_brand_name}/>
-                                <label htmlFor={brand.item_brand_name}> {brand.item_brand_name} </label>
-                            </div>
-                        </div> 
-                    ))}
+                <div className={brandOpen ? 'pb-[0px]' : 'pb-[25px]'}>
+                    <button onClick={() => setBrandOpen(!brandOpen)} className="flex justify-between w-full">
+                        <span className="text-[20px] font-medium">BRAND</span>
+                        <div className="flex justify-center items-center h-[30px] w-[30px]">
+                            <img className={`Filter-Arrow ${brandOpen ? 'rotate-90' : 'rotate-0'}`} src="/src/assets/icons/ICON - Arrow.png"/>
+                        </div>
+                    </button>
+                    <div className={`grid overflow-hidden transition-all duration-200 text-sm ${
+                        brandOpen ? 'grid-rows-[25fr] visible p-[10px]' : 'grid-rows-[0fr] hidden'
+                    }`}>
+                        {brands.map(brand => (
+                            <div className="overflow-hidden px-[30px] text-[18px]" key={brand.item_brand_id}>
+                                <div className="flex gap-[10px] py-[7px]">
+                                    <input className="checkbox" type="checkbox" id={brand.item_brand_name}/>
+                                    <label className="" htmlFor={brand.item_brand_name}> {brand.item_brand_name} </label>
+                                </div>
+                            </div> 
+                        ))}
+                    </div>
                 </div>
 
-                <button onClick={() => setTypeOpen(!typeOpen)} className="flex justify-between w-full">
-                    <span>TYPE</span>
-                    {typeOpen ? <span>x</span> : <span>+</span>}
-                </button>
-                <div className={`grid overflow-hidden transition-all duration-200 text-sm ${
-                    typeOpen ? 'grid-rows-[3fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}>
-                    {types.map(type => (
-                        <div className="overflow-hidden px-[50px]" key={type.item_type_id}>
-                            <div className="flex gap-[5px]">
-                                <input type="checkbox" id={type.item_type_name}/>
-                                <label htmlFor={type.item_type_name}> {type.item_type_name} </label>
-                            </div>
-                        </div> 
-                    ))}
+                <div className={typeOpen ? 'pb-[0px]' : 'pb-[25px]'}>
+                    <button onClick={() => setTypeOpen(!typeOpen)} className="flex justify-between w-full">
+                        <span className="text-[20px] font-medium">TYPE</span>
+                        <div className="flex justify-center items-center h-[30px] w-[30px]">
+                            <img className={`Filter-Arrow ${typeOpen ? 'rotate-90' : 'rotate-0'}`} src="/src/assets/icons/ICON - Arrow.png"/>
+                        </div>
+                    </button>
+                    <div className={`grid overflow-hidden transition-all duration-200 text-sm ${
+                        typeOpen ? 'grid-rows-[25fr] visible p-[10px]' : 'grid-rows-[0fr] hidden'
+                    }`}>
+                        {types.map(type => (
+                            <div className="overflow-hidden px-[25px] text-[18px]" key={type.item_type_id}>
+                                <div className="flex gap-[10px] py-[7px]">
+                                    <input className="checkbox" type="checkbox" id={type.item_type_name}/>
+                                    <label className="" htmlFor={type.item_type_name}> {type.item_type_name} </label>
+                                </div>
+                            </div> 
+                        ))}
+                    </div>
                 </div>
 
             </div>

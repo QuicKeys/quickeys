@@ -73,11 +73,23 @@ body {
 }
 
 /* Filter Styling */
+.Filter-Side {
+    @apply fixed h-[90%] sm:h-screen w-full sm:w-[450px] z-[50] bg-BGMain p-[25px] ml-[-25px]
+}
 .Filter-Text {
     @apply text-[15px]
 }
 .Filter-Icon {
     @apply h-[12px] w-[20px]
+}
+.Filter-Arrow {
+    @apply h-[25px] opacity-50 items-center transition-all transform
+}
+.Filter-Overlay {
+    @apply fixed h-screen w-screen z-[50] bg-MainText/10
+}
+.Filter-Apply-BTN {
+    @apply flex justify-center items-center w-full sm:w-[250px] bg-QKGreen hover:bg-[#00EA7F] text-BGMain font-medium p-[10px] rounded-sm
 }
 
 .Hero-Mobile {
@@ -122,4 +134,8 @@ body {
     width: 700px;
     opacity: 0;
     animation: float 5s ease-in-out infinite;
+}
+
+.checkbox {
+    @apply w-[15px] h-[15px] mt-[2.5px] appearance-none rounded-sm border-2 border-MainText/50 checked:bg-QKGreen checked:border-none
 }
