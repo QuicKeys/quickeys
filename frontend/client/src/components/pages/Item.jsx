@@ -111,7 +111,7 @@ function Item() {
                                 <div className="max-w-[700px]">
                                     <Reveal>
                                         <p className="text-MainText/75 mt-[50px]">
-                                            [ ITEM DESCRIPTION ]
+                                            {item.item_description}
                                         </p>
                                     </Reveal>
                                     <Reveal>
