@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect } from 'react';
-import { Route, Routes, useLocation} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
 
 import Navigation from './components/Navigation';
@@ -16,6 +16,7 @@ import SignUp from './components/pages/SignUp';
 import Item from './components/pages/Item';
 import Cart from './components/pages/Cart';
 import Profile from './components/pages/Profile';
+import Error from './components/pages/Error';
 
 function App() {
 
@@ -34,10 +35,13 @@ function App() {
 
       '/Cart' : 'My Cart',
       '/Profile' : 'My Profile',
+      '/*' : '404 ERROR'
     }
 
-    document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 QuicKeys™';
-  })
+    if (!location.pathname.startsWith('/Item/')) {
+      document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 Not Found – QuicKeys™';
+    }
+  });
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -59,6 +63,8 @@ function App() {
             <Route path="/Item/:itemId" element={<Item />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Profile" element={<Profile />} />
+
+            <Route path="*" element={<Error />} />
           </Routes>
         </AnimatePresence>
       </div>
