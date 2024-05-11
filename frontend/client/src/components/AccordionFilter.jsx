@@ -42,11 +42,6 @@ function AccordionFilter({ selectedBrands, setSelectedBrands, selectedTypes, set
         setSelectedTypes(updatedTypes);
     };
 
-    const applyFilter = () => {
-        onApplyFilter(selectedBrands, selectedTypes);
-    };
-
-
     return (
         <>
             <div className="w-full py-[30px]">

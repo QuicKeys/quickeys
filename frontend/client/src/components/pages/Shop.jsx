@@ -12,6 +12,8 @@ function Shop() {
   const [previousPage, setPreviousPage] = useState(null)
   const [selectedBrands, setSelectedBrands] = useState([])
   const [selectedTypes, setSelectedTypes] = useState([])
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [tempSelectedFilters, setTempSelectedFilters] = useState('');
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -39,7 +41,6 @@ function Shop() {
       setCurrentPage(currentPage - 1)
     }
   }
-  const [filterOpen, setFilterOpen] = useState(false);
 
   const toggleFilter = () => {
     let apiUrl = `inventory/item/shop-list/?page=${currentPage}`
@@ -63,6 +64,18 @@ function Shop() {
       console.error('Error fetching filtered data:', error);
     })
 
+    // MAPPING OF SELECTED FILTERS
+    let selectedFilters = '';
+
+    if (selectedBrands.length > 0) {
+      selectedFilters += `Brands: ${selectedBrands.join(', ')}`;
+    }
+
+    if (selectedTypes.length > 0) {
+      selectedFilters += `${selectedFilters.length > 0 ? ' | ' : ''}Types: ${selectedTypes.join(', ')}`;
+    }
+
+    setTempSelectedFilters(selectedFilters);
     setFilterOpen(!filterOpen);
   };
 
@@ -92,6 +105,9 @@ function Shop() {
                             <img className="Filter-Icon" src="./src/assets/icons/ICON - Filter.png"/>
                             <p className="font-medium text-QKGreen hover:underline">Filter & Sort</p>
                         </button>
+
+                        {/* Display selected filters */}
+                        <p className="text-MainText/50 font-medium mt-[-5px]">{tempSelectedFilters}</p>
                         
                         <div className={`Filter-Side ease-in-out delay-200 duration-1000 flex flex-col justify-between h-full 
                         ${filterOpen ? 'bottom-[0%] sm:right-[0%] opacity-1 transition-all' : 'bottom-[-200%] opacity-0 sm:bottom-0 sm:right-[-200%]'}
@@ -105,10 +121,10 @@ function Shop() {
                                   <img className="h-[30px] opacity-50 hover:opacity-100" onClick={toggleFilter} src="/src/assets/icons/ICON - Close.png"/>
                               </div>
                               <AccordionFilter
-                              selectedBrands={selectedBrands}
-                              setSelectedBrands={setSelectedBrands}
-                              selectedTypes={selectedTypes}
-                              setSelectedTypes={setSelectedTypes}
+                                selectedBrands={selectedBrands}
+                                setSelectedBrands={setSelectedBrands}
+                                selectedTypes={selectedTypes}
+                                setSelectedTypes={setSelectedTypes}
                               />
                             </div>
                             <div className="flex justify-end w-full">
