@@ -46,6 +46,9 @@ function AccordionFilter() {
                             <div className="overflow-hidden px-[30px] text-[18px]" key={brand.item_brand_id}>
                                 <div className="flex gap-[10px] py-[7px]">
                                     <input className="checkbox" type="checkbox" id={brand.item_brand_name}/>
+                                    <div className="flex justify-center items-center absolute h-[15px] w-[15px] mt-[2.5px] pointer-events-none">
+                                        <img className="h-[9px] w-[12px] mt-[0.5px]" src="/src/assets/icons/ICON - Check.png"/>
+                                    </div>
                                     <label className="" htmlFor={brand.item_brand_name}> {brand.item_brand_name} </label>
                                 </div>
                             </div> 
@@ -64,9 +67,12 @@ function AccordionFilter() {
                         typeOpen ? 'grid-rows-[25fr] visible p-[10px]' : 'grid-rows-[0fr] hidden'
                     }`}>
                         {types.map(type => (
-                            <div className="overflow-hidden px-[25px] text-[18px]" key={type.item_type_id}>
+                            <div className="overflow-hidden px-[30px] text-[18px]" key={type.item_type_id}>
                                 <div className="flex gap-[10px] py-[7px]">
                                     <input className="checkbox" type="checkbox" id={type.item_type_name}/>
+                                    <div className="flex justify-center items-center absolute h-[15px] w-[15px] mt-[2.5px] pointer-events-none">
+                                        <img className="h-[9px] w-[12px] mt-[0.5px]" src="/src/assets/icons/ICON - Check.png"/>
+                                    </div>
                                     <label className="" htmlFor={type.item_type_name}> {type.item_type_name} </label>
                                 </div>
                             </div> 
