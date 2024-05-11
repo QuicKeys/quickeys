@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { apiClient } from '../utils/ApiClient';
 
 
-function AccordionFilter() {
+function AccordionFilter({ selectedBrands, setSelectedBrands, selectedTypes, setSelectedTypes}) {
     const [brands, setBrands] = useState([])
     const [types, setTypes] = useState([])
     const [brandOpen, setBrandOpen] = useState(false);
@@ -28,6 +28,25 @@ function AccordionFilter() {
         })
     }, [])
 
+    const handleBrandChange = (brandId) => {
+        const updatedBrands = selectedBrands.includes(brandId)
+            ? selectedBrands.filter(id => id !== brandId)
+            : [...selectedBrands, brandId];
+        setSelectedBrands(updatedBrands);
+    };
+
+    const handleTypeChange = (typeId) => {
+        const updatedTypes = selectedTypes.includes(typeId)
+            ? selectedTypes.filter(id => id !== typeId)
+            : [...selectedTypes, typeId];
+        setSelectedTypes(updatedTypes);
+    };
+
+    const applyFilter = () => {
+        onApplyFilter(selectedBrands, selectedTypes);
+    };
+
+
     return (
         <>
             <div className="w-full py-[30px]">
@@ -45,7 +64,13 @@ function AccordionFilter() {
                         {brands.map(brand => (
                             <div className="overflow-hidden px-[30px] text-[18px]" key={brand.item_brand_id}>
                                 <div className="flex gap-[10px] py-[7px]">
-                                    <input className="checkbox" type="checkbox" id={brand.item_brand_name}/>
+                                    <input
+                                    className="checkbox"
+                                    type="checkbox"
+                                    id={brand.item_brand_name}
+                                    checked={selectedBrands.includes(brand.item_brand_id)}
+                                    onChange={() => handleBrandChange(brand.item_brand_id)}
+                                    />
                                     <div className="flex justify-center items-center absolute h-[15px] w-[15px] mt-[2.5px] pointer-events-none">
                                         <img className="h-[9px] w-[12px] mt-[0.5px]" src="/src/assets/icons/ICON - Check.png"/>
                                     </div>
@@ -69,7 +94,13 @@ function AccordionFilter() {
                         {types.map(type => (
                             <div className="overflow-hidden px-[30px] text-[18px]" key={type.item_type_id}>
                                 <div className="flex gap-[10px] py-[7px]">
-                                    <input className="checkbox" type="checkbox" id={type.item_type_name}/>
+                                    <input
+                                    className="checkbox"
+                                    type="checkbox"
+                                    id={type.item_type_name}
+                                    checked={selectedTypes.includes(type.item_type_id)}
+                                    onChange={() => handleTypeChange(type.item_type_id)}
+                                    />
                                     <div className="flex justify-center items-center absolute h-[15px] w-[15px] mt-[2.5px] pointer-events-none">
                                         <img className="h-[9px] w-[12px] mt-[0.5px]" src="/src/assets/icons/ICON - Check.png"/>
                                     </div>
