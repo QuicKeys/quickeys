@@ -61,7 +61,7 @@ function Shop() {
                 </div>
         </section>
 
-        <section className="px-[25px] nm:px-[50px] my-[50px]">
+        <section className="px-[25px] nm:px-[50px] my-[40px]">
                 <div className="flex flex-col items-center w-full">
                     <div className="flex w-full max-w-[1600px] justify-between">
 
