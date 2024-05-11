@@ -10,6 +10,8 @@ function Shop() {
   const [currentPage, setCurrentPage] = useState(1)
   const [nextPage, setNextPage] = useState(null)
   const [previousPage, setPreviousPage] = useState(null)
+  const [selectedBrands, setSelectedBrands] = useState([])
+  const [selectedTypes, setSelectedTypes] = useState([])
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -40,6 +42,27 @@ function Shop() {
   const [filterOpen, setFilterOpen] = useState(false);
 
   const toggleFilter = () => {
+    let apiUrl = `inventory/item/shop-list/?page=${currentPage}`
+
+    if (selectedBrands.length > 0) {
+      apiUrl += `&item_brand=${selectedBrands.join(',')}`
+    }
+
+    if (selectedTypes.length > 0) {
+      apiUrl += `&item_type=${selectedTypes.join(',')}`
+    }
+
+    apiClient
+    .get(apiUrl)
+    .then(response => {
+      setItems(response.data.results);
+      setNextPage(response.data.next);
+      setPreviousPage(response.data.previous);
+    })
+    .catch(error => {
+      console.error('Error fetching filtered data:', error);
+    })
+
     setFilterOpen(!filterOpen);
   };
 
@@ -77,11 +100,16 @@ function Shop() {
                               <div className="flex justify-between w-full">
                                   <div>
                                       <p className="text-QKGreen text-[25px] font-medium">Filter & Sort</p>
-                                      <p className="text-MainText/50 font-medium mt-[-5px]">250 Items</p>
+                                      <p className="text-MainText/50 font-medium mt-[-5px]">{items.length} Items</p>
                                   </div>
                                   <img className="h-[30px] opacity-50 hover:opacity-100" onClick={toggleFilter} src="/src/assets/icons/ICON - Close.png"/>
                               </div>
-                              <AccordionFilter/>
+                              <AccordionFilter
+                              selectedBrands={selectedBrands}
+                              setSelectedBrands={setSelectedBrands}
+                              selectedTypes={selectedTypes}
+                              setSelectedTypes={setSelectedTypes}
+                              />
                             </div>
                             <div className="flex justify-end w-full">
                               <button className="Filter-Apply-BTN" onClick={toggleFilter}>
@@ -91,7 +119,7 @@ function Shop() {
                         </div>
 
                         <div className={`Overlay transition-all duration-500 ${filterOpen ? 'opacity-1 backdrop-blur-sm' : 'opacity-0 pointer-events-none'}`} onClick={toggleFilter}/>
-                        <div>25 Items</div>
+                        <div>{items.length} Items</div>
                     </div>
                 </div>
         </section>
