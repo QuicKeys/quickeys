@@ -48,7 +48,7 @@ function Shop() {
         <div className={`Filter-Overlay delay-200 duration-1000 ${filterOpen ? 'opacity-1 backdrop-blur-sm' : 'opacity-0 pointer-events-none'}`} onClick={toggleFilter}/>
         <section className="flex justify-center w-full">
                 <div className="bg-[#252525] bg-opacity-50 flex flex-col justify-end items-center w-full py-[50px] px-[25px] nm:px-[50px]">
-                    <p className="flex justify-center lg:justify-start w-full max-w-[1600px] pt-[25px] text-QKGreen text-[60px] font-semibold">
+                    <p className="flex justify-center lg:justify-start w-full max-w-[1600px] pt-[50px] text-QKGreen text-[60px] font-semibold">
                         SHOP
                     </p>
                     <div className="flex justify-center lg:justify-start w-full max-w-[1600px] opacity-50">
