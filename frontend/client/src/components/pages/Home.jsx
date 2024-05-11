@@ -1,4 +1,4 @@
-import React, { Profiler } from 'react';
+import React from 'react';
 
 import { Reveal } from '../Reveal';
 import transition from '../Transition';
@@ -6,19 +6,7 @@ import transition from '../Transition';
 import BuildButton from '../BuildButton';
 
 import QKSwitch from '../QKSwitch';
-import AccordionFilter from '../AccordionFilter';
-
 function Home() {
-
-    function onRender(phase, actualDuration, baseDuration, startTime, commitTime) {
-        console.log("Status", {actualDuration});
-
-        console.log("Start Time", {startTime});
-        console.log("Commit Time", {commitTime});
-
-        console.log("Base Duration", {baseDuration});
-    }
-
     return (
         <>
             <section className="w-[100%] pt-[100px] px-[15px] nm:px-[50px] min-h-[1000px] overflow-hidden">
@@ -59,11 +47,9 @@ function Home() {
                         </div>
                     </div>
                 </Reveal>
-                <Profiler id="3D-Switch" onRender={onRender}>
-                    <Reveal>
-                        <QKSwitch/>
-                    </Reveal>
-                </Profiler>
+                <Reveal>
+                    <QKSwitch/>
+                </Reveal>
 
 
                 <Reveal>
@@ -117,7 +103,7 @@ function Home() {
             <section className="flex justify-center w-full mb-[100px]">
                 <div className="bg-[#252525] bg-opacity-50 flex flex-col justify-center items-center w-full py-[50px] px-[25px] nm:px-[50px]">
                     <p className="flex justify-center lg:justify-start w-full max-w-[1600px] text-QKGreen text-[60px] font-semibold">
-                        SHOP
+                        NEW ARRIVALS
                     </p>
                     <div className="flex justify-center lg:justify-start w-full max-w-[1600px] opacity-50">
                         <p className="max-w-[600px]">
@@ -127,28 +113,6 @@ function Home() {
                         </p>
                     </div>
                 </div>
-            </section>
-
-            <section className="mb-[100px] px-[25px] nm:px-[50px]">
-                <div className="flex flex-col items-center w-full">
-                    <div className="flex w-full max-w-[1600px] justify-between">
-                        <div className="flex items-center gap-2">
-                            <img className="Filter-Icon" src="./src/assets/icons/ICON - Filter.png"/>
-                            <p className="font-medium text-QKGreen hover:underline">Filter & Sort</p>
-                        </div>
-                        <div>25 Items</div>
-                    </div>
-                </div>
-
-                    
-                <div className="Filter-Text">Availability: In Stock</div>
-                
-                <div className="flex flex-col items-center w-full">
-                    <div className="flex w-full max-w-[1600px] justify-center">
-                        <AccordionFilter/>
-                    </div>
-                </div>
-                
             </section>
         </>
     );

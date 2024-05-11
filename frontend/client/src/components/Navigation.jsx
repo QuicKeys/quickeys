@@ -33,7 +33,7 @@ function Navigation() {
           </div>
         </div>
         {toggle && (
-          <div className="flex flex-col nm:hidden bg-BGMain pb-[20px]">
+          <div className="flex flex-col nm:hidden bg-BGMain pb-[20px] shadow-2xl">
             <NavLink className="Navigation-Text py-[7px]" to="/"> Home </NavLink>
             <NavLink className="Navigation-Text py-[7px]" to="/Build"> Build </NavLink>
             <NavLink className="Navigation-Text py-[7px]" to="/Shop"> Shop </NavLink>

@@ -3,6 +3,7 @@ import { Reveal } from '../Reveal'
 import transition from '../Transition'
 import { apiClient } from '../../utils/ApiClient'
 import { Link } from 'react-router-dom';
+import AccordionFilter from '../AccordionFilter';
 
 function Shop() {
   const [items, setItems] = useState([])
@@ -36,16 +37,66 @@ function Shop() {
       setCurrentPage(currentPage - 1)
     }
   }
+  const [filterOpen, setFilterOpen] = useState(false);
 
-    return (
+  const toggleFilter = () => {
+    setFilterOpen(!filterOpen);
+  };
+
+  return (
       <>
-        <div className="py-[100px] px-[15px] nm:px-[50px]">
-          <Reveal>
-            <section className="flex justify-center w-full">
-              <img className="w-[100%] max-w-[1600px]" src="./src/assets/QuicKeys WORDMARK.svg"/>
-            </section>
-          </Reveal>
+        <div className={`Filter-Overlay delay-200 duration-1000 ${filterOpen ? 'opacity-1 backdrop-blur-sm' : 'opacity-0 pointer-events-none'}`} onClick={toggleFilter}/>
+        <section className="flex justify-center w-full">
+                <div className="bg-[#252525] bg-opacity-50 flex flex-col justify-end items-center w-full py-[50px] px-[25px] nm:px-[50px]">
+                    <p className="flex justify-center lg:justify-start w-full max-w-[1600px] pt-[25px] text-QKGreen text-[60px] font-semibold">
+                        SHOP
+                    </p>
+                    <div className="flex justify-center lg:justify-start w-full max-w-[1600px] opacity-50">
+                        <p className="max-w-[600px]">
+                            <span className="font-medium">DISCLAIMER:</span> QuicKeys™ is an independent reseller and is not affiliated 
+                            with the brands or their authorized distributors. 
+                            Products listed in our catalog are sourced independently.
+                        </p>
+                    </div>
+                </div>
+        </section>
 
+        <section className="px-[25px] nm:px-[50px] my-[50px]">
+                <div className="flex flex-col items-center w-full">
+                    <div className="flex w-full max-w-[1600px] justify-between">
+
+                        <button className="flex items-center gap-2" onClick={toggleFilter}>
+                            <img className="Filter-Icon" src="./src/assets/icons/ICON - Filter.png"/>
+                            <p className="font-medium text-QKGreen hover:underline">Filter & Sort</p>
+                        </button>
+                        
+                        <div className={`Filter-Side ease-in-out delay-200 duration-1000 flex flex-col justify-between h-full 
+                        ${filterOpen ? 'bottom-[0%] sm:right-[0%] opacity-1 transition-all' : 'bottom-[-200%] opacity-0 sm:bottom-0 sm:right-[-200%]'}
+                        `}>
+                            <div>
+                              <div className="flex justify-between w-full">
+                                  <div>
+                                      <p className="text-QKGreen text-[25px] font-medium">Filter & Sort</p>
+                                      <p className="text-MainText/50 font-medium mt-[-5px]">250 Items</p>
+                                  </div>
+                                  <img className="h-[30px] opacity-50 hover:opacity-100" onClick={toggleFilter} src="/src/assets/icons/ICON - Close.png"/>
+                              </div>
+                              <AccordionFilter/>
+                            </div>
+                            <div className="flex justify-end w-full">
+                              <button className="Filter-Apply-BTN" onClick={toggleFilter}>
+                                Apply
+                              </button>
+                            </div>
+                        </div>
+
+                        <div className={`Overlay transition-all duration-500 ${filterOpen ? 'opacity-1 backdrop-blur-sm' : 'opacity-0 pointer-events-none'}`} onClick={toggleFilter}/>
+                        <div>25 Items</div>
+                    </div>
+                </div>
+        </section>
+
+        <div className="pb-[100px] px-[15px] nm:px-[50px]">
           <div className="flex flex-col items-center">
             <div className="ItemCard-Responsiveness grid gap-[30px] relative">
               {items.map(item => (
@@ -76,7 +127,7 @@ function Shop() {
           </Reveal>
         </div>
       </>
-    )
+  )
 }
 
 export default transition(Shop);
