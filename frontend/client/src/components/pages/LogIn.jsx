@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { apiClient } from '../../utils/ApiClient';
+import { apiClientWithCredentials } from '../../utils/ApiClient';
 import transition from '../Transition';
 
 function LogIn() {
@@ -23,7 +23,7 @@ function LogIn() {
     e.preventDefault()
 
     try {
-      const response = await apiClient.post('accounts/login/',
+      const response = await apiClientWithCredentials.post('accounts/login/',
       {
         username: credentials.email,
         password: credentials.password

@@ -29,7 +29,7 @@ function Navigation() {
             <NavLink to="/Cart"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - Cart.png" alt="Cart"/> </NavLink>
             <NavLink to="/Log-In"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - User.png" alt="Login"/> </NavLink>
             {/* <NavLink to="/Profile"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - User.png" alt="Profile"/> </NavLink> */}
-            {/* <NavLink to="/Log-In" onClick={LogoutButton}>LOGOUT</NavLink> */}
+            {/* <LogoutButton></LogoutButton> */}
           </div>
         </div>
         {toggle && (

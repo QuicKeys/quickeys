@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom'
-import { apiClient } from '../utils/ApiClient'
+import { apiClientWithCredentials } from '../utils/ApiClient'
 
 function LogoutButton() {
     const navigate = useNavigate()
 
     const handleLogout = async () => {
         try {
-            const response = await apiClient.post('accounts/logout/')
+            const response = await apiClientWithCredentials.post('accounts/logout/')
 
             navigate('/Log-In');
-            console.log(response);
+            console.log(response.data.message);
         } catch (error) {
             console.error("Logout failed", error.message)
 
