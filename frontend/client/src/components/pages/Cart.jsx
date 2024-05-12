@@ -61,7 +61,7 @@ function Cart() {
       <>
         <div className="px-[15px]">
           {loggedIn ? (
-            <div className="flex flex-col justify-center items-center w-full h-[90vh]">
+            <div className="flex flex-col justify-center items-center w-full h-full mt-[100px]">
               <div className="flex justify-center sm:justify-between w-full max-w-[1200px]">
                 <p className="text-QKGreen text-[60px] font-semibold">My Cart</p>
                 <div className="flex items-center">
@@ -69,51 +69,61 @@ function Cart() {
                 </div>
               </div>
 
-              <div className="bg-MainText/30 w-full h-[1px] max-w-[1200px] my-[10px]"/>
+              <div className="bg-MainText/30 w-full h-[1px] max-w-[1200px] mt-[15px] mb-[15px] sm:mb-[25px]"/>
 
               {order && (
                 <>
                   <div className="w-full max-w-[1200px]">
-                    <div className="min-h-[300px] max-h-[450px]">
-                      <div className="flex gap-[20px]">
-                        <div className="ItemCard-Image-Cart max-h-[200px] max-w-[200px]">
-                          <NavLink to={`/Item/${order.item.item_id}`}>
-                            <img
-                              className="transition-all duration-500 p-[5%] hover:scale-105"
-                              src={order.item.item_profile_picture_link}>
-                            </img>
-                          </NavLink>
-                        </div>
-                        
-                        <div className="flex flex-col justify-between">
-                          <div>
-                            <p className="text-[20px] font-semibold max-w-[400px]">{order.item.item_name}</p>
-                            <p className="text-QKGreen">₱{parseFloat(order.item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                      <div className="flex justify-between gap-[10px]">
+
+                        <div className="flex gap-[12px] sm:gap-[20px]">
+                          <div className="ItemCard-Image-Cart">
+                            <NavLink to={`/Item/${order.item.item_id}`}>
+                              <img
+                                className="transition-all duration-500 p-[5%] hover:scale-105"
+                                src={order.item.item_profile_picture_link}>
+                              </img>
+                            </NavLink>
                           </div>
-                          <div className="flex items-center">
-                                        <div className="Quantity-Box rounded-sm my-[5px]">
-                                            <button onClick={quantitySUBTRACT}>
-                                                <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - SUBTRACT.png"/>
-                                            </button>
-                                            {order.item.item_quantity === 0 ? (
-                                                <p className="absolute top-[2px] opacity-50">0</p>
-                                            ) : (
-                                                <p className="absolute top-[2px]">{quantity}</p>
-                                            )}
-                                            <button onClick={quantityADD}>
-                                                <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - ADD.png"/>
-                                            </button>
+                          
+                          <div className="flex flex-col justify-between">
+                            <div>
+                              <p className="Cart-Main-Text">{order.item.item_name}</p>
+                              <p className="text-[80%] sm:text-[100%] text-QKGreen transition-all duration-300">₱{parseFloat(order.item.item_price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                            </div>
+                            <div className="flex items-center">
+                                        <div className="flex flex-col-reverse sm:flex-row sm:gap-[7px] sm:items-center">
+                                          <div className="Quantity-Box rounded-sm my-[5px]">
+                                              <button onClick={quantitySUBTRACT}>
+                                                  <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - SUBTRACT.png"/>
+                                              </button>
+                                              {order.item.item_quantity === 0 ? (
+                                                  <p className="absolute top-[2px] opacity-50">0</p>
+                                              ) : (
+                                                  <p className="absolute top-[2px]">{quantity}</p>
+                                              )}
+                                              <button onClick={quantityADD}>
+                                                  <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - ADD.png"/>
+                                              </button>
+                                          </div>
+                                          {order.item.item_quantity <= 15 && order.item.item_quantity > 0 && (
+                                              <p className="text-MainText/50 text-[80%] sm:text-[100%]">{order.item.item_quantity} items left</p>
+                                          )}
+                                          {order.item.item_quantity === 0 && (
+                                              <p className="text-MainText/50 ml-[10px]">Out of stock</p>
+                                          )}
                                         </div>
-                                        {order.item.item_quantity <= 15 && order.item.item_quantity > 0 && (
-                                            <p className="text-MainText/50 ml-[10px]">{order.item.item_quantity} items left</p>
-                                        )}
-                                        {order.item.item_quantity === 0 && (
-                                            <p className="text-MainText/50 ml-[10px]">Out of stock</p>
-                                        )}
+                            </div>
                           </div>
                         </div>
+
+                        <div>
+                          <img className="min-h-[18px] min-w-[18px] h-[18px] w-[18px] opacity-50 hover:opacity-100 block sm:hidden" src="/src/assets/icons/ICON - Close.png"/>
+                          <p className="Cart-Main-Text hidden sm:block">₱{parseFloat(order.item.item_price * quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                        </div>
+
                       </div>
-                    </div>
+                      <div className="bg-MainText/30 w-full h-[1px] my-[15px] sm:my-[25px]"/>
                   </div>
                 </>
               )}

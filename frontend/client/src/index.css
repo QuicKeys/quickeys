@@ -65,7 +65,7 @@ body {
     @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
 }
 .ItemCard-Image-Cart {
-    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain rounded-md
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain rounded-md max-h-[130px] max-w-[130px] sm:max-h-[170px] sm:max-w-[170px] transition-all duration-300
 }
 
 .Quantity-Box {
@@ -73,6 +73,10 @@ body {
 }
 .Add-To-Cart-BTN {
     @apply flex justify-center w-full max-w-[350px] bg-QKGreen text-HeavyMain font-medium p-[15px] nm:p-[10px] hover:bg-[#00EA7F] transition-all duration-100
+}
+
+.Cart-Main-Text {
+    @apply text-[80%] sm:text-[20px] font-semibold max-w-[400px] transition-all duration-300
 }
 
 /* Filter Styling */
