@@ -18,7 +18,12 @@ class OrderRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIV
     serializer_class = OrderSerializer
     lookup_field = 'order_id'
 
-class OrderRetrieve(BaseAPIView, generics.RetrieveAPIView):
+# class OrderRetrieve(BaseAPIView, generics.RetrieveAPIView):
+#     queryset = Orders.objects.all()
+#     serializer_class = OrderSerializer
+#     lookup_field = 'order_id'
+    
+class OrderRetrieve(generics.RetrieveAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
     lookup_field = 'order_id'
@@ -57,7 +62,12 @@ class OrderLineRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroy
     serializer_class = OrderLineSerializer
     lookup_field = 'order_line_id'
 
-class OrderLineRetrieve(BaseAPIView, generics.RetrieveAPIView):
+# class OrderLineRetrieve(BaseAPIView, generics.RetrieveAPIView):
+#     queryset = OrderLine.objects.all()
+#     serializer_class = OrderLineSerializer
+#     lookup_field = 'order_line_id'
+    
+class OrderLineRetrieve(generics.RetrieveAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer
     lookup_field = 'order_line_id'

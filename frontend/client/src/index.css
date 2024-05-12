@@ -47,10 +47,10 @@ body {
 
 /* Shop Item Card Styling */
 .ItemCard-Image-Shop {
-    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain mb-[5px]
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain mb-[5px] rounded-md
 }
 .ItemCard-Image-View {
-    @apply relative flex nm:min-w-[400px] nm:min-h-[400px] nm:w-[40%] nm:h-[40%] nm:max-w-[850px] nm:max-h-[850px] bg-HeavyMain
+    @apply relative flex nm:min-w-[400px] nm:min-h-[400px] nm:w-[40%] nm:h-[40%] nm:max-w-[850px] nm:max-h-[850px] bg-HeavyMain rounded-md
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
@@ -63,6 +63,9 @@ body {
 }
 .ItemCard-Responsiveness {
     @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
+}
+.ItemCard-Image-Cart {
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain rounded-md
 }
 
 .Quantity-Box {
