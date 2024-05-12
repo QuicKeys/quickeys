@@ -39,7 +39,7 @@ function App() {
     }
 
     if (!location.pathname.startsWith('/Item/')) {
-      document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 Not Found – QuicKeys™';
+      document.title = pageTitles[location.pathname] ? `${pageTitles[location.pathname]} – QuicKeys™` : '404 Page Not Found – QuicKeys™';
     }
   });
 
