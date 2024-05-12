@@ -1,29 +1,29 @@
 from core.models import ItemProperty, ItemPropertyValue
 from rest_framework import generics
 from ..serializers import ItemPropertySerializer, ItemPropertyValueSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 
 
 # Item Property
-class ItemPropertyCreate(BaseAPIView, generics.CreateAPIView):
+class ItemPropertyCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = ItemProperty.objects.all()
     serializer_class = ItemPropertySerializer
 
-class ItemPropertyListCreate(BaseAPIView, generics.ListCreateAPIView):
+class ItemPropertyListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = ItemProperty.objects.all()
     serializer_class = ItemPropertySerializer
 
-class ItemPropertyRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
-    queryset = ItemProperty.objects.all()
-    serializer_class = ItemPropertySerializer
-    lookup_field = 'item_property_id'
-
-class ItemPropertyRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class ItemPropertyRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = ItemProperty.objects.all()
     serializer_class = ItemPropertySerializer
     lookup_field = 'item_property_id'
 
-class ItemPropertyList(BaseAPIView, generics.ListAPIView):
+class ItemPropertyRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+    queryset = ItemProperty.objects.all()
+    serializer_class = ItemPropertySerializer
+    lookup_field = 'item_property_id'
+
+class ItemPropertyList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = ItemPropertySerializer
 
     # Sort by item property attribute
@@ -39,25 +39,25 @@ class ItemPropertyList(BaseAPIView, generics.ListAPIView):
 
 
 # Item Property Value
-class ItemPropertyValueCreate(BaseAPIView, generics.CreateAPIView):
+class ItemPropertyValueCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = ItemPropertyValue.objects.all()
     serializer_class = ItemPropertyValueSerializer
     
-class ItemPropertyValueListCreate(BaseAPIView, generics.ListCreateAPIView):
+class ItemPropertyValueListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = ItemPropertyValue.objects.all()
     serializer_class = ItemPropertyValueSerializer
 
-class ItemPropertyValueRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
-    queryset = ItemPropertyValue.objects.all()
-    serializer_class = ItemPropertyValueSerializer
-    lookup_field = 'item_property_value_id'
-
-class ItemPropertyValueRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class ItemPropertyValueRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = ItemPropertyValue.objects.all()
     serializer_class = ItemPropertyValueSerializer
     lookup_field = 'item_property_value_id'
 
-class ItemPropertyValueList(BaseAPIView, generics.ListAPIView):
+class ItemPropertyValueRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+    queryset = ItemPropertyValue.objects.all()
+    serializer_class = ItemPropertyValueSerializer
+    lookup_field = 'item_property_value_id'
+
+class ItemPropertyValueList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = ItemPropertyValueSerializer
 
     def get_queryset(self):

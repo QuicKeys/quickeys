@@ -1,23 +1,23 @@
 from core.models import ItemBrand
 from rest_framework import generics
 from ..serializers import ItemBrandSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 
 
-class ItemBrandCreate(BaseAPIView, generics.CreateAPIView):
+class ItemBrandCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = ItemBrand.objects.all()
     serializer_class = ItemBrandSerializer
 
-class ItemBrandListCreate(BaseAPIView, generics.ListCreateAPIView):
+class ItemBrandListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = ItemBrand.objects.all()
     serializer_class = ItemBrandSerializer
 
-class ItemBrandRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+class ItemBrandRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = ItemBrand.objects.all()
     serializer_class = ItemBrandSerializer
     lookup_field = 'item_brand_id'
 
-class ItemBrandRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class ItemBrandRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
     queryset = ItemBrand.objects.all()
     serializer_class = ItemBrandSerializer
     lookup_field = 'item_brand_id'

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { apiClientWithCredentials } from '../utils/ApiClient'
+import { apiClientWithCredentials, removeAuthToken } from '../utils/ApiClient'
 
 function LogoutButton() {
     const navigate = useNavigate()
@@ -8,6 +8,7 @@ function LogoutButton() {
         try {
             const response = await apiClientWithCredentials.post('accounts/logout/')
 
+            removeAuthToken
             navigate('/Log-In');
             console.log(response.data.message);
         } catch (error) {

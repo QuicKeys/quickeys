@@ -1,29 +1,29 @@
 from core.models import KeyboardBuilder, KeyboardBuilderItem
 from rest_framework import generics
 from ..serializers import KeyboardBuilderSerializer, KeyboardBuilderItemSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 
 
 # Keyboard Builder
-class KeyboardBuilderCreate(BaseAPIView, generics.CreateAPIView):
+class KeyboardBuilderCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = KeyboardBuilder.objects.all()
     serializer_class = KeyboardBuilderSerializer
 
-class KeyboardBuilderListCreate(BaseAPIView, generics.ListCreateAPIView):
+class KeyboardBuilderListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = KeyboardBuilder.objects.all()
     serializer_class = KeyboardBuilderSerializer
 
-class KeyboardBuilderRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
-    queryset = KeyboardBuilder.objects.all()
-    serializer_class = KeyboardBuilderSerializer
-    lookup_field = 'keyboard_builder_id'
-
-class KeyboardBuilderRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class KeyboardBuilderRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = KeyboardBuilder.objects.all()
     serializer_class = KeyboardBuilderSerializer
     lookup_field = 'keyboard_builder_id'
 
-class KeyboardBuilderList(BaseAPIView, generics.ListAPIView):
+class KeyboardBuilderRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+    queryset = KeyboardBuilder.objects.all()
+    serializer_class = KeyboardBuilderSerializer
+    lookup_field = 'keyboard_builder_id'
+
+class KeyboardBuilderList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = KeyboardBuilderSerializer
     
     def get_queryset(self):
@@ -44,25 +44,25 @@ class KeyboardBuilderList(BaseAPIView, generics.ListAPIView):
         return queryset
 
 # Keyboard Builder Item
-class KeyboardBuilderItemCreate(BaseAPIView, generics.CreateAPIView):
+class KeyboardBuilderItemCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = KeyboardBuilderItem.objects.all()
     serializer_class = KeyboardBuilderItemSerializer
     
-class KeyboardBuilderItemListCreate(BaseAPIView, generics.ListCreateAPIView):
+class KeyboardBuilderItemListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = KeyboardBuilderItem.objects.all()
     serializer_class = KeyboardBuilderItemSerializer
 
-class KeyboardBuilderItemRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
-    queryset = KeyboardBuilderItem.objects.all()
-    serializer_class = KeyboardBuilderItemSerializer
-    lookup_field = 'keyboard_builder_item_id'
-
-class KeyboardBuilderItemRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class KeyboardBuilderItemRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = KeyboardBuilderItem.objects.all()
     serializer_class = KeyboardBuilderItemSerializer
     lookup_field = 'keyboard_builder_item_id'
 
-class KeyboardBuilderItemList(BaseAPIView, generics.ListAPIView):
+class KeyboardBuilderItemRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+    queryset = KeyboardBuilderItem.objects.all()
+    serializer_class = KeyboardBuilderItemSerializer
+    lookup_field = 'keyboard_builder_item_id'
+
+class KeyboardBuilderItemList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = KeyboardBuilderItemSerializer
 
     def get_queryset(self):
