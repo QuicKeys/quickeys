@@ -49,12 +49,12 @@ function Item() {
                         <div className="flex justify-center flex-col nm:flex-row">
 
                             <div className="ItemCard-Image-View">
-                                <div className="absolute left-0 top-[-40px] text-sm opacity-0 nm:opacity-100">
-                                    <div className="flex items-center gap-[10px]">
+                                <div className="absolute left-0 top-[-40px] text-md opacity-0 nm:opacity-100">
+                                    <div className="flex items-center gap-[15px]">
                                         <NavLink to="/" className="opacity-50 hover:opacity-75 cursor-pointer">Home</NavLink>
-                                        <img className="max-h-[6.5px] opacity-50" src="/src/assets/icons/ICON - Arrow.png"/>
+                                        <img className="max-h-[10px] opacity-50" src="/src/assets/icons/ICON - Arrow.png"/>
                                         <NavLink to="/Shop" className="opacity-50 hover:opacity-75 cursor-pointer">Shop</NavLink>
-                                        <img className="max-h-[6.5px] opacity-50" src="/src/assets/icons/ICON - Arrow.png"/>
+                                        <img className="max-h-[10px] opacity-50" src="/src/assets/icons/ICON - Arrow.png"/>
                                         <p className="opacity-100 cursor-pointer">{item.item_type.item_type_name}</p>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@ function Item() {
                             </div>
                             <div className="pt-[25px] nm:pl-[25px] nm:pt-[0px] nm:max-w-[50%]">
                                 <Reveal>
-                                    <p className="text-[30px] font-semibold">{item.item_name}</p>
+                                    <p className="text-[35px] font-semibold">{item.item_name}</p>
                                 </Reveal>
                                 <Reveal>
                                     <p className="text-QKGreen my-[5px]">{item.item_brand.item_brand_name}</p>
@@ -111,7 +111,7 @@ function Item() {
                                 <div className="max-w-[700px]">
                                     <Reveal>
                                         <p className="text-MainText/75 mt-[50px]">
-                                            [ ITEM DESCRIPTION ]
+                                            {item.item_description}
                                         </p>
                                     </Reveal>
                                     <Reveal>
