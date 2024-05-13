@@ -1,28 +1,28 @@
 from core.models import UserAddress
 from rest_framework import generics
 from ..serializers import UserAddressSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 
 
-class UserAddressCreate(BaseAPIView, generics.CreateAPIView):
+class UserAddressCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = UserAddress.objects.all()
     serializer_class = UserAddressSerializer
 
-class UserAddressListCreate(BaseAPIView, generics.ListCreateAPIView):
+class UserAddressListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = UserAddress.objects.all()
     serializer_class = UserAddressSerializer
 
-class UserAddressRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
-    queryset = UserAddress.objects.all()
-    serializer_class = UserAddressSerializer
-    lookup_field = 'user_address_id'
-
-class UserAddressRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class UserAddressRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = UserAddress.objects.all()
     serializer_class = UserAddressSerializer
     lookup_field = 'user_address_id'
 
-class UserAddressList(BaseAPIView, generics.ListAPIView):
+class UserAddressRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+    queryset = UserAddress.objects.all()
+    serializer_class = UserAddressSerializer
+    lookup_field = 'user_address_id'
+
+class UserAddressList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = UserAddressSerializer
 
     # Sort by user address attribute

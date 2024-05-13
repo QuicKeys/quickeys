@@ -1,33 +1,28 @@
 from core.models import UserProfile
 from rest_framework import generics
 from ..serializers import UserProfileSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView, BaseAuthenticatedAPIView
 
 
-class UserProfileCreate(BaseAPIView, generics.CreateAPIView):
+class UserProfileCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
-class UserProfileListCreate(BaseAPIView, generics.ListCreateAPIView):
+class UserProfileListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
-class UserProfileRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+class UserProfileRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     lookup_field = 'user_id'
-
-# class UserProfileRetrieve(BaseAPIView, generics.RetrieveAPIView):
-#     queryset = UserProfile.objects.all()
-#     serializer_class = UserProfileSerializer
-#     lookup_field = 'user_id'
     
-class UserProfileRetrieve(generics.RetrieveAPIView):
+class UserProfileRetrieve(BaseAuthenticatedAPIView, generics.RetrieveAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    lookup_field = 'user_id'
+    lookup_field = 'auth_user_id'
 
-class UserProfileList(BaseAPIView, generics.ListAPIView):
+class UserProfileList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = UserProfileSerializer
 
     # Sort by item property attribute

@@ -1,23 +1,23 @@
 from core.models import ItemType
 from rest_framework import generics
 from ..serializers import ItemTypeSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 
 
-class ItemTypeCreate(BaseAPIView, generics.CreateAPIView):
+class ItemTypeCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = ItemType.objects.all()
     serializer_class = ItemTypeSerializer
 
-class ItemTypeListCreate(BaseAPIView, generics.ListCreateAPIView):
+class ItemTypeListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = ItemType.objects.all()
     serializer_class = ItemTypeSerializer
 
-class ItemTypeRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+class ItemTypeRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = ItemType.objects.all()
     serializer_class = ItemTypeSerializer
     lookup_field = 'item_type_id'
 
-class ItemTypeRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class ItemTypeRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
     queryset = ItemType.objects.all()
     serializer_class = ItemTypeSerializer
     lookup_field = 'item_type_id'
