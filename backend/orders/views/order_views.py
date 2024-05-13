@@ -1,11 +1,11 @@
 from core.models import Orders, OrderLine
 from rest_framework import generics
 from ..serializers import OrderSerializer, OrderLineSerializer
-from core.views import BaseAdminAPIView
+from core.views import BaseAdminAPIView, BaseAuthenticatedAPIView
 
 
 # Orders
-class OrderCreate(BaseAdminAPIView, generics.CreateAPIView):
+class OrderCreate(BaseAuthenticatedAPIView, generics.CreateAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
 
@@ -23,7 +23,7 @@ class OrderRetrieve(generics.RetrieveAPIView):
     serializer_class = OrderSerializer
     lookup_field = 'order_id'
 
-class OrderList(BaseAdminAPIView, generics.ListAPIView):
+class OrderList(BaseAuthenticatedAPIView, generics.ListAPIView):
     serializer_class = OrderSerializer
     
     def get_queryset(self):
@@ -44,7 +44,7 @@ class OrderList(BaseAdminAPIView, generics.ListAPIView):
         return queryset
 
 # Order Line
-class OrderLineCreate(BaseAdminAPIView, generics.CreateAPIView):
+class OrderLineCreate(BaseAuthenticatedAPIView, generics.CreateAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer
     
@@ -62,7 +62,7 @@ class OrderLineRetrieve(generics.RetrieveAPIView):
     serializer_class = OrderLineSerializer
     lookup_field = 'order_line_id'
 
-class OrderLineList(BaseAdminAPIView, generics.ListAPIView):
+class OrderLineList(BaseAuthenticatedAPIView, generics.ListAPIView):
     serializer_class = OrderLineSerializer
 
     def get_queryset(self):

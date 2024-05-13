@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { Reveal } from '../Reveal';
 import transition from '../Transition';
-import { apiClient } from '../../utils/ApiClient';
+import { apiClient, apiClientWithCredentials } from '../../utils/ApiClient';
+import Order from '../Order'
 
 function Item() {
     const [item, setItem] = useState(null);
     const { itemId } = useParams();
+    const [quantity, setQuantity] = useState(1);
+    const [userId, setUserId] = useState(null)
     
     useEffect(() => {
         const fetchItem = async () => {
@@ -25,10 +28,20 @@ function Item() {
             }
         };
     
+        const fetchUserId = async () => {
+            try {
+                const userIdResponse = await apiClientWithCredentials.post('accounts/current-user/')
+                const profileResponse = await apiClientWithCredentials.get(`users/list/?auth_user_id=${userIdResponse.data.user_id}`)
+
+                setUserId(profileResponse.data[0].user_id)
+            } catch (error) {
+                console.error('Error fetching user ID:', error)
+            }
+        }
+
         fetchItem();
+        fetchUserId()
     }, [itemId]);
-    
-    const [quantity, setQuantity] = useState(1);
 
     const quantityADD = () => {
         if(quantity != item.item_quantity && quantity < item.item_quantity) {
@@ -104,9 +117,7 @@ function Item() {
                                     </div>
                                 </Reveal>
                                 <Reveal>
-                                    <button className="Add-To-Cart-BTN rounded-sm my-[20px]">
-                                        Add to cart
-                                    </button>
+                                    <Order userId={userId} itemId={itemId} quantity={quantity} />
                                 </Reveal>
                                 <div className="max-w-[700px]">
                                     <Reveal>
