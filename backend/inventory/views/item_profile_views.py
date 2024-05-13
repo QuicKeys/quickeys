@@ -1,19 +1,19 @@
 from core.models import Item
 from rest_framework import generics
 from ..serializers import ItemSerializer, ShopItemSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 from core.pagination import ShopPagination
 
 
-class ItemCreate(BaseAPIView, generics.CreateAPIView):
+class ItemCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     
-class ItemListCreate(BaseAPIView, generics.ListCreateAPIView):
+class ItemListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
-class ItemRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+class ItemRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     lookup_field = 'item_id'
