@@ -29,28 +29,32 @@ apiClientWithCredentials.interceptors.request.use(async (request) => {
             const verifyResponse = await apiClient.post('api/token/verify/', {
                 'token': retrieveResponse.data.access
             })
-
-            if (verifyResponse.data.error) {
-                const refreshResponse = await apiClient.post('accounts/refresh/')
-                
-                if (refreshResponse && refreshResponse.data && refreshResponse.data.access) {
-                    setAuthToken(refreshResponse.data.access)
-                    return request
-                } else {
-                    console.error('Failed to refresh access token')
-                    //Navigate to login
-                }
-            } else {
-                return request
-            }
+            // If token verification succeeds, return the original request
+            return request
         } else {
-            console.error('Failed to retrieve access token')
-            //Navigate to login
+            console.error('No access token found')
+            throw new Error('No access token found')
         }
     } catch (error) {
-        console.error('Error refreshing token:', error)
-        //Navigate to login
+        // Attempt to refresh token
+        try {
+            const refreshResponse = await apiClient.post('accounts/refresh/')
+            if (refreshResponse.data.access) {
+                setAuthToken(refreshResponse.data.access)
+                // Retry the original request with the new token
+                const newRequest = { ...request}
+                newRequest.headers['Authorization'] = `Bearer ${refreshResponse.data.access}`
+                return newRequest
+            } else {
+                console.error('Failed to refresh token')
+                throw new Error('Failed to refresh token')
+            }
+        } catch (refreshError) {
+            console.error('Failed to refresh token:', refreshError)
+            throw refreshError
+        }
     }
 })
+
 
 export { apiClientWithCredentials, apiClient , setAuthToken, removeAuthToken }
