@@ -47,10 +47,10 @@ body {
 
 /* Shop Item Card Styling */
 .ItemCard-Image-Shop {
-    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain mb-[5px]
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain mb-[5px] rounded-md
 }
 .ItemCard-Image-View {
-    @apply relative flex nm:min-w-[400px] nm:min-h-[400px] nm:w-[40%] nm:h-[40%] nm:max-w-[850px] nm:max-h-[850px] bg-HeavyMain
+    @apply relative flex nm:min-w-[400px] nm:min-h-[400px] nm:w-[40%] nm:h-[40%] nm:max-w-[850px] nm:max-h-[850px] bg-HeavyMain rounded-md
 }
 .ItemCard-Name {
     @apply text-[18px] font-medium py-[2px]
@@ -64,12 +64,19 @@ body {
 .ItemCard-Responsiveness {
     @apply grid-cols-1 xsm:grid-cols-2 nm:grid-cols-4 lg:grid-cols-5
 }
+.ItemCard-Image-Cart {
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain rounded-md max-h-[130px] max-w-[130px] sm:max-h-[170px] sm:max-w-[170px] transition-all duration-300
+}
 
 .Quantity-Box {
     @apply relative flex justify-center gap-[50px] border-MainText/50 border-2 px-[10px] py-[10px] w-[90px]
 }
 .Add-To-Cart-BTN {
     @apply flex justify-center w-full max-w-[350px] bg-QKGreen text-HeavyMain font-medium p-[15px] nm:p-[10px] hover:bg-[#00EA7F] transition-all duration-100
+}
+
+.Cart-Main-Text {
+    @apply text-[80%] sm:text-[20px] font-semibold max-w-[400px] transition-all duration-300
 }
 
 /* Filter Styling */
