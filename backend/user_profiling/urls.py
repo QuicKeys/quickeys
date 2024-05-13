@@ -19,7 +19,7 @@ urlpatterns = [
     path('create/', UserProfileCreate.as_view(), name='user-profile-create'),
     path('list/create/', UserProfileListCreate.as_view(), name='user-profile-list-create'),
     path('edit/<int:user_id>/', UserProfileRetrieveUpdateDestroy.as_view(), name='user-profile-edit'),
-    path('view/<int:user_id>/', UserProfileRetrieve.as_view(), name='user-profile-view'),
+    path('view/<int:auth_user_id>/', UserProfileRetrieve.as_view(), name='user-profile-view'),
     path('list/', UserProfileList.as_view(), name='user-profile-list'),
 
     path('address/create/', UserAddressCreate.as_view(), name='user-address-create'),

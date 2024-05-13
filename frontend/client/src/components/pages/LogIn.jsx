@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { apiClient } from '../../utils/ApiClient';
+import { apiClient, apiClientWithCredentials, setAuthToken } from '../../utils/ApiClient';
 import transition from '../Transition';
+
 
 function LogIn() {
   const [credentials, setCredentials] = useState({
@@ -29,6 +30,8 @@ function LogIn() {
         password: credentials.password
       },)
       
+      const accessResponse = await apiClientWithCredentials.post('accounts/retrieve-access/')
+      setAuthToken(accessResponse.data.access)
       navigate('/')
       console.log(response.data.message)
     } catch (error) {

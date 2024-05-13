@@ -1,29 +1,29 @@
 from core.models import Orders, OrderLine
 from rest_framework import generics
 from ..serializers import OrderSerializer, OrderLineSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 
 
 # Orders
-class OrderCreate(BaseAPIView, generics.CreateAPIView):
+class OrderCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
 
-class OrderListCreate(BaseAPIView, generics.ListCreateAPIView):
+class OrderListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
 
-class OrderRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
-    queryset = Orders.objects.all()
-    serializer_class = OrderSerializer
-    lookup_field = 'order_id'
-
-class OrderRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class OrderRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
     lookup_field = 'order_id'
 
-class OrderList(BaseAPIView, generics.ListAPIView):
+class OrderRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
+    lookup_field = 'order_id'
+
+class OrderList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = OrderSerializer
     
     def get_queryset(self):
@@ -44,25 +44,25 @@ class OrderList(BaseAPIView, generics.ListAPIView):
         return queryset
 
 # Order Line
-class OrderLineCreate(BaseAPIView, generics.CreateAPIView):
+class OrderLineCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer
     
-class OrderLineListCreate(BaseAPIView, generics.ListCreateAPIView):
+class OrderLineListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer
 
-class OrderLineRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
-    queryset = OrderLine.objects.all()
-    serializer_class = OrderLineSerializer
-    lookup_field = 'order_line_id'
-
-class OrderLineRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class OrderLineRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer
     lookup_field = 'order_line_id'
 
-class OrderLineList(BaseAPIView, generics.ListAPIView):
+class OrderLineRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+    queryset = OrderLine.objects.all()
+    serializer_class = OrderLineSerializer
+    lookup_field = 'order_line_id'
+
+class OrderLineList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = OrderLineSerializer
 
     def get_queryset(self):

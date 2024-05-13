@@ -3,8 +3,10 @@ from django.contrib.auth import authenticate
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from ..serializers import UserSignUpSerializer, UserLogInSerializer
+from core.views import BaseAuthenticatedAPIView
+from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
 
 
 class SignUpView(APIView):
@@ -51,7 +53,7 @@ class LogOutView(APIView):
         refresh_token = request.COOKIES.get('refresh')
 
         if refresh_token is None:
-            return Response({'error': 'No refresh token found',}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'No refresh token found'}, status=status.HTTP_400_BAD_REQUEST)
         
         try:
             token = RefreshToken(refresh_token)        
@@ -64,3 +66,41 @@ class LogOutView(APIView):
         response.delete_cookie('refresh')
 
         return response
+
+class CurrentUserView(APIView):
+    def post(self, request):
+        access_token = request.COOKIES.get('access')
+
+        if access_token is None:
+            return Response({'error': 'No access token found'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            decoded_token = AccessToken(access_token).payload
+            user_id = decoded_token['user_id']
+        except Exception as e:
+            return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response({'user_id': user_id}, status=status.HTTP_200_OK, content_type='application/json')
+
+class CustomTokenRefreshView(TokenRefreshView):
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        refresh = serializer.validated_data['refresh']
+        access = serializer.validated_data['access']
+        
+        response = Response({'access': access, 'refresh': refresh}, status=status.HTTP_200_OK)
+        response.set_cookie('access', access, httponly=True, samesite='None', secure=True)
+        response.set_cookie('refresh', str(refresh), httponly=True, samesite='None', secure=True)
+        
+        return response
+
+class RetrieveAccessToken(APIView):
+    def post(self, request):
+        access = request.COOKIES.get('access')
+
+        if access is None:
+            return Response({'error': 'No access token found'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response({'access': access})

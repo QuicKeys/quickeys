@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Reveal } from '../Reveal';
 import transition from '../Transition';
-import { apiClient } from '../../utils/ApiClient';
+import { apiClientWithCredentials } from '../../utils/ApiClient';
 
 function Profile() {
     const [profile, setProfile] = useState(null);
@@ -9,11 +9,13 @@ function Profile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await apiClient.get(`/users/view/1/`);
-                if (response.data && typeof response.data === 'object') {
-                    setProfile(response.data);
+              const userIdResponse = await apiClientWithCredentials.post('accounts/current-user/')
+
+                const profileResponse = await apiClientWithCredentials.get(`/users/view/${userIdResponse.data.user_id}/`);
+                if (profileResponse.data && typeof profileResponse.data === 'object') {
+                    setProfile(profileResponse.data);
                 } else {
-                    console.error('Received data is not in expected format:', response.data);
+                    console.error('Received data is not in expected format:', profileResponse.data);
                     setProfile(null);
                 }
             } catch (error) {

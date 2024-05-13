@@ -1,23 +1,23 @@
 from core.models import ItemPicture
 from rest_framework import generics
 from ..serializers import ItemPictureSerializer
-from core.views import BaseAPIView
+from core.views import BaseAdminAPIView
 
 
-class ItemPictureCreate(BaseAPIView, generics.CreateAPIView):
+class ItemPictureCreate(BaseAdminAPIView, generics.CreateAPIView):
     queryset = ItemPicture.objects.all()
     serializer_class = ItemPictureSerializer
 
-class ItemPictureListCreate(BaseAPIView, generics.ListCreateAPIView):
+class ItemPictureListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = ItemPicture.objects.all()
     serializer_class = ItemPictureSerializer
 
-class ItemPictureRetrieveUpdateDestroy(BaseAPIView, generics.RetrieveUpdateDestroyAPIView):
+class ItemPictureRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = ItemPicture.objects.all()
     serializer_class = ItemPictureSerializer
     lookup_field = 'item_picture_id'
 
-class ItemPictureRetrieve(BaseAPIView, generics.RetrieveAPIView):
+class ItemPictureRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
     queryset = ItemPicture.objects.all()
     serializer_class = ItemPictureSerializer
     lookup_field = 'item_picture_id'
