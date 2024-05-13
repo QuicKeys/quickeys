@@ -7,6 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from ..serializers import UserSignUpSerializer, UserLogInSerializer
 from core.views import BaseAuthenticatedAPIView
 from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
+from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 
 
 class SignUpView(APIView):
@@ -84,17 +85,25 @@ class CurrentUserView(APIView):
 
 class CustomTokenRefreshView(TokenRefreshView):
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        
-        refresh = serializer.validated_data['refresh']
-        access = serializer.validated_data['access']
-        
-        response = Response({'access': access, 'refresh': refresh}, status=status.HTTP_200_OK)
-        response.set_cookie('access', access, httponly=True, samesite='None', secure=True)
-        response.set_cookie('refresh', str(refresh), httponly=True, samesite='None', secure=True)
-        
-        return response
+        try:
+            refresh = request.COOKIES.get('refresh')
+            if not refresh:
+                return Response({"error": "No refresh token found in cookies"}, status=status.HTTP_400_BAD_REQUEST)
+
+            try:
+                refresh_token = RefreshToken(refresh)
+                new_access = str(refresh_token.access_token)
+                new_refresh = str(refresh_token)
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+            response = Response({"detail": "Token refreshed successfully", 'access': new_access})
+            response.set_cookie('access', new_access, httponly=True, samesite='None', secure=True)
+            response.set_cookie('refresh', new_refresh, httponly=True, samesite='None', secure=True)
+
+            return response
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 class RetrieveAccessToken(APIView):
     def post(self, request):
