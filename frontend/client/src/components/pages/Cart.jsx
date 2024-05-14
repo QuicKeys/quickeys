@@ -33,7 +33,13 @@ function Cart() {
     fetchOrder();
   }, []);
 
-  const [loggedIn, setLoggedInStatus] = useState(true);
+  const [loggedIn, setLoggedInStatus] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem('userId') != null) {
+      setLoggedInStatus(true)
+    }
+  })
 
   const handleAuth = () => {
     setLoggedInStatus(!loggedIn);
@@ -82,9 +88,9 @@ function Cart() {
 
   return (
     <>
-      <div className="px-[15px]">
-        {loggedIn ? (
-          <div className="flex flex-col justify-center items-center w-full h-full mt-[100px]">
+      <div>
+        {order && order.length > 0 ? (
+          <div className="flex flex-col justify-center items-center w-full h-full mt-[100px] mx-[15px]">
             <div className="flex justify-center sm:justify-between w-full max-w-[1200px]">
               <p className="text-QKGreen text-[60px] font-semibold">My Cart</p>
               <div className="flex items-center">
@@ -171,8 +177,26 @@ function Cart() {
         ) : (
           <>
             <div className="flex flex-col justify-center items-center w-screen h-[90vh]">
-              You are not logged in bro what are u doing
-              <button className="bg-BGMain p-[5px] rounded-md mt-[25px]" onClick={handleAuth}>LOG IN</button>
+              <div className="flex justify-center max-w-[1200px] mx-[15px]">
+                <div className="flex flex-col justify-center items-center">
+                  <p className="text-[70px] text-center font-semibold transition-all duration-300 mx-[20px] leading-none">Your Cart is <span className="text-QKGreen">Empty</span>.</p>
+                  <p className="flex text-center text-MainText/65 mt-[10px] transition-all duration-300">It appears that you haven't added items to your cart.</p>
+                  <NavLink className="flex justify-center mt-[25px]" to="/Shop">
+                    <div className="group text-center w-[250px] px-[50px] py-[10px] border-[3px] border-QKGreen hover:bg-QKGreen rounded-full transition-all duration-200">
+                      <p className="text-[16px] sm:text-[18px] text-QKGreen group-hover:text-BGMain">
+                        Go to Shop
+                      </p>
+                    </div>
+                  </NavLink>
+                  {!loggedIn && (
+                    <p className="text-center mt-[100px] transition-all duration-300">
+                      Have an account? <NavLink to="/Log-In">
+                        <span><button className="text-QKGreen hover:underline">Log In </button></span>
+                      </NavLink> here.
+                    </p>
+                  )}  
+                </div>
+              </div>
             </div>
           </>
         )}
