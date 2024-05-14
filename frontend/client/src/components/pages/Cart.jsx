@@ -64,7 +64,13 @@ function Cart() {
   const removeFromCart = async (orderLineId) => {
     try {
       await apiClientWithCredentials.delete(`orders/line/edit/${orderLineId}/`);
-      setOrder(order.filter(item => item.order_line_id !== orderLineId));
+      const updatedOrder = order.filter(item => item.order_line_id !== orderLineId)
+      setOrder(updatedOrder);
+
+      if (updatedOrder.length === 0) {
+        await apiClientWithCredentials.delete(`/orders/edit/${localStorage.getItem('orderId')}/`);
+        localStorage.removeItem('orderId');
+      } 
     } catch (error) {
       console.error('Error removing item from cart:', error);
     }
@@ -75,7 +81,6 @@ function Cart() {
       await apiClientWithCredentials.delete(`/orders/line/delete-all/${localStorage.getItem('orderId')}/`);
       setOrder([]);
       localStorage.removeItem('orderId');
-      localStorage.removeItem('orderCreated');
     } catch (error) {
       console.error('Error removing all items from cart:', error);
     }
