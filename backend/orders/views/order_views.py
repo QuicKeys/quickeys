@@ -15,7 +15,7 @@ class OrderListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
 
-class OrderRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
+class OrderRetrieveUpdateDestroy(BaseAuthenticatedAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
     lookup_field = 'order_id'
