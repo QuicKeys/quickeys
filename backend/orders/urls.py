@@ -9,6 +9,7 @@ from .views.order_views import (
     OrderLineCreate,
     OrderLineListCreate,
     OrderLineRetrieveUpdateDestroy,
+    DeleteAllOrderLinesView,
     OrderLineRetrieve,
     OrderLineList
 )
@@ -24,6 +25,7 @@ urlpatterns = [
     path('line/create/', OrderLineCreate.as_view(), name='order-line-create'),
     path('line/list/create/', OrderLineListCreate.as_view(), name='order-line-list-create'),
     path('line/edit/<int:order_line_id>/', OrderLineRetrieveUpdateDestroy.as_view(), name='order-line-edit'),
+    path('line/delete-all/<int:order>/', DeleteAllOrderLinesView.as_view(), name='delete-all-order-lines'),
     path('line/view/<int:order_line_id>/', OrderLineRetrieve.as_view(), name='order-line-view'),
     path('line/list/', OrderLineList.as_view(), name='order-line-list'),
 ]

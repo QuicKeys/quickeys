@@ -9,6 +9,7 @@ function LogoutButton() {
             const response = await apiClientWithCredentials.post('accounts/logout/')
 
             removeAuthToken
+            localStorage.removeItem('userId')
             navigate('/Log-In');
             console.log(response.data.message);
         } catch (error) {

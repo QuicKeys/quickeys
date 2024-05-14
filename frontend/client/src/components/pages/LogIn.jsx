@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { apiClient, setAuthToken } from '../../utils/ApiClient';
+import { apiClientWithCredentials, apiClient, setAuthToken } from '../../utils/ApiClient';
 import transition from '../Transition';
 
 
@@ -32,6 +32,12 @@ function LogIn() {
       
       const accessResponse = await apiClient.post('accounts/retrieve-access/')
       setAuthToken(accessResponse.data.access)
+
+      const userIdResponse = await apiClientWithCredentials.post('accounts/current-user/')
+      const userId = userIdResponse.data.user_id
+
+      localStorage.setItem('userId', userId)
+
       navigate('/')
       console.log(response.data.message)
     } catch (error) {

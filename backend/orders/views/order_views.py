@@ -1,5 +1,7 @@
 from core.models import Orders, OrderLine
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from ..serializers import OrderSerializer, OrderLineSerializer
 from core.views import BaseAdminAPIView, BaseAuthenticatedAPIView
 
@@ -52,10 +54,29 @@ class OrderLineListCreate(BaseAdminAPIView, generics.ListCreateAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer
 
-class OrderLineRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdateDestroyAPIView):
+class OrderLineRetrieveUpdateDestroy(BaseAuthenticatedAPIView, generics.RetrieveUpdateDestroyAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = OrderLineSerializer
     lookup_field = 'order_line_id'
+
+class DeleteAllOrderLinesView(APIView):
+    def delete(self, request, order, format=None):
+        try:
+            order_lines = OrderLine.objects.filter(order=order)
+            if not order_lines.exists():
+                return Response({'detail': 'No order lines found for this order.'}, status=status.HTTP_404_NOT_FOUND)
+            
+            order_lines.delete()
+            
+            try:
+                order = Orders.objects.get(pk=order)
+                order.delete()
+            except Orders.DoesNotExist:
+                return Response({'detail': 'Order not found.'}, status=status.HTTP_404_NOT_FOUND)
+            
+            return Response({'detail': 'Order and all order lines deleted successfully.'}, status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response({'detail': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class OrderLineRetrieve(generics.RetrieveAPIView):
     queryset = OrderLine.objects.all()
