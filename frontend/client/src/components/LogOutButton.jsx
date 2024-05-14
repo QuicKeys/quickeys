@@ -6,11 +6,19 @@ function LogoutButton() {
 
     const handleLogout = async () => {
         try {
+            const orderId = localStorage.getItem('orderId')
+
+            if (orderId) {
+                await apiClientWithCredentials.delete(`/orders/line/delete-all/${localStorage.getItem('orderId')}/`)
+            }
+            localStorage.removeItem('orderId')
+
             const response = await apiClientWithCredentials.post('accounts/logout/')
 
             removeAuthToken
             localStorage.removeItem('userId')
             navigate('/Log-In');
+
             console.log(response.data.message);
         } catch (error) {
             console.error("Logout failed", error.message)
