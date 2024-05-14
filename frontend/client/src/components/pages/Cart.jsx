@@ -33,7 +33,13 @@ function Cart() {
     fetchOrder();
   }, []);
 
-  const [loggedIn, setLoggedInStatus] = useState(true);
+  const [loggedIn, setLoggedInStatus] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem('userId') != null) {
+      setLoggedInStatus(true)
+    }
+  })
 
   const handleAuth = () => {
     setLoggedInStatus(!loggedIn);
@@ -177,7 +183,7 @@ function Cart() {
                       </p>
                     </div>
                   </NavLink>
-                  {loggedIn && (
+                  {!loggedIn && (
                     <p className="text-center mt-[100px] transition-all duration-300">
                       Have an account? <NavLink to="/Log-In">
                         <span><button className="text-QKGreen hover:underline">Log In </button></span>
