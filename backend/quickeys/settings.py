@@ -66,7 +66,14 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
 ]
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_METHODS = ['GET', 'POST']
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 ROOT_URLCONF = 'quickeys.urls'
 
