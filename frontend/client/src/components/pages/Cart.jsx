@@ -5,7 +5,7 @@ import { apiClientWithCredentials } from '../../utils/ApiClient';
 import { NavLink } from 'react-router-dom';
 
 function Cart() {
-  const [order, setOrder] = useState(null);
+  const [order, setOrder] = useState(null); 
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -66,8 +66,7 @@ function Cart() {
 
   const removeAllFromCart = async () => {
     try {
-      const orderId = localStorage.getItem('orderId');
-      await apiClientWithCredentials.delete(`/orders/line/delete-all/${orderId}/`);
+      await apiClientWithCredentials.delete(`/orders/line/delete-all/${localStorage.getItem('orderId')}/`);
       setOrder([]);
       localStorage.removeItem('orderId');
       localStorage.removeItem('orderCreated');
@@ -128,9 +127,6 @@ function Cart() {
                           <button onClick={() => removeFromCart(orderLine.order_line_id)}>
                             REMOVE
                           </button>
-                          <button onClick={removeAllFromCart}>
-                            REMOVE ALL
-                          </button>
                           {orderLine.item.item_quantity <= 15 && orderLine.item.item_quantity > 0 && (
                             <p className="text-MainText/50 text-[80%] sm:text-[100%]">{orderLine.item.item_quantity} items left</p>
                           )}
@@ -162,6 +158,8 @@ function Cart() {
                 <p className="text-sm text-center mt-[10px] font-medium hover:underline block sm:hidden">Continue Shopping</p>
               </div>
             </div>
+
+            <button onClick={removeAllFromCart}>REMOVE ALL FROM CART</button>
 
             <button className="bg-BGMain p-[5px] rounded-md mt-[25px]" onClick={handleAuth}>LOG OUT</button>
           </div>

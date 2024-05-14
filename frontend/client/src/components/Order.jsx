@@ -1,22 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { apiClientWithCredentials } from '../utils/ApiClient';
 
 const Order = ({ userId, itemId, quantity }) => {
-    const [orderCreated, setOrderCreated] = useState(localStorage.getItem('orderCreated') === 'true');
-    const [orderId, setOrderId] = useState(localStorage.getItem('orderId'));
-
-    useEffect(() => {
-        localStorage.setItem('orderCreated', orderCreated.toString())
-    }, [orderCreated])
-
-    useEffect(() => {
-        if (orderId) {
-            localStorage.setItem('orderId', orderId)
-        } else {
-            localStorage.removeItem('orderId')
-        }
-    })
-
     const createOrder = async () => {
         const now = new Date().toISOString().replace('T', ' ').replace('Z', '');
         try {
@@ -27,14 +12,15 @@ const Order = ({ userId, itemId, quantity }) => {
                 'order_date': now
             });
             
-            setOrderId(orderResponse.data.order_id);
-            setOrderCreated(true);
+            localStorage.setItem('orderId', orderResponse.data.order_id);
+            return orderResponse.data.order_id;
         } catch (error) {
             console.error('Error creating order:', error);
+            throw error;
         }
     };
 
-    const addToCart = async () => {
+    const addToCart = async (orderId) => {
         try {
             const cartResponse = await apiClientWithCredentials.post('orders/line/create/', {
                 'order': orderId,
@@ -49,10 +35,15 @@ const Order = ({ userId, itemId, quantity }) => {
     };
 
     const handleAddToCartClick = async () => {
-        if (!orderCreated) {
-            await createOrder();
+        try {
+            let orderId = localStorage.getItem('orderId');
+            if (!orderId) {
+                orderId = await createOrder();
+            }
+            await addToCart(orderId);
+        } catch (error) {
+            console.error('Error in handling add to cart:', error);
         }
-        await addToCart()
     };
 
     return (
