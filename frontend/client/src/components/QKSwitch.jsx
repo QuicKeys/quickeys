@@ -1,4 +1,4 @@
-import React, { Profiler, useEffect, useRef, onRender } from 'react';
+import React, {  useEffect, useRef } from 'react';
 
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';

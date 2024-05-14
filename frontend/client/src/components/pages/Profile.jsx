@@ -45,12 +45,6 @@ function Profile() {
                   <p>{profile.auth_user.last_name}</p>
                   <p>{profile.birthdate}</p>
                   <p>{profile.contact_no}</p>
-                  <div className="ProfileCard-Image" alt={`${profile.auth_user.first_name} image`}>
-                    <img
-                      className="transition-all duration-500 p-[25px] group-hover:scale-105"
-                      src={profile.profile_picture_link}>
-                    </img>
-                  </div>
                 </div>
               </Reveal>
             </div>

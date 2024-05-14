@@ -6,6 +6,7 @@ import transition from '../Transition';
 import BuildButton from '../BuildButton';
 
 import QKSwitch from '../QKSwitch';
+
 function Home() {
     return (
         <>
@@ -39,7 +40,7 @@ function Home() {
                 </Reveal>
                 <Reveal>
                     <div className="flex justify-center w-full">
-                        <div className="flex w-[100%] pt-[50px] lg:pt-[100px] max-w-[1600px] gap-[12px] justify-center lg:justify-start lg:px-[100px]">
+                        <div className="flex w-[100%] pt-[50px] lg:pt-[100px] max-w-[1600px] gap-[15px] justify-center lg:justify-start lg:px-[100px]">
                             <a href="https://github.com/QuicKeys" target="-"><img className="Icon" src="./src/assets/icons/ICON - Github.png" alt="Github"></img></a>
                             <a href="https://discord.gg/TW2QBe3pWR" target="-"><img className="Icon" src="./src/assets/icons/ICON - Discord.png" alt="Discord"></img></a>
                             <a href="https://www.facebook.com/QuicKeysPH" target="-"><img className="Icon" src="./src/assets/icons/ICON - Facebook.png" alt="Facebook"></img></a>
