@@ -67,6 +67,9 @@ body {
 .ItemCard-Image-Cart {
     @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain rounded-md max-h-[130px] max-w-[130px] sm:max-h-[170px] sm:max-w-[170px] transition-all duration-300
 }
+.ItemCard-Image-Check-Out {
+    @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain rounded-md max-h-[100px] max-w-[100px] sm:max-h-[100px] sm:max-w-[100px] transition-all duration-300
+}
 .ItemCard-Sold-Out {
     @apply absolute bottom-0 left-0 m-[15px] px-[10px] py-[3px] bg-QKGreen text-BGMain text-sm font-medium rounded-full
 }
