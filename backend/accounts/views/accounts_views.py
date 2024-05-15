@@ -1,3 +1,4 @@
+from datetime import timedelta
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework.views import APIView
@@ -6,8 +7,7 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from ..serializers import UserSignUpSerializer, UserLogInSerializer
 from core.views import BaseAuthenticatedAPIView
-from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
-from rest_framework_simplejwt.serializers import TokenRefreshSerializer
+from rest_framework_simplejwt.views import TokenRefreshView
 
 
 class SignUpView(APIView):
@@ -63,8 +63,8 @@ class LogOutView(APIView):
             return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
         
         response = Response({'message': 'Logout successful'})
-        response.delete_cookie('access')
-        response.delete_cookie('refresh')
+        response.set_cookie('access', expires=0, max_age=0, secure=True, samesite='None')
+        response.set_cookie('refresh', expires=0, max_age=0, secure=True, samesite='None')
 
         return response
 

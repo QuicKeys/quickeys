@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Reveal } from '../Reveal';
 import transition from '../Transition';
 import { apiClientWithCredentials } from '../../utils/ApiClient';
+import LogoutButton from '../LogOutButton';
 
 function Profile() {
     const [profile, setProfile] = useState(null);
@@ -50,6 +51,7 @@ function Profile() {
             </div>
           )}
         </div>
+        <LogoutButton></LogoutButton>
       </>
     );
 }

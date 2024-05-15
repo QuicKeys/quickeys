@@ -29,7 +29,6 @@ function Navigation() {
           <div className="flex gap-[20px]">
             <NavLink to="/Cart"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - Cart.png" alt="Cart"/> </NavLink>
             <UserNav></UserNav>
-            <LogoutButton></LogoutButton>
           </div>
         </div>
         {toggle && (
