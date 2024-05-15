@@ -29,6 +29,7 @@ const Order = ({ userId, itemId, quantity }) => {
             });
 
             console.log(`Added ${cartResponse.data.item.item_name} to cart`);
+            alert('Item Added to Cart!');
         } catch (error) {
             console.error('Error adding item to cart:', error);
         }

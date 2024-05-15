@@ -7,7 +7,7 @@ function CheckOut() {
     return (
         <>
             <div>
-                <div className="flex flex-cols-2 justify-center gap-1 w-full h-full mt-[100px] mx-[15px]">
+                <div className="flex flex-col md:flex-row justify-center gap-1 w-full h-full mt-[100px] mx-[15px]">
                     <div className="w-full h-full flex items-center justify-center">
                         <div className="rounded-md w-[750px]">
                             <div className="pt-[20px] pb-[5px]">
@@ -32,12 +32,12 @@ function CheckOut() {
                                                     />
                                                 </NavLink>
                                             </div>
-                                            <div class="flex justify-between">
+                                            <div class="flex justify-between w-full">
                                                 <div>
                                                     <p>EXAMPLE</p>
                                                     <p>Qty. 3</p>
                                                 </div>
-                                                <div className="mx-[50px]">₱69.69</div>
+                                                <div>₱69.69</div>
                                             </div>
                                         </div>
                                     </div>
