@@ -174,7 +174,7 @@ function Cart() {
             <div className="flex flex-col justify-center items-center w-screen h-[90vh]">
               <div className="flex justify-center max-w-[1200px] mx-[15px]">
                 <div className="flex flex-col justify-center items-center">
-                  <p className="text-[70px] text-center font-semibold transition-all duration-300 mx-[20px] leading-none">Your Cart is <span className="text-QKGreen">Empty</span>.</p>
+                  <p className="text-[70px] text-center font-semibold transition-all duration-300 mx-[20px] leading-none">Your <span className="text-QKGreen">Cart</span> is Empty.</p>
                   <p className="flex text-center text-MainText/65 mt-[10px] transition-all duration-300">It appears that you haven't added items to your cart.</p>
                   <NavLink className="flex justify-center mt-[25px]" to="/Shop">
                     <div className="group text-center w-[250px] px-[50px] py-[10px] border-[3px] border-QKGreen hover:bg-QKGreen rounded-full transition-all duration-200">
