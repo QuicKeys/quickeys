@@ -29,7 +29,7 @@ function LogoutButton() {
         }
     }
 
-    return <button onClick={handleLogout}>Log Out</button>
+    return <button onClick={handleLogout} className="flex justify-center nm:justify-start w-full hover:underline">Sign Out</button>
 }
 
 export default LogoutButton

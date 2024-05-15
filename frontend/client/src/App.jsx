@@ -35,6 +35,7 @@ function App() {
       '/Sign-Up' : 'Create Account',
 
       '/Cart' : 'My Cart',
+      '/Check-Out' : 'Order Check Out',
       '/Profile' : 'My Profile',
       '/*' : '404 ERROR'
     }

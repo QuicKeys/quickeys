@@ -64,31 +64,51 @@ function Profile() {
 
     return (
         <>
-            <div className="px-[50px] py-[100px]">
-                <Reveal>
-                    <div className="flex justify-center text-[75px] font-medium">
-                        <span className="text-[#00FF8A] pr-[20px]">PROFILE</span> PAGE
+            <div className="flex flex-col justify-center items-center w-full h-full mt-[100px]">
+                <div className="flex justify-center nm:justify-between w-full max-w-[1200px] mb-[25px] px-[15px]">
+                    <div className="flex flex-col">
+                        <p className="text-QKGreen text-[60px] font-semibold leading-none">Account</p>
+                        <LogoutButton/>
                     </div>
-                </Reveal>
+                </div>
+
                 {authUser && (
-                  <div>
-                    <p>{authUser.first_name}</p>
-                    <p>{authUser.last_name}</p>
-                  </div>
+                  <p>{authUser.first_name} {authUser.last_name}</p>
                 )}
+
                 {profile && userAddress ? (
-                    <div className="flex flex-col items-center">
+                     <div className="flex justify-center items-center w-full h-full">
+                        <div className="flex flex-col nm:flex-row-reverse justify-start nm:justify-between w-full max-w-[1200px] px-[15px] gap-[50px]">
+                            <div className="max-w-[350px]">
+                                <p className="text-[30px] font-medium">Account Details</p>
                         <Reveal>
                             <div className="group flex flex-col max-h-[400px] max-w-[300px]">
-                                {/* <p>{profile.auth_user.username}</p>
-                                <p>{profile.auth_user.first_name}</p>
-                                <p>{profile.auth_user.last_name}</p> */}
-                                <p>{profile.birthdate}</p>
+
                                 <p>{profile.contact_no}</p>
                                 <p>{userAddress.user_address}</p>
                             </div>
+                            <div className="flex flex-col w-full">
+                                <p className="text-[30px] font-medium mb-[10px]">To Ship</p>
+                                <div className="text-MainText/50 flex justify-between mb-[5px]">
+                                    <p className="w-[100px] text-start">Order #ID</p>
+                                    <p className="w-[100px] text-center hidden xsm:block">Date</p>
+                                    <p className="w-[100px] text-end">Total</p>
+                                </div>
+                                <div className="bg-MainText/50 h-[1px]"></div>
 
-                            {processingOrders && processingOrders.length > 0 ? (
+                                <div className="flex flex-col w-full">
+                                    <div className="flex justify-between my-[10px]">
+                                        <p className="w-[100px] text-start">#QK51F2ZK</p>
+                                        <p className="w-[100px] text-center hidden xsm:block">5/14/2024</p>
+                                        <p className="w-[100px] text-end">₱4,560.00</p>
+                                    </div>
+                                    <div className="bg-MainText/50 h-[1px]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <Reveal>
+
+                            {/* {processingOrders && processingOrders.length > 0 ? (
                                 <div>
                                     <h2>Processing Orders</h2>
                                     <ScrollableDiv items={processingOrders}></ScrollableDiv>
@@ -110,7 +130,7 @@ function Profile() {
                                     <h2>Processing Orders</h2>
                                     <p>No shipped orders available</p>
                                 </div>
-                            )}
+                            )} */}
                         </Reveal>
                     </div>
                 ) : (
@@ -119,7 +139,6 @@ function Profile() {
                     </div>
                 )}
             </div>
-            <LogoutButton></LogoutButton>
         </>
     );
 }
