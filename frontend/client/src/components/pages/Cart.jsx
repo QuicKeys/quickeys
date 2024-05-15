@@ -104,6 +104,18 @@ function Cart() {
     }
   };
 
+  let total = 0;
+
+  if (order && order.length > 0) {
+    order.forEach((orderLine) => {
+      total += orderLine.item.item_price * orderLine.order_quantity;
+    });
+  }
+
+  const handleCheckout = () => {
+    localStorage.setItem('total', total)
+  }
+
   return (
     <>
       <div>
@@ -182,10 +194,10 @@ function Cart() {
               <div className="w-[350px]">
                 <div className="flex justify-between w-full">
                   <div className="text-MainText/50 text-[20px] sm:text-[25px] font-medium">Subtotal</div>
-                  <div className="text-[20px] sm:text-[25px] font-medium">₱Subtotal</div>
+                  <div className="text-[20px] sm:text-[25px] font-medium">₱{total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                 </div>
                 <p className="text-MainText/50 text-sm">Excluding taxes and shipping</p>
-                <NavLink to="/Check-Out">
+                <NavLink to="/Check-Out" onClick={handleCheckout}>
                   <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">
                     Checkout
                   </button>
