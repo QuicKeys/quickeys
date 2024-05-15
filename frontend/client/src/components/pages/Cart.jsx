@@ -45,21 +45,39 @@ function Cart() {
     setLoggedInStatus(!loggedIn);
   };
 
+  const updateOrderLineQuantity = async (orderLineId, newQuantity) => {
+    try {
+      await apiClientWithCredentials.patch(`orders/line/edit/${orderLineId}/`, { order_quantity: newQuantity });
+      
+      const updatedOrder = order.map(item => {
+        if (item.order_line_id === orderLineId) {
+          return { ...item, order_quantity: newQuantity };
+        }
+        return item;
+      });
+      setOrder(updatedOrder);
+    } catch (error) {
+      console.error('Error updating order line quantity:', error);
+    }
+  };
+  
   const quantityADD = (index) => {
     const updatedOrder = [...order];
     if (updatedOrder[index].order_quantity < updatedOrder[index].item.item_quantity) {
       updatedOrder[index].order_quantity++;
       setOrder(updatedOrder);
+      updateOrderLineQuantity(updatedOrder[index].order_line_id, updatedOrder[index].order_quantity);
     }
   };
-
+  
   const quantitySUBTRACT = (index) => {
     const updatedOrder = [...order];
     if (updatedOrder[index].order_quantity > 1) {
       updatedOrder[index].order_quantity--;
       setOrder(updatedOrder);
+      updateOrderLineQuantity(updatedOrder[index].order_line_id, updatedOrder[index].order_quantity);
     }
-  };
+  };  
 
   const removeFromCart = async (orderLineId) => {
     try {
