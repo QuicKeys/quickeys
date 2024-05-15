@@ -1,10 +1,10 @@
 from core.models import UserAddress
 from rest_framework import generics
 from ..serializers import UserAddressSerializer
-from core.views import BaseAdminAPIView
+from core.views import BaseAdminAPIView, BaseAuthenticatedAPIView
 
 
-class UserAddressCreate(BaseAdminAPIView, generics.CreateAPIView):
+class UserAddressCreate(BaseAuthenticatedAPIView, generics.CreateAPIView):
     queryset = UserAddress.objects.all()
     serializer_class = UserAddressSerializer
 
@@ -17,10 +17,10 @@ class UserAddressRetrieveUpdateDestroy(BaseAdminAPIView, generics.RetrieveUpdate
     serializer_class = UserAddressSerializer
     lookup_field = 'user_address_id'
 
-class UserAddressRetrieve(BaseAdminAPIView, generics.RetrieveAPIView):
+class UserAddressRetrieve(BaseAuthenticatedAPIView, generics.RetrieveAPIView):
     queryset = UserAddress.objects.all()
     serializer_class = UserAddressSerializer
-    lookup_field = 'user_address_id'
+    lookup_field = 'user_id'
 
 class UserAddressList(BaseAdminAPIView, generics.ListAPIView):
     serializer_class = UserAddressSerializer

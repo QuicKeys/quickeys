@@ -45,21 +45,39 @@ function Cart() {
     setLoggedInStatus(!loggedIn);
   };
 
+  const updateOrderLineQuantity = async (orderLineId, newQuantity) => {
+    try {
+      await apiClientWithCredentials.patch(`orders/line/edit/${orderLineId}/`, { order_quantity: newQuantity });
+      
+      const updatedOrder = order.map(item => {
+        if (item.order_line_id === orderLineId) {
+          return { ...item, order_quantity: newQuantity };
+        }
+        return item;
+      });
+      setOrder(updatedOrder);
+    } catch (error) {
+      console.error('Error updating order line quantity:', error);
+    }
+  };
+  
   const quantityADD = (index) => {
     const updatedOrder = [...order];
     if (updatedOrder[index].order_quantity < updatedOrder[index].item.item_quantity) {
       updatedOrder[index].order_quantity++;
       setOrder(updatedOrder);
+      updateOrderLineQuantity(updatedOrder[index].order_line_id, updatedOrder[index].order_quantity);
     }
   };
-
+  
   const quantitySUBTRACT = (index) => {
     const updatedOrder = [...order];
     if (updatedOrder[index].order_quantity > 1) {
       updatedOrder[index].order_quantity--;
       setOrder(updatedOrder);
+      updateOrderLineQuantity(updatedOrder[index].order_line_id, updatedOrder[index].order_quantity);
     }
-  };
+  };  
 
   const removeFromCart = async (orderLineId) => {
     try {
@@ -166,7 +184,9 @@ function Cart() {
                 </div>
                 <p className="text-MainText/50 text-sm">Excluding taxes and shipping</p>
                 <NavLink to="/Check-Out">
-                  <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">Checkout</button>
+                  <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">
+                    Checkout
+                  </button>
                 </NavLink>
                 <p className="text-sm text-center mt-[10px] font-medium hover:underline block sm:hidden">Continue Shopping</p>
               </div>
