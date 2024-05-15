@@ -108,7 +108,7 @@ function Cart() {
     <>
       <div>
         {order && order.length > 0 ? (
-          <div className="flex flex-col justify-center items-center w-full h-full mt-[100px] mx-[15px]">
+          <div className="flex flex-col justify-center items-center w-full h-full mt-[100px] px-[15px]">
             <div className="flex justify-center sm:justify-between w-full max-w-[1200px]">
               <p className="text-QKGreen text-[60px] font-semibold">My Cart</p>
               <div className="flex items-center">
@@ -153,9 +153,6 @@ function Cart() {
                               <img className="min-w-[10px] w-[10px] opacity-50" src="/src/assets/icons/ICON - ADD.png" alt="add"/>
                             </button>
                           </div>
-                          <button onClick={() => removeFromCart(orderLine.order_line_id)}>
-                            REMOVE
-                          </button>
                           {orderLine.item.item_quantity <= 15 && orderLine.item.item_quantity > 0 && (
                             <p className="text-MainText/50 text-[80%] sm:text-[100%]">{orderLine.item.item_quantity} items left</p>
                           )}
@@ -169,7 +166,12 @@ function Cart() {
 
                   <div>
                     <img className="min-h-[18px] min-w-[18px] h-[18px] w-[18px] opacity-50 hover:opacity-100 block sm:hidden" src="/src/assets/icons/ICON - Close.png" alt="close"/>
-                    <p className="Cart-Main-Text hidden sm:block">₱{parseFloat(orderLine.item.item_price * orderLine.order_quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                    <div className="flex flex-col w-full h-full justify-between">
+                      <p className="Cart-Main-Text hidden sm:block">₱{parseFloat(orderLine.item.item_price * orderLine.order_quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                      <button className="w-full text-end hidden sm:block" onClick={() => removeFromCart(orderLine.order_line_id)}>
+                        REMOVE
+                      </button>
+                    </div>
                   </div>
 
                 </div>
@@ -192,9 +194,7 @@ function Cart() {
               </div>
             </div>
 
-            <button onClick={removeAllFromCart}>REMOVE ALL FROM CART</button>
-
-            <button className="bg-BGMain p-[5px] rounded-md mt-[25px]" onClick={handleAuth}>LOG OUT</button>
+            {/* <button onClick={removeAllFromCart}>REMOVE ALL FROM CART</button> */}
           </div>
         ) : (
           <>

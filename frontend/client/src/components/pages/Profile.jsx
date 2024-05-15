@@ -42,7 +42,6 @@ function Profile() {
         try {
             const response = await apiClientWithCredentials.post(`/users/create/`, {
                 'auth_user': localStorage.getItem('userId'),
-                'birthdate': formData.birthdate,
                 'contact_no': formData.contactNo
             });
             
@@ -50,8 +49,8 @@ function Profile() {
                 setProfile(response.data);
                 setShowProfileForm(false);
                 const addressResponse = await apiClientWithCredentials.post(`users/address/create/`, {
-                  'user': response.data.user_id,
-                  'user_address': formData.address
+                    'user': response.data.user_id,
+                    'user_address': formData.address
                 })
                 setUserAddress(addressResponse.data)
             } else {
@@ -72,75 +71,54 @@ function Profile() {
                     </div>
                 </div>
 
-                {authUser && (
-                  <p>{authUser.first_name} {authUser.last_name}</p>
-                )}
-
-                {profile && userAddress ? (
-                     <div className="flex justify-center items-center w-full h-full">
+                <div className="flex justify-center items-center w-full h-full">
                         <div className="flex flex-col nm:flex-row-reverse justify-start nm:justify-between w-full max-w-[1200px] px-[15px] gap-[50px]">
-                            <div className="max-w-[350px]">
-                                <p className="text-[30px] font-medium">Account Details</p>
-                        <Reveal>
-                            <div className="group flex flex-col max-h-[400px] max-w-[300px]">
-
-                                <p>{profile.contact_no}</p>
-                                <p>{userAddress.user_address}</p>
+                            <div>
+                                <div className="max-w-[350px]">
+                                    <p className="text-[30px] font-medium w-[350px]">Account Details</p>
+                                </div>
+                                {authUser && (
+                                    <p>{authUser.first_name} {authUser.last_name}</p>
+                                )}
+                                {profile && userAddress ? (
+                                    <>
+                                        <div className="group flex flex-col max-h-[400px] max-w-[300px]">
+                                        <p>{profile.contact_no}</p>
+                                        <p>{userAddress.user_address}</p>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div>
+                                            {showProfileForm && <ProfileForm onCreateProfile={handleCreateProfile} />}
+                                        </div>
+                                    </>
+                                )}
                             </div>
                             <div className="flex flex-col w-full">
-                                <p className="text-[30px] font-medium mb-[10px]">To Ship</p>
+                                <p className="text-[30px] font-medium mb-[10px]">Orders</p>
                                 <div className="text-MainText/50 flex justify-between mb-[5px]">
                                     <p className="w-[100px] text-start">Order #ID</p>
-                                    <p className="w-[100px] text-center hidden xsm:block">Date</p>
-                                    <p className="w-[100px] text-end">Total</p>
+                                    <p className="w-[100px] text-center hidden xsm:block">Status</p>
+                                    <p className="w-[100px] text-end">Date</p>
                                 </div>
                                 <div className="bg-MainText/50 h-[1px]"></div>
 
                                 <div className="flex flex-col w-full">
                                     <div className="flex justify-between my-[10px]">
                                         <p className="w-[100px] text-start">#QK51F2ZK</p>
-                                        <p className="w-[100px] text-center hidden xsm:block">5/14/2024</p>
-                                        <p className="w-[100px] text-end">₱4,560.00</p>
+                                        <p className="w-[100px] text-center hidden xsm:block">Pending</p>
+                                        <p className="w-[100px] text-end">5/14/2024</p>
                                     </div>
                                     <div className="bg-MainText/50 h-[1px]"></div>
                                 </div>
                             </div>
                         </div>
-                        <Reveal>
-
-                            {/* {processingOrders && processingOrders.length > 0 ? (
-                                <div>
-                                    <h2>Processing Orders</h2>
-                                    <ScrollableDiv items={processingOrders}></ScrollableDiv>
-                                </div>
-                            ) : (
-                                <div>
-                                    <h2>Processing Orders</h2>
-                                    <p>No processing orders available</p>
-                                </div>
-                            )}
-
-                            {shippedOrders && shippedOrders.length > 0 ? (
-                                <div>
-                                    <h2>Shipped Orders</h2>
-                                    <ScrollableDiv items={shippedOrders}></ScrollableDiv>
-                                </div>
-                            ) : (
-                                <div>
-                                    <h2>Processing Orders</h2>
-                                    <p>No shipped orders available</p>
-                                </div>
-                            )} */}
-                        </Reveal>
                     </div>
-                ) : (
-                    <div>
-                        {showProfileForm && <ProfileForm onCreateProfile={handleCreateProfile} />}
-                    </div>
-                )}
+
             </div>
         </>
-    );
+    )
 }
 
 const ProfileForm = ({ onCreateProfile }) => {
@@ -163,12 +141,58 @@ const ProfileForm = ({ onCreateProfile }) => {
         onCreateProfile(formData);
     };
 
+    // Contact
+    const [contactActive, setContactActive] = useState(false);
+    const [contactFocused, setContactFocused] = useState(false);
+
+    // Address
+    const [addressActive, setAddressActive] = useState(false);
+    const [addressFocused, setAddressFocused] = useState(false);
+
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} required />
-            <input type="text" name="contactNo" value={formData.contactNo} onChange={handleChange} placeholder="Contact No" required />
-            <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder='Address' required />
-            <button type="submit">Create Profile</button>
+        <form className="flex flex-col w-[300px]" onSubmit={handleSubmit}>
+            {/* <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} required /> */}
+            <div className="flex flex-col gap-[5px] my-[10px]">
+                <div className="relative flex justify-center w-full max-w-[510px]">
+                    <input // CONTACT
+                        type="text"
+                        name="contactNo"
+                        value={formData.contactNo}
+                        onChange={handleChange}
+                        onFocus={() => {setContactActive(true); setContactFocused(true);}} onBlur={() => {setContactActive(false); setContactFocused(false);}}
+                        className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-full 
+                            ${(contactFocused) && 'border-[#00FF8A]'}`}
+                        required
+                    />
+                    <label
+                        className={`absolute transition-all duration-200 top-[12px] left-[12px] z-[-1]
+                        ${(contactActive || formData.contactNo) && 'text-xs transform translate-y-[-30%]'} 
+                        ${(contactFocused) && 'text-[#00FF8A]'}`}
+                    >
+                        Contact No.
+                    </label>
+                </div>
+                <div className="relative flex justify-center w-full max-w-[510px]">
+                    <input // ADDRESS
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        onFocus={() => {setAddressActive(true); setAddressFocused(true);}} onBlur={() => {setAddressActive(false); setAddressFocused(false);}}
+                        className={`flex transition-all duration-200 bg-transparent border-2 px-3 pt-4 pb-1 outline-none w-full 
+                            ${(addressFocused) && 'border-[#00FF8A]'}`}
+                        required
+                    />
+                    <label
+                        className={`absolute transition-all duration-200 top-[12px] left-[12px] z-[-1]
+                        ${(addressActive || formData.address) && 'text-xs transform translate-y-[-30%]'} 
+                        ${(addressFocused) && 'text-[#00FF8A]'}`}
+                    >
+                        Address
+                    </label>
+                </div>
+            </div>
+            <button className="bg-QKGreen text-BGMain font-medium py-[10px] rounded-md hover:bg-[#00EA7F]" type="submit">Complete Profile</button>
         </form>
     );
 };
