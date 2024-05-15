@@ -16,6 +16,8 @@ function Profile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
+                const authUserResponse = await apiClientWithCredentials.get(`users/auth-user/${localStorage.getItem('userId')}/`);
+                setAuthUser(authUserResponse.data)
                 const profileResponse = await apiClientWithCredentials.get(`/users/view/${localStorage.getItem('userId')}`);
                 if (profileResponse.data && typeof profileResponse.data === 'object') {
                     setProfile(profileResponse.data);
@@ -25,6 +27,9 @@ function Profile() {
 
                     const shippedOrdersResponse = await apiClientWithCredentials.get(`orders/list/?user=${profileResponse.data.user_id}&order_status=shipped`);
                     setShippedOrders(shippedOrdersResponse.data);
+
+                    const addressResponse = await apiClientWithCredentials.get(`users/address/view/${profileResponse.data.user_id}`)
+                    setUserAddress(addressResponse.data)
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -53,6 +58,8 @@ function Profile() {
                     'user_address': formData.address
                 })
                 setUserAddress(addressResponse.data)
+                setAuthUser(response.data.auth_user)
+                setProfile(response.data)
             } else {
                 console.error('Received data is not in expected format:', response.data);
             }
