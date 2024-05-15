@@ -34,7 +34,7 @@ function CheckOut() {
                                             </div>
                                             <div class="flex justify-between">
                                                 <div>
-                                                    <p>OTEN</p>
+                                                    <p>EXAMPLE</p>
                                                     <p>Qty. 3</p>
                                                 </div>
                                                 <div className="mx-[50px]">₱69.69</div>
