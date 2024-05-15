@@ -36,6 +36,16 @@ class OrderList(BaseAuthenticatedAPIView, generics.ListAPIView):
         if user is not None:
             queryset = queryset.filter(user=user)
 
+        # Filter by order status
+        order_status = self.request.query_params.get('order_status', None)
+        if order_status is not None:
+            queryset = queryset.filter(order_status=order_status)
+
+        # Filter by payment status
+        payment_status = self.request.query_params.get('payment_status', None)
+        if payment_status is not None:
+            queryset = queryset.filter(payment_status=payment_status)
+
         # Sort by order attribute
         sort_by = self.request.query_params.get('sort_by', None)
         if sort_by is not None:

@@ -1,4 +1,3 @@
-from datetime import timedelta
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework.views import APIView
@@ -6,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from ..serializers import UserSignUpSerializer, UserLogInSerializer
-from core.views import BaseAuthenticatedAPIView
 from rest_framework_simplejwt.views import TokenRefreshView
 
 

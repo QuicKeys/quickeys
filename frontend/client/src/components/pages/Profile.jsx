@@ -3,18 +3,25 @@ import { Reveal } from '../Reveal';
 import transition from '../Transition';
 import { apiClientWithCredentials } from '../../utils/ApiClient';
 import LogoutButton from '../LogOutButton';
+import ScrollableDiv from '../ScrollableDiv';
 
 function Profile() {
     const [profile, setProfile] = useState(null);
+    const [processingOrders, setProcessingOrders] = useState(null)
+    const [shippedOrders, setShippedOrders] = useState(null)
 
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-              const userIdResponse = await apiClientWithCredentials.post('accounts/current-user/')
-
-                const profileResponse = await apiClientWithCredentials.get(`/users/view/${userIdResponse.data.user_id}/`);
+                const profileResponse = await apiClientWithCredentials.get(`/users/view/${localStorage.getItem('userId')}`);
                 if (profileResponse.data && typeof profileResponse.data === 'object') {
                     setProfile(profileResponse.data);
+
+                    const processingOrdersResponse = await apiClientWithCredentials.get(`orders/list/?user=${profileResponse.data.user_id}&order_status=processing`)
+                    setProcessingOrders(processingOrdersResponse.data)
+
+                    const shippedOrdersResponse = await apiClientWithCredentials.get(`orders/list/?user=${profileResponse.data.user_id}&order_status=shipped`)
+                    setShippedOrders(shippedOrdersResponse.data)
                 } else {
                     console.error('Received data is not in expected format:', profileResponse.data);
                     setProfile(null);
@@ -47,6 +54,21 @@ function Profile() {
                   <p>{profile.birthdate}</p>
                   <p>{profile.contact_no}</p>
                 </div>
+
+                {processingOrders && (
+                  <div>
+                    <h2>Processing Orders</h2>
+                    <ScrollableDiv items={processingOrders}></ScrollableDiv>
+                  </div>
+                )}
+
+                {shippedOrders && (
+                  <div>
+                    <h2>Shipped Orders</h2>
+                    <ScrollableDiv items={shippedOrders}></ScrollableDiv>
+                  </div>
+                )}
+
               </Reveal>
             </div>
           )}
