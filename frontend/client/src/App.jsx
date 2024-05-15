@@ -18,6 +18,7 @@ import Cart from './components/pages/Cart';
 import CheckOut from './components/pages/CheckOut';
 import Profile from './components/pages/Profile';
 import Error from './components/pages/Error';
+import Successful from './components/pages/Successful';
 
 function App() {
 
@@ -37,7 +38,9 @@ function App() {
       '/Cart' : 'My Cart',
       '/Check-Out' : 'Order Check Out',
       '/Profile' : 'My Profile',
-      '/*' : '404 ERROR'
+      '/*' : '404 ERROR',
+
+      '/Success' : 'Checkout Successful!'
     }
 
     if (!location.pathname.startsWith('/Item/')) {
@@ -68,6 +71,7 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
 
             <Route path="*" element={<Error />} />
+            <Route path="/Success" element={<Successful/>} />
           </Routes>
         </AnimatePresence>
       </div>
