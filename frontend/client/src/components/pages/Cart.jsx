@@ -64,7 +64,13 @@ function Cart() {
   const removeFromCart = async (orderLineId) => {
     try {
       await apiClientWithCredentials.delete(`orders/line/edit/${orderLineId}/`);
-      setOrder(order.filter(item => item.order_line_id !== orderLineId));
+      const updatedOrder = order.filter(item => item.order_line_id !== orderLineId)
+      setOrder(updatedOrder);
+
+      if (updatedOrder.length === 0) {
+        await apiClientWithCredentials.delete(`/orders/edit/${localStorage.getItem('orderId')}/`);
+        localStorage.removeItem('orderId');
+      } 
     } catch (error) {
       console.error('Error removing item from cart:', error);
     }
@@ -75,7 +81,6 @@ function Cart() {
       await apiClientWithCredentials.delete(`/orders/line/delete-all/${localStorage.getItem('orderId')}/`);
       setOrder([]);
       localStorage.removeItem('orderId');
-      localStorage.removeItem('orderCreated');
     } catch (error) {
       console.error('Error removing all items from cart:', error);
     }
@@ -160,7 +165,9 @@ function Cart() {
                   <div className="text-[20px] sm:text-[25px] font-medium">₱Subtotal</div>
                 </div>
                 <p className="text-MainText/50 text-sm">Excluding taxes and shipping</p>
-                <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">Checkout</button>
+                <NavLink to="/Check-Out">
+                  <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">Checkout</button>
+                </NavLink>
                 <p className="text-sm text-center mt-[10px] font-medium hover:underline block sm:hidden">Continue Shopping</p>
               </div>
             </div>

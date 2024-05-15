@@ -36,6 +36,11 @@ const Order = ({ userId, itemId, quantity }) => {
 
     const handleAddToCartClick = async () => {
         try {
+            if (!localStorage.getItem('userId')) {
+                alert('You must be logged in to add items to the cart.');
+                return;
+            }
+
             let orderId = localStorage.getItem('orderId');
             if (!orderId) {
                 orderId = await createOrder();

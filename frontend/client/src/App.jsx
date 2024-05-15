@@ -15,6 +15,7 @@ import LogIn from './components/pages/LogIn';
 import SignUp from './components/pages/SignUp';
 import Item from './components/pages/Item';
 import Cart from './components/pages/Cart';
+import CheckOut from './components/pages/CheckOut';
 import Profile from './components/pages/Profile';
 import Error from './components/pages/Error';
 
@@ -62,6 +63,7 @@ function App() {
 
             <Route path="/Item/:itemId" element={<Item />} />
             <Route path="/Cart" element={<Cart />} />
+            <Route path="/Check-Out" element={<CheckOut />} />
             <Route path="/Profile" element={<Profile />} />
 
             <Route path="*" element={<Error />} />

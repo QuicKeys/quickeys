@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
 import LogoutButton from './LogOutButton';
+import UserNav from './UserNav';
 
 
 function Navigation() {
@@ -27,9 +28,7 @@ function Navigation() {
           </div>
           <div className="flex gap-[20px]">
             <NavLink to="/Cart"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - Cart.png" alt="Cart"/> </NavLink>
-            <NavLink to="/Log-In"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - User.png" alt="Login"/> </NavLink>
-            <NavLink to="/Profile"> <img className="Nav-Icon opacity-50 hover:opacity-100" src="/src/assets/icons/NAV - User.png" alt="Profile"/> </NavLink>
-            <LogoutButton></LogoutButton>
+            <UserNav></UserNav>
           </div>
         </div>
         {toggle && (

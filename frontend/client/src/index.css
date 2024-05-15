@@ -67,6 +67,9 @@ body {
 .ItemCard-Image-Cart {
     @apply relative flex justify-center items-center overflow-hidden bg-HeavyMain rounded-md max-h-[130px] max-w-[130px] sm:max-h-[170px] sm:max-w-[170px] transition-all duration-300
 }
+.ItemCard-Sold-Out {
+    @apply absolute bottom-0 left-0 m-[15px] px-[10px] py-[3px] bg-QKGreen text-BGMain text-sm font-medium rounded-full
+}
 
 .Quantity-Box {
     @apply relative flex justify-center gap-[50px] border-MainText/50 border-2 px-[10px] py-[10px] w-[90px]
