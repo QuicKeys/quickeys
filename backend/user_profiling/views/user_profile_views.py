@@ -4,7 +4,7 @@ from ..serializers import UserProfileSerializer
 from core.views import BaseAdminAPIView, BaseAuthenticatedAPIView
 
 
-class UserProfileCreate(BaseAdminAPIView, generics.CreateAPIView):
+class UserProfileCreate(BaseAuthenticatedAPIView, generics.CreateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
