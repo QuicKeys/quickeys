@@ -6,7 +6,9 @@ import LogoutButton from '../LogOutButton';
 import ScrollableDiv from '../ScrollableDiv';
 
 function Profile() {
+    const [authUser, setAuthUser] = useState(null)
     const [profile, setProfile] = useState(null);
+    const [userAddress, setUserAddress] = useState(null)
     const [processingOrders, setProcessingOrders] = useState(null);
     const [shippedOrders, setShippedOrders] = useState(null);
     const [showProfileForm, setShowProfileForm] = useState(false); // State to control the visibility of the profile form
@@ -23,15 +25,13 @@ function Profile() {
 
                     const shippedOrdersResponse = await apiClientWithCredentials.get(`orders/list/?user=${profileResponse.data.user_id}&order_status=shipped`);
                     setShippedOrders(shippedOrdersResponse.data);
-                } else {
-                    console.error('Received data is not in expected format:', profileResponse.data);
-                    setProfile(null);
-                    setShowProfileForm(true); // Show profile creation form if fetching profile fails
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
                 setProfile(null);
                 setShowProfileForm(true); // Show profile creation form if fetching profile fails
+                const authUserResponse = await apiClientWithCredentials.get(`users/auth-user/${localStorage.getItem('userId')}/`);
+                setAuthUser(authUserResponse.data)
             }
         };
 
@@ -45,9 +45,15 @@ function Profile() {
                 'birthdate': formData.birthdate,
                 'contact_no': formData.contactNo
             });
+            
             if (response.data && typeof response.data === 'object') {
                 setProfile(response.data);
                 setShowProfileForm(false);
+                const addressResponse = await apiClientWithCredentials.post(`users/address/create/`, {
+                  'user': response.data.user_id,
+                  'user_address': formData.address
+                })
+                setUserAddress(addressResponse.data)
             } else {
                 console.error('Received data is not in expected format:', response.data);
             }
@@ -64,16 +70,22 @@ function Profile() {
                         <span className="text-[#00FF8A] pr-[20px]">PROFILE</span> PAGE
                     </div>
                 </Reveal>
-
-                {profile ? (
+                {authUser && (
+                  <div>
+                    <p>{authUser.first_name}</p>
+                    <p>{authUser.last_name}</p>
+                  </div>
+                )}
+                {profile && userAddress ? (
                     <div className="flex flex-col items-center">
                         <Reveal>
                             <div className="group flex flex-col max-h-[400px] max-w-[300px]">
-                                <p>{profile.auth_user.username}</p>
+                                {/* <p>{profile.auth_user.username}</p>
                                 <p>{profile.auth_user.first_name}</p>
-                                <p>{profile.auth_user.last_name}</p>
+                                <p>{profile.auth_user.last_name}</p> */}
                                 <p>{profile.birthdate}</p>
                                 <p>{profile.contact_no}</p>
+                                <p>{userAddress.user_address}</p>
                             </div>
 
                             {processingOrders && processingOrders.length > 0 ? (
@@ -115,7 +127,8 @@ function Profile() {
 const ProfileForm = ({ onCreateProfile }) => {
     const [formData, setFormData] = useState({
         birthdate: '',
-        contactNo: ''
+        contactNo: '',
+        address: '',
     });
 
     const handleChange = (e) => {
@@ -133,8 +146,9 @@ const ProfileForm = ({ onCreateProfile }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} placeholder="Birthdate" required />
+            <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} required />
             <input type="text" name="contactNo" value={formData.contactNo} onChange={handleChange} placeholder="Contact No" required />
+            <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder='Address' required />
             <button type="submit">Create Profile</button>
         </form>
     );

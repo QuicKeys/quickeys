@@ -184,7 +184,9 @@ function Cart() {
                 </div>
                 <p className="text-MainText/50 text-sm">Excluding taxes and shipping</p>
                 <NavLink to="/Check-Out">
-                  <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">Checkout</button>
+                  <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">
+                    Checkout
+                  </button>
                 </NavLink>
                 <p className="text-sm text-center mt-[10px] font-medium hover:underline block sm:hidden">Continue Shopping</p>
               </div>

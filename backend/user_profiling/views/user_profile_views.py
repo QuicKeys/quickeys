@@ -1,7 +1,8 @@
 from core.models import UserProfile
 from rest_framework import generics
-from ..serializers import UserProfileSerializer
+from ..serializers import UserProfileSerializer, AuthUserSerializer
 from core.views import BaseAdminAPIView, BaseAuthenticatedAPIView
+from django.contrib.auth.models import User
 
 
 class UserProfileCreate(BaseAuthenticatedAPIView, generics.CreateAPIView):
@@ -44,3 +45,8 @@ class UserProfileList(BaseAuthenticatedAPIView, generics.ListAPIView):
             queryset = queryset.order_by(f'{"-" if descending else ""}{field}')
 
         return queryset
+    
+class AuthUserProfileRetrieve(BaseAuthenticatedAPIView, generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = AuthUserSerializer
+    lookup_field = 'id'
