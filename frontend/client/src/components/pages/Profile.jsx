@@ -41,9 +41,9 @@ function Profile() {
     const handleCreateProfile = async (formData) => {
         try {
             const response = await apiClientWithCredentials.post(`/users/create/`, {
-              'auth_user': localStorage.getItem('userId'),
-              'birthdate': formData.birthdate,
-              'contact_no': formData.contactNo
+                'auth_user': localStorage.getItem('userId'),
+                'birthdate': formData.birthdate,
+                'contact_no': formData.contactNo
             });
             if (response.data && typeof response.data === 'object') {
                 setProfile(response.data);
@@ -77,27 +77,27 @@ function Profile() {
                             </div>
 
                             {processingOrders && processingOrders.length > 0 ? (
-                              <div>
-                                <h2>Processing Orders</h2>
-                                <ScrollableDiv items={processingOrders}></ScrollableDiv>
-                              </div>
+                                <div>
+                                    <h2>Processing Orders</h2>
+                                    <ScrollableDiv items={processingOrders}></ScrollableDiv>
+                                </div>
                             ) : (
-                              <div>
-                                <h2>Processing Orders</h2>
-                                <p>No processing orders available</p>
+                                <div>
+                                    <h2>Processing Orders</h2>
+                                    <p>No processing orders available</p>
                                 </div>
                             )}
 
                             {shippedOrders && shippedOrders.length > 0 ? (
-                              <div>
-                                <h2>Shipped Orders</h2>
-                                <ScrollableDiv items={shippedOrders}></ScrollableDiv>
-                              </div>
+                                <div>
+                                    <h2>Shipped Orders</h2>
+                                    <ScrollableDiv items={shippedOrders}></ScrollableDiv>
+                                </div>
                             ) : (
-                              <div>
-                                <h2>Processing Orders</h2>
-                                <p>No shipped orders available</p>
-                              </div>
+                                <div>
+                                    <h2>Processing Orders</h2>
+                                    <p>No shipped orders available</p>
+                                </div>
                             )}
                         </Reveal>
                     </div>

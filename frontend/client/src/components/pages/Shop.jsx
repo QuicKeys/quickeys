@@ -132,6 +132,9 @@ function Shop() {
                   <div className="group flex flex-col max-h-[450px] max-w-[300px]">
                     <Link to={`/Item/${item.item_id}`} alt={`${item.item_name}`}>
                       <div className="ItemCard-Image-Shop" alt={`${item.item_name} image`}>
+                        {item.item_quantity == 0 && (
+                          <div className="ItemCard-Sold-Out">Sold Out</div>
+                        )}
                         <img
                           className="transition-all duration-500 p-[5%] group-hover:scale-105"
                           src={item.item_profile_picture_link}>

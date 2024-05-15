@@ -165,7 +165,9 @@ function Cart() {
                   <div className="text-[20px] sm:text-[25px] font-medium">₱Subtotal</div>
                 </div>
                 <p className="text-MainText/50 text-sm">Excluding taxes and shipping</p>
-                <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">Checkout</button>
+                <NavLink to="/Check-Out">
+                  <button className="bg-QKGreen text-BGMain font-semibold w-full mt-[25px] p-[10px] rounded-sm">Checkout</button>
+                </NavLink>
                 <p className="text-sm text-center mt-[10px] font-medium hover:underline block sm:hidden">Continue Shopping</p>
               </div>
             </div>
@@ -179,7 +181,7 @@ function Cart() {
             <div className="flex flex-col justify-center items-center w-screen h-[90vh]">
               <div className="flex justify-center max-w-[1200px] mx-[15px]">
                 <div className="flex flex-col justify-center items-center">
-                  <p className="text-[70px] text-center font-semibold transition-all duration-300 mx-[20px] leading-none">Your Cart is <span className="text-QKGreen">Empty</span>.</p>
+                  <p className="text-[70px] text-center font-semibold transition-all duration-300 mx-[20px] leading-none">Your <span className="text-QKGreen">Cart</span> is Empty.</p>
                   <p className="flex text-center text-MainText/65 mt-[10px] transition-all duration-300">It appears that you haven't added items to your cart.</p>
                   <NavLink className="flex justify-center mt-[25px]" to="/Shop">
                     <div className="group text-center w-[250px] px-[50px] py-[10px] border-[3px] border-QKGreen hover:bg-QKGreen rounded-full transition-all duration-200">
