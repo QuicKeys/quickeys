@@ -31,6 +31,10 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 - ### Streamlined Purchasing Process
   With order tracking and a user-friendly interface, QuicKeys simplifies the purchasing process, from customization to delivery, saving users time and effort.
 
+## Database Diagram
+
+<img src="https://i.postimg.cc/s2BNMVCq/441275610-954161973075718-2179090809214109059-n.png">
+
 ## Tech Stack
 
 ### [Frontend](/frontend/)
@@ -51,6 +55,18 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
+## Pictures of the application
+
+<img src="https://i.postimg.cc/gjGsHp1Y/Web-capture-15-5-2024-22614-localhost.jpg">
+<img src="https://i.postimg.cc/1tGMFXCC/Web-capture-15-5-2024-22641-localhost.jpg">
+<img src="https://i.postimg.cc/v8v3H16D/Web-capture-15-5-2024-22450-localhost.jpg">
+<img src="https://i.postimg.cc/qqQLmYd2/Web-capture-15-5-2024-22543-localhost.jpg">
+<img src="https://i.postimg.cc/g27MFfLD/Web-capture-15-5-2024-22719-localhost.jpg">
+<img src="https://i.postimg.cc/bN3CLGz4/Web-capture-15-5-2024-2334-localhost.jpg">
+<img src="https://i.postimg.cc/wjzNtF8p/Web-capture-16-5-2024-232638-localhost.jpg">
+<img src="https://i.postimg.cc/0NJV8cpq/441973623-411390121807842-2513979167248863950-n.png">
+<img src="https://i.postimg.cc/8P1XhdVh/Web-capture-15-5-2024-23171-localhost.jpg">
+
 ## Contact
 
 ### Adrianne Mykhel Bulao
@@ -58,12 +74,18 @@ QuicKeys is the ultimate platform for keyboard enthusiasts! QuicKeys is your one
 - [https://twitter.com/mykh3l\_](https://twitter.com/mykh3l_)
 - https://github.com/adriannebulao
 
+<img src="https://i.postimg.cc/xd7B5XP9/441291952-2404591603065702-3726035547447434635-n.png">
+
 ### Mark Cyryl Clarde
 
 - https://twitter.com/clardemark
 - https://github.com/mccc28
 
+<img src="https://i.postimg.cc/QMVRcQ16/MG-0372.jpg">
+
 ### Maverick Jasper Pigao
 
 - https://www.facebook.com/MaburikuPH
 - https://github.com/MABURIKU
+
+<img src="https://i.postimg.cc/zGDmGZBY/441946236-429030939876028-8329989775234925179-n.jpg">
